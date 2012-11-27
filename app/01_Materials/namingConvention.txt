@@ -1,0 +1,9 @@
+[materialLibraryType]_[descriptiveInfo].matLib
+
+Examples:
+
+shinyMetals.matLib <---- The descriptive info can sometimes be not necessarry
+
+roughWood_panels.matLib
+
+wood_general.matLib

@@ -1,0 +1,52 @@
+{"frames": {
+
+"Graphite15.png":
+{
+	"frame": {"x":518,"y":230,"w":256,"h":102},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":256,"h":102},
+	"sourceSize": {"w":256,"h":256}
+},
+"Graphite18.png":
+{
+	"frame": {"x":260,"y":230,"w":256,"h":130},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":256,"h":130},
+	"sourceSize": {"w":256,"h":256}
+},
+"Graphite20.png":
+{
+	"frame": {"x":2,"y":212,"w":256,"h":154},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":256,"h":154},
+	"sourceSize": {"w":256,"h":256}
+},
+"Graphite26.png":
+{
+	"frame": {"x":516,"y":2,"w":256,"h":226},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":2,"w":256,"h":226},
+	"sourceSize": {"w":256,"h":256}
+},
+"Graphite36.png":
+{
+	"frame": {"x":2,"y":2,"w":512,"h":208},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":1,"w":512,"h":208},
+	"sourceSize": {"w":512,"h":512}
+}},
+"meta": {
+	"app": "http://www.texturepacker.com",
+	"version": "1.0",
+	"image": "graph.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":1024},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:ee5a2048e57f0b97df6cd372ca2f8f01$"
+}
+}
