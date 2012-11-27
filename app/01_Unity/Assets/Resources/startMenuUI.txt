@@ -1,0 +1,76 @@
+{"frames": {
+
+"currentGame.png":
+{
+	"frame": {"x":572,"y":193,"w":105,"h":82},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":105,"h":82},
+	"sourceSize": {"w":105,"h":82}
+},
+"currentGamesBG.png":
+{
+	"frame": {"x":324,"y":2,"w":320,"h":144},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":144},
+	"sourceSize": {"w":320,"h":144}
+},
+"dieButtonLarge.png":
+{
+	"frame": {"x":448,"y":148,"w":122,"h":115},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":122,"h":115},
+	"sourceSize": {"w":122,"h":115}
+},
+"dieButtonLargeDown.png":
+{
+	"frame": {"x":324,"y":148,"w":122,"h":115},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":122,"h":115},
+	"sourceSize": {"w":122,"h":115}
+},
+"howToPlayButton.png":
+{
+	"frame": {"x":646,"y":83,"w":156,"h":108},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":156,"h":108},
+	"sourceSize": {"w":156,"h":108}
+},
+"stadiumBG.png":
+{
+	"frame": {"x":2,"y":2,"w":320,"h":480},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":320,"h":480},
+	"sourceSize": {"w":320,"h":480}
+},
+"statsButton.png":
+{
+	"frame": {"x":804,"y":83,"w":146,"h":139},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":146,"h":139},
+	"sourceSize": {"w":146,"h":139}
+},
+"title.png":
+{
+	"frame": {"x":646,"y":2,"w":270,"h":79},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":270,"h":79},
+	"sourceSize": {"w":270,"h":79}
+}},
+"meta": {
+	"app": "http://www.texturepacker.com",
+	"version": "1.0",
+	"image": "startMenuUI.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":1024},
+	"scale": "0.5",
+	"smartupdate": "$TexturePacker:SmartUpdate:35781f4d263e0e4d75f8335b97a16dac$"
+}
+}

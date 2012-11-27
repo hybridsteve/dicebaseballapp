@@ -1,0 +1,918 @@
+body {
+	background-color:#7C5528;
+	margin:0px;
+	padding:0px;
+	
+}
+
+#home{
+	background-color: green;
+	background-image: url(../img/_home/dBaseball-title.png);
+	background-position: top left;
+	background-repeat : no-repeat;
+	
+}
+
+#endgame{
+	height:720px;
+	position: absolute;
+	top: -240px;
+	background-image: url(../img/_game/end/dBaseball-endgame.png);
+	background-position: bottom left;
+	background-repeat : no-repeat;	
+	
+}
+
+#endgame .eg{
+	font-size: 18px;
+	color: white;	
+	text-align:center;
+	margin-top: 10px;
+	margin-bottom:10px;
+}
+
+#endgame .container
+{
+	position: absolute;
+	top: 10px;
+	text-align: center;
+	width: 320px;
+}
+
+#final_screen{
+	margin-top: 40px;
+	
+}
+
+#final_guest{
+	
+}
+			
+#final_home{
+	
+	
+} 
+
+
+	
+
+
+#team{
+	
+	background-image: url(../img/_team/dBaseball-sel-team.png);
+	background-position: top left;
+	background-repeat : no-repeat;
+	
+}
+
+
+#team_entry
+{
+
+	background-image: url(../img/_team_entry/dBaseball-nameEntry.png);
+	background-position: top left;
+	background-repeat : no-repeat;
+}
+
+#input1{
+	position:absolute;	
+	
+}
+
+
+
+div.rounded {
+    -webkit-border-radius: 8px;
+    -webkit-box-shadow: rgba(0,0,0,.3) 1px 1px 3px;
+}
+
+
+#choose {
+
+	background-image: url(../img/_choose/dBaseball-sel-sandlot.png);
+	background-position: top left;
+	background-repeat : no-repeat;	
+}
+
+#btn_holder
+{
+	/*position:absolute;
+	left: 153px;	
+	top: 385px;*/
+}
+
+
+#btn_start
+{
+	position:absolute;
+	left: 34px;	
+	top: 285px;
+	
+	
+}
+
+
+#btn_about{
+	position:absolute;
+	left: 25px;	
+	top: 436px;
+}
+
+#btn_mute{
+	position:absolute;
+	left: 226px;	
+	top: 426px;
+}
+
+
+
+
+.btn_choose{
+	
+	height:65px;
+	width: 65px;
+	
+}
+
+
+
+
+#btn_one{
+	
+	
+	position:absolute;
+	left: -12px;
+	top: 203px;
+	
+}
+
+#btn_two{
+	
+	left: 113px;
+	position:absolute;
+	top: 350px;
+}
+
+#btn_back_home{
+	
+	left: 0px;
+	position:absolute;
+	top: 0px;
+}
+
+
+#btn_chooseNext{
+	position:absolute;
+	left: 225px;
+	top:385px;
+	width: 80px;
+	height: 80px;
+}
+
+#btn_prev{
+	left: 8px;
+	position:absolute;
+	top: 395px;
+}
+
+#btn_pick{
+	left: 116px;
+	position:absolute;
+	top: 395px;
+}
+
+#btn_next{
+	left: 220px;
+	position:absolute;
+	top: 395px;
+}
+
+
+#name_stage{
+	position:absolute;	
+	width:320px;
+	top:444px;
+	border-top:1px solid white;
+	height: 30px;
+	padding-top: 5px;
+}
+
+
+#btn_pause{
+	position:relative;
+	top:-2px;
+	left: 15px;	
+	width:auto;
+}
+
+
+#btn_end,
+#btn_how
+{
+	width:75%;
+	padding:7px;
+	margin:auto;
+	border:2px solid #fff;
+	color:white;
+	font-weight:bold;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#868686), to(#606060));
+	-webkit-border-top-right-radius:    8px 8px;
+    -webkit-border-top-left-radius:     8px 8px;
+    -webkit-border-bottom-left-radius:  8px 8px;
+    -webkit-border-bottom-right-radius: 8px 8px;
+	
+}
+
+#lbl_batting{
+	position:relative;
+	/*top:447px;*/
+	left: 3px;	
+	padding: 5px;
+	color: white;
+	width:80%;
+	font-weight:bold;
+	font-size: 12px;
+	float:left;
+	
+}
+
+
+#home{
+	background-color:green;	
+	
+}
+
+
+#splash{
+	position:absolute;
+	z-index:999;
+	background: green url(../img/dBaseball-title.png) top left no-repeat;	
+}
+
+#game{
+	background-color: green;
+	background-image: url(../img/_game/fields/dBaseball-stadium.png);
+	background-position: top left;
+	background-repeat : no-repeat;	
+	
+}
+
+
+#popup
+{
+	position:absolute;
+	top:145px;
+	left: 35px;
+	width: 259px;
+	height: 258px;
+	z-index: 10001;
+	background-image: url(../img/_game/popup/dBaseball-options.png);
+	background-color: transperent;
+}
+
+#matchup
+{
+	position:absolute;
+	top:145px;
+	left: 35px;
+	width: 259px;
+	height: 258px;
+	z-index: 10001;
+	background-image: url(../img/_game/popup/dBaseball-matchup.png);
+	background-color: transperent;
+	color:#000000;
+	font-size:24px;
+	font-weight:bold;
+}
+
+#matchup .match_txt{
+	position: relative;
+	top: 60px;
+	left:0px;
+	text-align:center;
+	
+}
+
+#popup_continue
+{
+	position:absolute;
+	top:125px;
+	left: 35px;
+	width: 259px;
+	height: 258px;
+	z-index: 10001;
+	background-image: url(../img/_home/dBaseball-continue.png);
+	background-color: transperent;
+}
+
+#btn_pop_close
+{
+	position:relative;
+	top: 5px;
+	left: 200px;	
+	
+}
+
+#btn_pop_save
+{
+	position:relative;
+	top: 48px;
+	left: -7px;	
+}
+
+
+
+#btn_pop_mute
+{
+	position:relative;
+	top: 50px;
+	left: 30px;	
+	
+}
+
+
+#btn_pop_continue
+{
+	position:relative;
+	top: 55px;
+	left: 30px;	
+	
+}
+
+#btn_pop_new
+{
+	position:relative;
+	top: 65px;
+	left: 30px;	
+	
+}
+
+
+#popup_gameover
+{
+	position:absolute;
+	top:180px;
+	width:316px;
+	height:94px;
+	z-index: 10001;
+	background-image: url(../img/_game/scoreboard/dBaseball_scoreboard.png);
+	background-color: transperent;
+	color:black;
+	
+	
+}
+
+
+#popup_gameover .guestRow
+{
+	position:absolute;
+	top:30px;
+	/*border:1px solid red;*/
+	padding:0px;
+	text-align:center;
+	font-size:1.5em;
+	color:black;
+	
+}
+
+#popup_gameover .homeRow
+{
+	position:absolute;
+	top:62px;
+	/*border:1px solid red;*/
+	padding:0px;
+	text-align:center;
+	font-size:1.5em;
+	color:black;
+	
+}
+
+#popup_guest_01,
+#popup_home_01
+
+{
+	left:68px;
+}
+
+
+#popup_guest_02,
+#popup_home_02
+{
+	left:90px;
+}
+#popup_guest_03,
+#popup_home_03
+{
+	left:112px;
+}
+#popup_guest_04,
+#popup_home_04
+{
+	left:134px;
+}
+#popup_guest_05,
+#popup_home_05
+{
+	left:156px;
+}
+#popup_guest_06,
+#popup_home_06
+{
+	left:178px;
+}
+#popup_guest_07,
+#popup_home_07
+{
+	left:200px;
+}
+
+#popup_guest_08,
+#popup_home_08
+{
+	left:222px;
+}
+
+#popup_guest_09,
+#popup_home_09
+{
+	left:244px;
+}
+
+#popup_guest_10
+{
+	left:293px;
+}
+
+
+#popup_gameover .homeRow
+{
+		
+	
+}
+
+
+
+
+
+#atbat{
+	position:absolute;
+	top:0;
+	left:0;
+	background-color: transparent;
+	background-image: url(../img/_game/atbat/atBat_guest.png);
+	background-position: top left;
+	background-repeat : no-repeat;	
+	
+}
+
+
+#inningcard{
+	position:absolute;
+	top:0;
+	left:0;
+	background-color: green;
+	background-image: url(../img/_game/innings/inning1.png);
+	background-position: top left;
+	background-repeat : no-repeat;	
+	
+}
+
+
+#scoreboard{
+	position:absolute;
+	width: 320px;
+	height: 100px;
+	z-index: 105;
+	color: white;
+	font-size: 2.0em;
+	
+}
+
+#scoreboard .playerGuest,
+#scoreboard .inning,
+#scoreboard .playerHome
+{
+	position:relative;
+	padding: 10px;
+	width:41px;
+	text-align:center;
+	float:left;
+	top:38px;
+	left: 41px;
+	
+}
+
+#scoreboard .inning
+{
+	top:24px;
+	left: 67px;
+}
+
+
+#scoreboard .playerHome
+{
+	left: 93px;
+}
+
+#scoreboard #strike_1
+{
+	position:absolute;
+	width:6px;
+	height:6px;
+	top:107px;
+	left: 146px;
+	
+	
+}
+
+#scoreboard #out_1
+{
+	position:absolute;
+	width:6px;
+	height:6px;
+	top:107px;
+	left: 169px;
+	
+	
+}
+
+#scoreboard #out_2
+{
+	position:absolute;
+	width:6px;
+	height:6px;
+	top:107px;
+	left: 184px;
+}
+
+
+
+
+
+#dice1 {
+	/*display:none;*/
+	position: absolute;
+	width: 64px;
+	height: 64px;
+	background-image: url(../img/diceroll.png);
+	background-color: transparent;
+	background-position: top left;
+	background-repeat: no-repeat;
+	z-index:999;
+	top: 160px;
+	left: 60px;
+}
+#dice2 {
+	/*display:none;*/
+	position: absolute;
+	width: 64px;
+	height: 64px;
+	background-image: url(../img/diceroll.png);
+	background-color: transparent;
+	background-position: top left;
+	background-repeat: no-repeat;
+	z-index:998;
+	top: 160px;
+	left: 200px;
+}
+		
+#dice_roll{
+	position:absolute;
+	top:225px;
+	left: 0px;
+	width: 320px;
+	height:138px;
+	background-image: url(../img/diceroll_new.png);
+	background-color: transparent;
+	background-position: top left;
+	background-repeat: no-repeat;
+ }
+ 
+
+ 
+ #roll,
+ #roll_c{
+ 	position:absolute;
+ 	top:180px;
+ 	left:57px;
+ 	/*padding: 10px;
+ 	/*border:2px solid white;
+ 	background-color:white;*/
+ 	cursor:pointer;
+ 	/*-webkit-border-top-right-radius:    8px 8px;
+    -webkit-border-top-left-radius:     8px 8px;
+    -webkit-border-bottom-left-radius:  8px 8px;
+    -webkit-border-bottom-right-radius: 8px 8px;
+    color:white;
+    font-weight:bold;*/
+ }
+ 
+ 
+ /* #roll_c{
+ 	position:absolute;
+ 	top:230px;
+ 	left:98px;
+ 	/*left:132px;
+ 	padding: 10px;
+ 	border:2px solid white;
+ 	background-color:white;
+ 	cursor:pointer;
+ 	-webkit-border-top-right-radius:    8px 8px;
+    -webkit-border-top-left-radius:     8px 8px;
+    -webkit-border-bottom-left-radius:  8px 8px;
+    -webkit-border-bottom-right-radius: 8px 8px;
+    color:white;
+    font-weight:bold;
+ }*/
+ 
+ 
+ #r_dice1{
+ position: absolute;
+ background-image: url(../img/_dice/die_back_r2.png);
+ height:60px;
+ width:60px;
+ top:355px;
+ left: 200px;
+ 
+}
+
+#r_dice2{
+	position:absolute;
+	background-image: url(../img/_dice/die_front_r4.png);
+	height:60px;
+ 	width:60px;
+	top:385px;
+	left: 230px;
+}
+ 
+ .gamePiece
+ {
+ 	
+	height: 45px;
+	width:45px;
+ }
+
+
+
+#p1
+{
+	position: absolute;
+	top: 354px;
+	left: 136px;
+	
+}
+
+#p2{
+	
+	
+	position: absolute;
+	top: 235px;
+	left: 235px;
+	
+}
+
+#p3{
+	
+	
+	position: absolute;
+	top: 140px;
+	left: 136px;
+	
+}
+
+#p4{
+	position: absolute;
+	top: 235px;
+	left: 35px;
+}
+
+
+#about{
+	background: #009100 url(../img/_about/grass-bg.png) top left no-repeat;
+	background-color:white;
+	width:320px;
+	/*height:480px;*/
+	color:black;
+	font-size: 12px;
+	padding: 11px;
+}
+
+#about .header{
+	padding-bottom: 5px;
+	border-bottom: 1px solid black;
+	margin-bottom: 15px;
+	
+}
+
+#about p{
+ 	margin: 5px;	
+	
+}
+
+#cutscene{
+	position: relative;
+	width: 320px;
+	height: 480px;
+	background-image: url(../img/_game/cutscenes/single.png);
+	background-color: transparent;
+	background-position: top left;
+	background-repeat: no-repeat;
+	
+		
+}
+
+
+#input1{
+	position:absolute;
+	left: 55px;
+	top:155px;	
+		
+}
+
+#input2{
+	position:absolute;
+	left: 55px;
+	top:325px;	
+		
+}
+
+
+
+/**** Text Box Styles *****/
+input[type=text], input.text, input.title, textarea, select {background-color:#fff;border:1px solid #bbb;}
+input[type=text]:focus, input.text:focus, input.title:focus, textarea:focus, select:focus {border-color:#666;}
+input[type=text], input.text, input.title, textarea, select {margin:0.5em 0;}
+input.text, input.title {width:300px;padding:5px;}
+
+input.text
+{
+	font-size:1.2em;
+	width: 225px;
+}
+
+
+
+
+.barSandlot
+{
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ce811d), to(#ecdcb2));
+}
+
+.barLittle
+{
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#067c9d), to(#0d5d82));
+}
+
+.barMinor
+{
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#dea54e), to(#b6791d));
+}
+
+
+.barStadium
+{
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#868686), to(#606060));
+}
+
+
+/* Position the popup */
+#help_popup{
+	position:absolute;
+	top:-50px;
+	left:0;
+
+
+}
+/* position of the transparent overlay*/
+#help_popup .overlay{
+	position:absolute;
+	top:46px;
+	left:0px;
+	background-color:#000000;
+	opacity:0.60;
+	width:320px;
+	height: 384px;
+	z-index:9999;
+	
+	
+}
+
+/* position of the button to close the pop up button */
+#btn_x{
+	position: absolute;
+	top:57px;	
+	left: 282px;
+	z-index:10001;
+	
+}
+
+/* styles for the pop up box. */
+#popup_box{
+	position:relative;
+	top:65px;
+	left: 20px;
+	right:20px;
+	width: 280px;
+	height: 340px;
+	z-index:10000;
+	-webkit-border-top-right-radius:    8px 8px;
+    -webkit-border-top-left-radius:     8px 8px;
+    -webkit-border-bottom-left-radius:  8px 8px;
+    -webkit-border-bottom-right-radius: 8px 8px;
+    text-align:center;
+    color:#000;
+    font-weight:bold
+ }
+ 
+
+/* position of the pop up box content */
+#pb_content
+{
+	margin:10px;
+	padding-bottom:12px; 
+	text-align:left;
+	font-weight:normal;
+	font-size: 14px;
+	color:#fff;
+ }
+ 
+  #pb_content h3
+{
+	margin:0 0 15px 5px;
+	font-size:1em;
+	font-weight:bold;
+	
+ }
+ 
+ #pb_content p
+{
+	margin-bottom:10px;
+ }
+ 
+ 
+ /* position of the pop up box title */
+ #popup_box .pb_title
+ {
+	margin:0px 10px 20px 10px;
+	padding-top:5px;
+	padding-bottom:5px; 
+	border-bottom: 4px solid #9A0101;
+	color:#fff;
+	font-size:1.5em;
+	
+ 
+ }
+ 
+/* General styles/colors for the long buttons in the app */
+.btn_long,
+.btn_reset
+ {
+	/*display: inline-block;*/
+	color:black;
+	/*background: url(btn.bg.png) repeat-x 0px 0px;*/
+	padding:9px 10px 10px 10px;
+	font-weight:bold;
+	text-shadow: 1px 1px 1px rgba(255,255,255,0.5);
+	border:1px solid #000;
+    font-size:13px;
+	-webkit-border-radius: 8px;
+	-webkit-box-shadow: 0px 0px 2px rgba(0,0,0,0.2);
+	margin: 10px;
+    margin-bottom: 5px;
+    background-color:yellow;
+   	background: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.75, rgb(255,255,255)),
+    color-stop(0.25, rgb(215,215,215)));
+    -webkit-box-shadow: rgba(0,0,0,.5) 1px 1px 3px;
+}
+
+
+#about #btn_how,
+#about #btn_return
+{
+	width:35%;
+	border:2px solid #fff;
+	color:white;
+	font-weight:bold;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#86da10), to(#58c200));
+	-webkit-border-top-right-radius:    8px 8px;
+    -webkit-border-top-left-radius:     8px 8px;
+    -webkit-border-bottom-left-radius:  8px 8px;
+    -webkit-border-bottom-right-radius: 8px 8px;
+	text-align:center;
+}
+
+#about #btn_how {
+	position:relative;
+	top:130px; left:-50px;
+}
+
+
+#btn_return {
+	position:relative;
+	top:98px; left:170px;
+	padding:7px;
+}

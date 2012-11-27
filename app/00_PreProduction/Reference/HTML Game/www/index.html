@@ -1,0 +1,643 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	  <link rel="stylesheet" type="text/css" href="lib/css/jqtouch.min.css" />
+	  <style type="text/css" media="screen">@import "lib/themes/dice/theme.min.css";</style>
+	  <link rel="stylesheet" type="text/css" href="lib/css/baseball.css" />
+      <script type="text/javascript" src="phonegap.js"></script>
+      <script type="text/javascript" src="lib/jquery/jquery-1.4.2.min.js"></script>
+	  <!-- <script type="text/javascript" src="lib/jquery/jquery.spritely-0.2.1.js"></script>-->
+	  <script type="application/x-javascript" src="lib/jquery/jqtouch.min.js" type="application/x-javascript" charset="utf-8"></script>
+	   <script type="text/javascript" src="lib/js/gameplay.js"></script>
+       <script type="text/javascript" src="lib/js/help.js"></script>
+	  <!-- Data Storage Adaptors -->
+	  
+	  <!--<script type="text/javascript" src="lib/js/adaptors/LawnchairAdaptorHelpers.js" charset="utf-8"></script>
+	  <script type="text/javascript" src="lib/js/adaptors/WebkitSQLiteAdaptor.js" charset="utf-8"></script>
+	  <script type="text/javascript" src="lib/js/Lawnchair.js" charset="utf-8"></script>-->
+	  
+	    <script type="text/javascript">
+			//Initiate the DataStore
+			//var baseballData = new Lawnchair({table:'gamedata', adaptor:'webkit'});
+			
+
+			//Prevent the interface from bouncing.
+			var preventBehavior = function(e) {
+				e.preventDefault();
+			};
+			document.addEventListener("touchmove", preventBehavior, false); 
+			//diceroll();
+			
+			
+
+	      function isEmpty(obj)
+	      {
+	          for(var prop in obj) {
+				if(obj.hasOwnProperty(prop))
+	      		return false;
+	      	}
+	      	return true;
+	      }
+	
+	      /*Local Storage Helper Function */
+		  //Helper function to store data to local storage
+		 function storeLocal(type, value)
+		 {
+	            if (typeof(localStorage) == "undefined") {
+	                alert("Your browser does not support HTML5 localStorage. Try upgrading.");
+	            }
+	            else {
+	                try {
+	                    localStorage.setItem(type, value); //saves to the database, "key", "value"
+	                } 
+	                catch (e) {
+	                    if (e == QUOTA_EXCEEDED_ERR) {
+	                        alert("Quota exceeded!"); //data wasnÕt successfully saved due to quota exceed so throw an error
+	                    }
+	                }
+	                //alert(localStorage.getItem("serial"));
+	            }
+	        }
+				
+			
+			
+			//This is the function that watches the shakey-shake
+			function watchForShake(threshold)
+			{
+				var axl = new Accelerometer(); 
+				axl.watchAcceleration
+				(
+					function (Accel)
+					{
+						if (true === Accel.is_updating)
+						{
+							return;
+						}
+
+						if (Accel.x >= threshold || Accel.x <= (0 - threshold))
+						{
+							if(checkComputerTurn() != true)
+							{
+								diceroll();
+							}
+						}
+					}
+					, function(){}
+					, {frequency : 750}
+				);
+			}
+
+			
+			
+			 var jQT = new $.jQTouch({
+                icon: 'jqtouch.png',
+                addGlossToIcon: false,
+                startupScreen: 'img/dBaseball-title.png',
+                statusBar: 'white',
+				touchSelector: '#choose',
+				initializeTouch: 'div.touch',
+				preloadImages: [
+				'lib/img/_team/dBaseball-sel-team.png',
+            	'lib/img/_team_entry/dBaseball-nameEntry.png',
+				'lib/img/_game/fields/dBaseball-littleLeague.png',
+            	'lib/img/_game/fields/dBaseball-minorLeague.png',
+            	'lib/img/_game/fields/dBaseball-sandlot.png',
+            	'lib/img/_game/fields/dBaseball-stadium.png'
+            	]
+            });
+			
+			(function($) {
+			$(document).ready(function() {
+				
+				
+				//Uncomment This for XCode Compilation
+				//watchForShake(1);
+				sndThemeSong.play({numberOfLoops:99});
+				
+				// Show a swipe event on swipe test
+                $('#choose').bind('swipe', function(event, data) {                
+					
+					swipeFields(data.direction);
+					
+                });
+				
+				
+				
+				$("#out_1").hide();
+				$("#out_2").hide();
+
+				$("#roll").click(function() {
+					diceroll();
+		  		});
+
+		  		//Change the Field
+				$("#btn_prev").click(function(){
+					//alert(current_background);
+					swipeFields('left');
+					
+				});
+
+				//Change the Field
+				$("#btn_pick").click(function(){
+					$(this).attr("src", "lib/img/_choose/dBaseball_btn-sel-play-on.png");
+					//Change the field and go to the game
+					sndThemeSong.stop();
+					changeField(current_background);
+					
+				});
+
+				//Change the Field
+				$("#btn_next").click(function(){
+					//$(this).attr("src", "lib/img/_choose/dBaseball_btn-sel-next-on.png");
+					swipeFields('right');
+					
+				});
+
+				$("#btn_start").click(function(){
+
+					$("#team").css("background-image", "url(lib/img/_team/dBaseball-sel-team.png)");
+					$("#team_entry").css("background-image", "url(lib/img/_team_entry/dBaseball-nameEntry-1p.png)");
+				//	alert("btn_start");
+					//if(localStorage.getItem("player_one")== null || localStorage.getItem("player_one") == "null")
+					//baseballData.get('player_one', function(r){
+				//		if(isEmpty(r))
+				//		{
+							//endgame();
+							jQT.goTo("#team", "slide");
+				//		}else{
+
+							//endgame();
+							//jQT.goTo("#cutscene", "slide");
+				//			$("#popup_continue").fadeIn(300);
+				//		}
+				//		
+				//	});
+				});
+
+				$("#btn_about").click(function(){
+					
+					jQT.goTo('#about', 'pop');
+
+				});
+
+				$("#btn_mute").toggle(
+					function(){
+						$(this).attr("src", "lib/img/_home/dBaseball_btn-mute-on.png")
+						muteSounds = true;
+						sndThemeSong.stop();
+						//alert(muteSounds);
+					},
+					function(){
+						$(this).attr("src", "lib/img/_home/dBaseball_btn-mute-off.png")
+						muteSounds = false;
+						//alert(muteSounds);
+						sndThemeSong.play({numberOfLoops:99});
+
+					}
+				);
+					
+				
+
+
+				$("#btn_one").click(function(){
+					
+					$(this).attr("src", "lib/img/_team/dBaseball_btn-onep-on.png");
+					
+					$("#team_entry").css('background-image', 'url(lib/img/_team_entry/dBaseball-nameEntry-1p.png)');
+					$("#input1").show();
+					$("#input2").hide();
+					jQT.goTo('#team_entry', 'slide');
+					
+					setNumPlayers = 1;
+					
+				});
+				
+				
+
+				$("#btn_two").click(function(){
+					$(this).attr("src", "lib/img/_team/dBaseball_btn-twop-on.png");
+					$("#team_entry").css('background-image', 'url(lib/img/_team_entry/dBaseball-nameEntry.png)');
+					$("#input1").show();
+					$("#input2").show();
+					jQT.goTo('#team_entry', 'slide');
+					setNumPlayers = 2;
+
+				});
+
+				$("#btn_back_home").click(function(){
+					jQT.goBack('#home');
+					//setNumPlayers = 1;
+
+				});
+
+				$("#btn_back_no_player").click(function(){
+					$("#btn_one").attr("src", "lib/img/_team/dBaseball_btn-onep-off.png");
+					$("#btn_two").attr("src", "lib/img/_team/dBaseball_btn-twop-off.png");
+					jQT.goBack('#team');
+					//setNumPlayers = 1;
+
+				});
+
+				$("#btn_back_team_name").click(function(){
+					$('#btn_chooseNext').attr("src", "lib/img/_team_entry/dBaseball_btn-nameEntry-next-off.png");
+					jQT.goBack('#team_entry');
+					//setNumPlayers = 1;
+
+				});
+
+				$("#btn_chooseNext").click(function(){
+					var playerOneName = $("input#txtPlayerOne").val();
+					var playerTwoName;
+					var checkPlayers = 0;
+					//Set the Next Screens BKG.
+					$("#choose").css("background-image", "url(lib/img/_choose/dBaseball-sel-sandlot.png)");
+					//Check the First 
+					if(playerOneName == "")
+					{
+						playerOneName = "Home Team";
+					}
+
+		
+					$(this).attr("src", "lib/img/_team_entry/dBaseball_btn-nameEntry-next-on.png");
+					storeLocal("player_one", playerOneName);
+					//baseballData.save({key:'player_one', plyr1: playerOneName  });
+					//checkPlayers = 1;
+
+					if(setNumPlayers == 2)
+					{
+						playerTwoName = $("input#txtPlayerTwo").val();
+						$(this).attr("src", "lib/img/_team_entry/dBaseball_btn-nameEntry-next-on.png");
+						//baseballData.save({key:'player_two', plyr2: playerTwoName  });
+						checkPlayers = 2	
+						//$("#visitor").text(playerTwoName);
+						if(playerTwoName == "")
+						{
+							playerTwoName = "Guest Team";
+						}
+						
+					}else{
+						
+						playerTwoName = "Guest Team";
+						$(this).attr("src", "lib/img/_team_entry/dBaseball_btn-nameEntry-next-on.png");
+						//baseballData.save({key:'player_two', plyr2: playerTwoName  });
+						checkPlayers = 1	
+						//$("#visitor").text(playerTwoName);
+					}
+					//alert(playerTwoName);
+					storeLocal("player_one",playerOneName);
+					storeLocal("player_two", playerTwoName);
+					//baseballData.save({key:'player_one', plyr1: playerOneName  });
+					//baseballData.save({key:'player_two', plyr2: playerTwoName  });
+
+					//set the #matchup team name
+					$("#host").text(playerOneName);
+					$("#visitor").text(playerTwoName);
+					
+
+					//Check the Players involved and see if matches the number of players that are playing
+					//If it does, move forward to the Field Selection Screen
+					if(checkPlayers == setNumPlayers)
+					{
+						//Clear the current inputs
+						$("input#txtPlayerOne").val('').attr('readonly', 'true');
+						if(setNumPlayers == 2)
+						{
+							 $("input#txtPlayerTwo").val('').attr('readonly', 'true');;
+						}
+						jQT.goTo('#choose', 'slide');
+					}
+				});
+
+
+				$("#btn_pause").click(function(){
+					$("#popup").fadeIn(300);
+				});
+
+
+				$("#btn_pop_save").click(function(){
+					//Add game save code here.
+					$(this).attr("src", "lib/img/_game/popup/dBaseball_btn-opSave-on.png");
+				 	$('#popup').hide();
+					saveStatus();
+					resetGame();
+					jQT.goTo("#home", 'slide');	
+				});
+
+				$("#btn_pop_mute").click(function(){
+					alert("MUTE");
+				});
+
+				$("#btn_pop_close").click(function(){
+					//Close the Window
+					$("#popup").fadeOut(300);
+				});
+
+
+				$("#btn_pop_continue").click(function()
+				{
+					resetGame();
+					gameContinue = true;
+					$("#host").html(localStorage.getItem("player_one"));
+					/*baseballData.get('player_one', function(r){
+						//alert(r.plyr1);
+						$("#host").html(r.plyr1);
+					});*/
+					$("#visitor").html(localStorage.getItem("player_two"));
+					/*baseballData.get('player_two', function(r){
+						//alert(r.plyr2);
+						$("#visitor").html(r.plyr2);
+					});*/
+					$(".inning").html(localStorage.getItem("current_inning"));
+					/*baseballData.get('current_inning', function(r){
+						$(".inning").html(r.gameInning);
+					});*/
+					$(".playerGuest").html(localStorage.getItem("guest"));
+					/*baseballData.get('guest', function(r){
+						$(".playerGuest").html(r.scoreGuest);
+						//currentPlayer = 2;
+					});*/
+					$(".playerHome").html(localStorage.getItem("home"));
+					/*baseballData.get('home', function(r){
+						$(".playerHome").html(r.scoreHome);
+						//currentPlayer = 1;
+					});*/
+					
+					var o = localStorage.getItem("outs");
+					if(o == "1")
+					{
+						numOuts = o;
+						$("#out_1").show();	
+					}else if(o == "2"){
+						numOuts = o;
+						$("#out_1").show();	
+						$("#out_2").show();	
+					}
+					
+					var h = localStorage.getItem("inningHalf");
+					 if(h == "top")
+					 {
+						 currentPlayer = 2;
+					 }else{
+						 currentPlayer = 1;
+					 }
+					//Update atBat 
+					atBat();
+				
+					//baseballData.get('first', function(r){
+						if(localStorage.getItem("first") == true){
+							$("#p2").show();
+							playerOnFirst = true;
+						}
+					//});
+				//	baseballData.get('second', function(r){
+						if(localStorage.getItem("second") == true){
+							$("#p3").show();
+							playerOnSecond = true;
+						}
+					//});
+					
+					//baseballData.get('third', function(r){
+						if(localStorage.getItem("third") == true){
+							$("#p4").show();
+							playerOnThird = true;
+						}
+					//});
+					
+					//baseballData.get('num_players', function(r){
+						//changeField(r.bkg);
+						//$("#popup_continue").hide();
+						setNumPlayers = localStorage.getItem("num_players")
+					//});
+					//baseballData.get('current_bkg', function(r){
+					changeField(localStorage.getItem("current_bkg"));
+					$("#popup_continue").hide();
+					//	});
+
+					//jQT.goTo("#game", "slide" );
+				});
+
+				$("#btn_pop_new").click(function()
+				{
+					resetGame();
+					localStorage.clear();
+					//baseballData.nuke();
+					$("#popup_continue").fadeOut(300);
+					jQT.goTo("#team", "slide");
+				});
+
+				$("#btn_end").click(function()
+				{
+					localStorage.clear();
+					//baseballData.nuke();
+					//$("#popup_continue").fadeOut(300);
+					jQT.goTo("#home", 'slide');
+					$("#endgame").delay(2000).fadeOut(500, function(){
+						$("#endgame").css('position', 'absolute');
+						$("#endgame").css('top', '-240px');
+						
+					});
+					resetGame();
+					if(muteSounds == false){
+						sndThemeSong.play({numberOfLoops:99});
+					}
+					//reset the endgame cutscene
+					
+
+				});
+
+			
+				$("#btn_how").click(function()
+				{
+					jQT.goBack('#home');
+					$("#pb_content").fadeOut(300, function(){
+					$("#pb_buttons").fadeIn(300);
+					$("#btn_return").fadeOut(300);
+					});
+				});
+			
+		
+			//Generic Long Button Actions on Click
+				$(".btn_long").click(function(event) {
+			
+        			var helpSection = event.target.id;  
+					displayHelpSection(helpSection);
+    	
+				}); 
+				
+				$(".btn_return").click(function(event) {
+					$("#pb_content").fadeOut(300, function(){
+					$("#pb_buttons").fadeIn(300);
+					$("#btn_return").fadeOut(300);
+					});
+    			});
+				
+				
+				}); 
+				})(jQuery);
+		
+	</script>
+	   <title>Dice Baseball</title>
+    </head>
+    <body>
+   
+    	<!--  The Home Screen -->
+    	<div id="home">
+    		<div id="popup_continue" style="display:none;">
+				<img id="btn_pop_continue" src="lib/img/_home/dBaseball_btn-continue-off.png" />
+				<img id="btn_pop_new" src="lib/img/_home/dBaseball_btn-newGame-off.png" />
+			</div>
+    		
+    		<img id="btn_start" src="lib/img/_home/dBaseball_btn-start-off.png" />
+			<img id="btn_about" src="lib/img/_home/dBaseball_btn-about-off.png" />
+			<img id="btn_mute" src="lib/img/_home/dBaseball_btn-mute-off.png" />
+          
+        </div>  
+        <!-- The Number of Players Screen -->
+        <div id="team">
+        	<img id="btn_back_home" src="lib/img/_team/dBaseball_btn-back-off.png" />
+            <img id="btn_one" src="lib/img/_team/dBaseball_btn-onep-off.png" />
+			<img id="btn_two" src="lib/img/_team/dBaseball_btn-twop-off.png" />
+        </div> 
+        <!--  The Team Entry Screen -->
+      <div id="team_entry">
+        	
+        	<img id="btn_back_no_player" src="lib/img/_team/dBaseball_btn-back-off.png" />
+        	<div id="input1">
+        	<input id="txtPlayerOne" type="text" class="text" name="player_one" placeholder="Home Team" />
+        	</div>
+        	<div id="input2">
+        	<input id="txtPlayerTwo" type="text" class="text" name="player_two" placeholder="Guest Team" />
+           </div>
+         <img id="btn_chooseNext" src="lib/img/_team_entry/dBaseball_btn-nameEntry-next-off.png"  />
+        </div> 
+        
+        <!-- Choose Field -->
+         <div id="choose" class="touch">
+			<div id="btn_back_team_name"><img src="lib/img/_team/dBaseball_btn-back-off.png" /></div>
+			<div id="field_sel" >
+				<img id="btn_prev" src="lib/img/_choose/dBaseball_btn-sel-prev-off.png"  />
+				<img id="btn_pick" src="lib/img/_choose/dBaseball_btn-sel-play-off.png"  />
+				<img id="btn_next" src="lib/img/_choose/dBaseball_btn-sel-next-off.png"  />	
+			</div>
+		</div> 
+        
+        <!-- The Game Play Field -->
+		<!-- atbat -->
+		
+		<div id="game">
+			<div id="popup" style="display:none;">
+				<img id="btn_pop_close" src="lib/img/_game/popup/dBaseball_btn-opBack.png" />
+				<img id="btn_pop_save" src="lib/img/_game/popup/dBaseball_btn-opSave-off.png" />
+				<img id="btn_pop_mute" src="lib/img/_game/popup/dBaseball_btn-opMute-off.png" />
+			</div>
+			
+			<div id="popup_gameover" style="display:none;">
+				<div id="popup_guest_01" class="guestRow">0</div>
+				<div id="popup_guest_02" class="guestRow">0</div>
+				<div id="popup_guest_03" class="guestRow">0</div>
+				<div id="popup_guest_04" class="guestRow">0</div>
+				<div id="popup_guest_05" class="guestRow">0</div>
+				<div id="popup_guest_06" class="guestRow">0</div>
+				<div id="popup_guest_07" class="guestRow">0</div>
+				<div id="popup_guest_08" class="guestRow">0</div>
+				<div id="popup_guest_09" class="guestRow">0</div>
+				
+				<div id="popup_home_01" class="homeRow">0</div>
+				<div id="popup_home_02" class="homeRow">0</div>
+				<div id="popup_home_03" class="homeRow">0</div>
+				<div id="popup_home_04" class="homeRow">0</div>
+				<div id="popup_home_05" class="homeRow">0</div>
+				<div id="popup_home_06" class="homeRow">0</div>
+				<div id="popup_home_07" class="homeRow">0</div>
+				<div id="popup_home_08" class="homeRow">0</div>
+				<div id="popup_home_09" class="homeRow">0</div>
+				
+				
+			</div>
+			<!-- Scoreboard Stuff -->
+			<div id="scoreboard">
+	        	<div id="score_guest" class="playerGuest">
+	        		0
+	        	</div>
+				<div class="inning">
+	        		1
+	        	</div>
+				<div id="score_home" class="playerHome">
+					0
+				</div>
+	      		<div>
+	      			<img id="out_1" class="dots" src="lib/img/scoreboard-dot.png" />
+					<img id="out_2" class="dots" src="lib/img/scoreboard-dot.png" />
+				</div>
+				
+			</div>
+			<!-- End Scoreboard Stuff -->
+			
+			<div id="dice1" class="dice" style="display:none;"></div>
+			<div id="dice2" class="dice" style="display:none;"></div>	
+			<div id="matchup" style="display:none;">
+				<div class="match_txt">
+					<div id="visitor" style="margin:5px;">Team 1</div>
+					<div id="versus" style="margin:5px;">vs.</div>
+					<div id="host" style="margin:5px;">Team 2</div>
+				</div>
+			</div>
+			
+		    <div id="field">
+		    	<div id="p1" class="gamePiece" style="display:none;" ><img class="gp" src="lib/img/_game/pieces/capPiece_red_45.png" /></div>
+				<div id="p2" class="gamePiece" style="display:none;"><img class="gp" src="lib/img/_game/pieces/capPiece_red_45.png" /></div>
+				<div id="p3" class="gamePiece" style="display:none;"><img class="gp" src="lib/img/_game/pieces/capPiece_red_45.png" /></div>
+				<div id="p4" class="gamePiece" style="display:none;"><img class="gp" src="lib/img/_game/pieces/capPiece_red_45.png" /></div>
+				<img id="roll" style="display:none;" src="lib/img/_game/diceroll/btn_roll-dice.png" />
+				<img id="roll_c" style="display:none;" src="lib/img/_game/diceroll/btn_cpu-dice.png" />
+				
+		    </div>
+		    <div id="name_stage" >
+		    <div id="lbl_batting">Welcome to DiceBaseball</div>
+		   		<img id="btn_pause" src="lib/img/dBaseball_btn-pause-off.png" style="display:none;" alt="Pause Dice Baseball" />
+			</div>
+		</div>
+		
+		<!-- Cutscenes -->
+		<div id="cutscene">
+			<div id="dice_container" style="display:none;" >
+				<div id="r_dice1"></div>
+				<div id="r_dice2"></div>
+			</div>
+		</div>
+        <!-- Inning Cards -->
+		<div id="inningcard" ></div>
+		<div id="endgame">
+			<div class="container">
+				<div id="final_screen" class="eg" style="font-size: 30px; font-weight:bold;">GAME OVER</div>
+				<div id="final_winner" class="eg"  style="display: none; font-weight:bold;">X</div>
+				<div id="final_score" class="eg"  style="display: none;">00</div>
+				<div id="btn_end"  style="display: none;">Play Again?</div>
+			</div>
+		</div>
+        <!-- About Screen -->
+		<div id="about">
+		<!-- The Pop-up -->
+		<div id="help_popup">
+			<!--<img id="btn_x" src="lib/img/_icons/i_x.png" />-->
+			<div id="popup_box">
+				<div class="pb_title"><img src="lib/img/_about/help-title.png" alt="How To Play Dice Baseball" /></div>
+				<div id="pb_buttons">
+					<div id="begin" class="btn_long">Begin or Continue Game</div>
+					<div id="players" class="btn_long">Choose the Number of Players</div>
+					<div id="teamName" class="btn_long">Enter Team Name(s)</div>
+					<div id="field" class="btn_long">Select Your Playing Field</div>
+					<div id="gameplay" class="btn_long">Gameplay</div>
+                    <div id="quitGame" class="btn_long">Save and Quit Game</div>
+                    <div id="sounds" class="btn_long">Game Sounds</div>
+				</div>
+				<div id="pb_content" style="display:none;">				</div>
+			</div>
+			<div id="btn_how">Exit Help</div>
+            <div id="btn_return" class="btn_return" style="display:none;">Back to Options</div>
+      </div>
+	</div>
+</body>
+</html>
