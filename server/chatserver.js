@@ -3,6 +3,7 @@ url = require('url'),
 fs = require('fs'),
 server
 
+
 server = http.createServer(function(req, res){
 
 	var path = url.parse(req.url).pathname;
@@ -32,6 +33,7 @@ server.listen(8080, "172.16.0.108");
 console.log('Server Running at http://127.0.0.1:8080/');
 
 var io = require('socket.io').listen(server);
+var usersArray = new Array();
 
 //on 'connection' event
 io.sockets.on('connection', function(socket){
@@ -51,10 +53,24 @@ io.sockets.on('connection', function(socket){
 
 	socket.on('username', function(username){
 		console.log("THE USERNAME IS " + username + " ON SOCKET ID" + socket.id);
+		users(socket.id, username);
 		//Send the messages to all connected clients.
-		io.sockets.emit('username', socket.id , username);
+		io.sockets.emit('username', socket.id , {"user": username, "online" : usersArray });
 	})
 
+	function users(socketId, username)
+	{
+		console.log("THERE ARE "+ usersArray.length + "items.");
+		var user = new Object();
+		user.socketid = socketId;
+		user.username = username;
+
+		usersArray.push(user);
+		console.log(users);
+	}
+
 });
+
+
 
 //});

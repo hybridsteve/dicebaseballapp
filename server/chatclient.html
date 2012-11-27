@@ -26,8 +26,12 @@
 
 					//callback for username event
 					socket.on('username', function(client, username){
-						$('#username').val(username).attr("disabled",true);
-						$('#btn_createUserName').hide();
+						if(client == socket.id)
+						{
+							$('#username').val(username.user).attr("disabled",true);
+						    $('#btn_createUserName').hide();
+						}
+
 
 					});
 
@@ -59,17 +63,20 @@
 
 		</script>
 		<h1>Socket.io Chat</h1>
+		<button id='connect' onClick='connect()' /> Connect </button>
+		<button id='disconnect' onClick='disconnect()' />Disconnect</button><br />
+		<h3>Status:</h3>
 		<div><p id='status'>Waiting for input</p></div>
+		<h3>Currently Online</h3>
+
 		<h3>Username</h3>
 		<input id='username'></input>
 		<button id='btn_createUserName' onClick='createUserName()' />Create </button><br />
 
-		<button id='connect' onClick='connect()' /> Connect </button>
-		<button id='disconnect' onClick='disconnect()' />Disconnect</button><br />
 		<input id='message'></input>
 		<button id='send' onClick='send()' />Send Message</button>
 		<br />
-		<h1>Messages:</h1>
+		<h3>Messages:</h3>
 		<div id="messages"></div>
 	</body>
 	
