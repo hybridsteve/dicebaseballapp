@@ -9,9 +9,9 @@ public class PawnController : MonoBehaviour {
 	{
 		get { return runnerPosition; }
 	}
-	// Commenting this out. Using iTween's message sending.
-	//public delegate void CrossedHomePlateDelegate( GameObject sender );
-	//public event CrossedHomePlateDelegate CrossedHomePlate;
+	
+	public delegate void CrossedHomePlateDelegate( GameObject sender );
+	public event CrossedHomePlateDelegate CrossedHomePlate;
 	
 	public GameObject gameController;
 	private GameObject[] bases;
@@ -60,41 +60,37 @@ public class PawnController : MonoBehaviour {
 	/// </summary>
 	public void Run()
 	{
-		//GameObject nextBase;
-		// Commenting this out don't need it anymore.
-		//moving = true;
-		
 		// TODO: Might want to put the bases in an array in the Start method to make everything quicker.
 		// 		 Also adding them to a layer in the editor will make finding them easier since Unity caches
 		//		 the objects per layer.
 		
-		// Commenting things we don't need anymore.
+		
 		switch ( runnerPosition )
 		{
 		case runnerPositions.Null:
 			// run to first base
 			runnerPosition = runnerPositions.First;
-			//nextBase = GameObject.Find( "FirstBase" );
-			//targetPosition = nextBase.transform.position;
+			
 			break;
+			
 		case runnerPositions.First:
 			// run to second base
 			runnerPosition = runnerPositions.Second;
-			//nextBase = GameObject.Find( "SecondBase" );
-			//targetPosition = nextBase.transform.position;
+			
 			break;
+			
 		case runnerPositions.Second:
 			// run to third base
 			runnerPosition = runnerPositions.Third;
-			//nextBase = GameObject.Find( "ThirdBase" );
-			//targetPosition = nextBase.transform.position;
+			
 			break;
+			
 		case runnerPositions.Third:
 			// run home
 			runnerPosition = runnerPositions.Home;
-			//nextBase = GameObject.Find( "HomeBase" );
-			//targetPosition = nextBase.transform.position;
+			
 			break;
+			
 		default: 
 			break;
 		}
@@ -104,9 +100,11 @@ public class PawnController : MonoBehaviour {
 		Hashtable animParams = iTween.Hash( "position", targetPosition, "time", 1.25f, "easetype", "easeInOutCubic", "looktarget", targetPosition );
 		if( runnerPosition == runnerPositions.Home )
 		{
-			animParams.Add( "oncompletetarget", gameController );
-			animParams.Add( "oncomplete", "IncrementScore" );
-			animParams.Add( "oncompleteparams", this.gameObject );
+			//animParams.Add( "oncompletetarget", gameController );
+			//animParams.Add( "oncomplete", "IncrementScore" );
+			//animParams.Add( "oncompleteparams", this.gameObject );
+			
+			animParams.Add( "oncomplete", "FireCrossedHomeEvent" );
 		}
 		else
 		{
@@ -119,5 +117,10 @@ public class PawnController : MonoBehaviour {
 	void lookAtNextBase()
 	{
 		iTween.LookTo( this.gameObject, iTween.Hash( "looktarget", bases[ (int)runnerPosition ].transform.position, "axis", "y", "time", 1.0f, "easetype", "easeOutCubic" ) );
+	}
+	
+	void FireCrossedHomeEvent()
+	{
+		CrossedHomePlate( this.gameObject );
 	}
 }

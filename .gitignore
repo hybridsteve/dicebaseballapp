@@ -165,10 +165,6 @@ pip-log.txt
 # Unity
 
 Library/
-*.userprefs
-*.unityproj
 
 # C#
 *.pidb
-*.csproj
-

@@ -52,7 +52,7 @@ public class GameController : MonoBehaviour {
 	public InningTypes InningType = InningTypes.Top;
 	public int Strikes = 0;
 	public int Outs = 0;
-	public int Fouls = 0;
+	//public int Fouls = 0;
 	public int HomeScore = 0;
 	public string HomeName = "Home Team";
 	public int VisitorScore = 0;
@@ -304,7 +304,7 @@ public class GameController : MonoBehaviour {
 		{
 			scoreBoardString += VisitorName + " at bat! \n";	
 		}
-		scoreBoardString += "Strikes: " + Strikes + "  Fouls: " + Fouls + "  Outs: " + Outs + "\n \n";
+		scoreBoardString += "Strikes: " + Strikes + "  Outs: " + Outs + "\n \n";
 		scoreBoardString += HomeName + " Score: " + HomeScore + "  \n" + VisitorName + " Score: " + VisitorScore + " \n \n";
 		scoreBoardString += Runners.Count + " runners! Tap to roll!";
 		ScoreboardTextInstance.text = scoreBoardString;
@@ -436,7 +436,7 @@ public class GameController : MonoBehaviour {
 			Hit( 4 );
 			break;
 		default:
-			GenericLooper();
+			ReturnToBatter();
 			break;
 		}
 		
@@ -446,7 +446,7 @@ public class GameController : MonoBehaviour {
 	private void Strike()
 	{
 		Strikes += 1;
-		Fouls = 0;
+		//Fouls = 0;
 		
 		if ( Strikes >= 3 )
 		{
@@ -454,14 +454,14 @@ public class GameController : MonoBehaviour {
 		}
 		else
 		{
-			GenericLooper();	
+			ReturnToBatter();	
 		}
 	}
 	
 	private void Out()
 	{
 		Strikes = 0;
-		Fouls = 0;
+		//Fouls = 0;
 		Outs += 1;
 		
 		if ( Outs >= 3 )
@@ -470,21 +470,27 @@ public class GameController : MonoBehaviour {
 		}
 		else
 		{
-			GenericLooper();	
+			ReturnToBatter();	
 		}
 	}
 	
 	private void Foul()
 	{
-		Fouls += 1;
+		// todo this is not a correct implementation of baseball rules
+		//Fouls += 1;
 		
-		if ( Fouls >= 4 )
+		//if ( Fouls >= 4 )
+		//{
+		//	Strike();	
+		//}
+		
+		if ( Strikes < 2 )
 		{
 			Strike();	
 		}
 		else
 		{
-			GenericLooper();	
+			ReturnToBatter();	
 		}
 	}
 	
@@ -493,8 +499,7 @@ public class GameController : MonoBehaviour {
 		// clone the batter into a runner todo variable mesh
 		GameObject newRunner = (GameObject) Instantiate( GameObject.Find( "C_Piece1_" ) );
 		PawnController newController = newRunner.AddComponent<PawnController>();
-		// Commenting this out. Using iTween's message sending.
-		//newController.CrossedHomePlate += new PawnController.CrossedHomePlateDelegate( IncrementScore );
+		newController.CrossedHomePlate += new PawnController.CrossedHomePlateDelegate( IncrementScore );
 		newController.gameController = this.gameObject;
 		
 		// add new runner to the runner list
@@ -508,7 +513,7 @@ public class GameController : MonoBehaviour {
 	{
 		// remove strikes, fouls
 		Strikes = 0;
-		Fouls = 0;
+		//Fouls = 0;
 		
 		// for each runner, advance a base
 		for ( int i = 0; i < Runners.Count; i ++ )
@@ -522,13 +527,12 @@ public class GameController : MonoBehaviour {
 		
 		// if runners should be advancing more than one base, loop back after time
 		if ( bases > 1 )
-		{
-			//Hit( bases - 1 );	
+		{	
 			StartCoroutine( HitLooper( 2.5f, bases - 1 ) );
 		}
 		else
 		{
-			GenericLooper();	
+			ReturnToBatter();	
 		}
 	}
 	
@@ -583,16 +587,6 @@ public class GameController : MonoBehaviour {
 	{
 		HideBatter();
 		
-		// clear the runners
-		//int count = Runners.Count;
-		//for (int i = count; i > 0; i -= 1 )
-		//{
-		//	GameObject runner = Runners[i];
-		//	
-		//	Runners.Remove( runner );
-		//	Destroy( runner );
-		//}
-		
 		while ( Runners.Count > 0 )
 		{
 			GameObject runner = Runners[0];
@@ -611,7 +605,7 @@ public class GameController : MonoBehaviour {
 			CurrentPlayer = 1;	
 		}
 		
-		WaitBeforeDoing( 2f, new WaitBeforeDoingDelegate( GenericLooper ) );
+		WaitBeforeDoing( 2f, new WaitBeforeDoingDelegate( ReturnToBatter ) );
 	}
 	
 	private void EndGame()
@@ -631,7 +625,7 @@ public class GameController : MonoBehaviour {
 	}
 	
 	// hack a generic loop back to the batter up phase that lasts 3 seconds
-	private void GenericLooper()
+	private void ReturnToBatter()
 	{
 		WaitBeforeDoing( 3f, new WaitBeforeDoingDelegate( StartBatter ) );
 	}
