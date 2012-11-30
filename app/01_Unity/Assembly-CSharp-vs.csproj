@@ -37,10 +37,10 @@
     <Reference Include="System.XML" />
 	<Reference Include="System.Core" />
 	<Reference Include="UnityEngine">
-	  <HintPath>D:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>E:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>D:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>E:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -48,8 +48,11 @@
      <Compile Include="Assets\Scripts\GameCamera.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\PawnController.cs" />
+     <Compile Include="Assets\Scripts\Sandbox\Test_json.cs" />
      <Compile Include="Assets\Scripts\UIStartMenu.cs" />
      <Compile Include="Assets\Scripts\Utilities\GUIUtils.cs" />
+     <Compile Include="Assets\Scripts\Utilities\Game.cs" />
+     <Compile Include="Assets\Scripts\Utilities\GameInfo.cs" />
      <Compile Include="Assets\iTween\Plugins\Waypoint.cs" />
      <Compile Include="Assets\iTween\Plugins\iTween.cs" />
      <Compile Include="Assets\iTween\Sample\MoveSample.cs" />
@@ -70,6 +73,7 @@
      <None Include="Assets\Plugins\UIToolkit\Shaders\UIToolkit Alpha Enabled (3002).shader" />
      <None Include="Assets\Resources\Graphite18.txt" />
      <None Include="Assets\Resources\startMenuUI2x.txt" />
+     <None Include="Assets\Resources\test_JSON.txt" />
      <None Include="Assets\Resources\Graphite36.txt" />
      <None Include="Assets\Resources\graph.txt" />
      <None Include="Assets\Resources\Graphite15.txt" />

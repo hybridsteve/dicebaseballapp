@@ -9,7 +9,7 @@ public class UIStartMenu : MonoBehaviour {
 	
 	private UISprite stadiumBG;
 	
-	private UIText graph15White, graph20, graph26;
+	private UIText graph15White, graph20, graph26, graph26White;
 	
 	// Parent objects
 	private UIObject landingParent, startScreenParent;
@@ -17,6 +17,8 @@ public class UIStartMenu : MonoBehaviour {
 	// Start Screen Objects
 	UIScrollableHorizontalLayout currentGamesLayout;
 	
+	// TODO: TEMPORARY!!!!! Get the json object from somewhere else t mantain MVC. Proof of concpet for now.
+	public TextAsset jsonRaw;
 	
 	// Use this for initialization
 	void Start () 
@@ -25,6 +27,7 @@ public class UIStartMenu : MonoBehaviour {
 		graph15White = new UIText( uiTextWhite, "Graphite15", "Graphite15.png" );
 		graph26 = new UIText( uiTextBlack, "Graphite26", "Graphite26.png" );
 		graph20 = new UIText( uiTextBlack, "Graphite20", "Graphite20.png" );
+		graph26White = new UIText( uiTextWhite, "Graphite26", "Graphite26.png" );
 		
 		graph20.alignMode = UITextAlignMode.Center;
 		graph26.alignMode = UITextAlignMode.Center;
@@ -131,23 +134,42 @@ public class UIStartMenu : MonoBehaviour {
 	}
 	
 	// TODO: Placeholder code until implementation
+	// TODO: Organize the games by your turn then their turn...
 	private void findCurrentGames()
 	{
-		for( int i=0; i<6; i++ )
+		// TODO: The jsonRaw variable is temporary right now. Get it from the server and mantain MVC.
+		GameInfo games = new GameInfo( jsonRaw.text );
+		
+		foreach( var pair in  games.currentGames )
 		{
-			Debug.Log( "Dude" );
+			Game game = pair.Value;
 			
-			UIButton game = UIButton.create( uiTools, "currentGame.png", "currentGame.png", 0, 0, 10 );
+			// Create the button
+			UIButton gameButton = UIButton.create( uiTools, "currentGame.png", "currentGame.png", 0, 0, 10 );
 			
-			UITextInstance gameStatus = graph15White.addTextInstance( "Their Turn", 0, 0 );
-			gameStatus.parentUIObject = game;
-			gameStatus.pixelsFromTop( 2 );
+			string turn = "Your Turn";
+			if( !game.playerTurn )
+			{
+				turn = "Their Turn";
+			}
 			
-			UITextInstance opponentName = graph15White.addTextInstance( "Opponent Name", 0, 0 );
-			opponentName.parentUIObject = game;
+			// Turn text
+			UITextInstance gameTurn = graph15White.addTextInstance( turn, 0, 0 );
+			gameTurn.parentUIObject = gameButton;
+			gameTurn.pixelsFromTop( 2 );
+			
+			// Opponent Name text
+			UITextInstance opponentName = graph15White.addTextInstance( game.opponentName, 0, 0 );
+			opponentName.parentUIObject = gameButton;
 			opponentName.pixelsFromBottom( 2 );
 			
-			currentGamesLayout.addChild( game );
+			// Score Text
+			string score = game.playerScore + "/" + game.opponentScore;
+			UITextInstance scoreText = graph26White.addTextInstance( score, 0, 0 );
+			scoreText.parentUIObject = gameButton;
+			GUIUtils.centerText( scoreText );
+			
+			currentGamesLayout.addChild( gameButton );
 		}
 	}
 	
