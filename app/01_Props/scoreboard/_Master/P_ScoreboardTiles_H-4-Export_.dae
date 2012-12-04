@@ -1,0 +1,2780 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+	<asset>
+		<contributor>
+			<authoring_tool>Autodesk Softimage version 9.5.184.0 - Crosswalk 2011.5</authoring_tool>
+		</contributor>
+		<created>2012-12-04T20:27:53Z</created>
+		<modified>2012-12-04T20:27:53Z</modified>
+		<revision>1.4.1</revision>
+		<unit meter="0.1" name="decimetre"></unit>
+		<up_axis>Y_UP</up_axis>
+	</asset>
+	<library_images>
+		<image id="scoreboard_texture_psd_img" format="bitmap" height="256" width="256" depth="32" name="scoreboard_texture_psd_img">
+			<init_from>../Maps/WIP/PSD/scoreboard_texture.psd</init_from>
+			<extra>
+				<technique profile="XSI">
+					<XSI_Image>
+						<xsi_param sid="FileName">"" </xsi_param>
+						<xsi_param sid="SizeX">256 </xsi_param>
+						<xsi_param sid="SizeY">256 </xsi_param>
+						<xsi_param sid="NumChannels">4 </xsi_param>
+						<xsi_param sid="BitsPerPixel">0 </xsi_param>
+						<xsi_param sid="CropMinX">0.000000 </xsi_param>
+						<xsi_param sid="CropMaxX">0.000000 </xsi_param>
+						<xsi_param sid="CropMinY">1.000000 </xsi_param>
+						<xsi_param sid="CropMaxY">1.000000 </xsi_param>
+						<xsi_param sid="FrameRate">0.000000 </xsi_param>
+						<xsi_param sid="NumberOfFrames">0 </xsi_param>
+						<xsi_param sid="FirstFrame">0 </xsi_param>
+						<xsi_param sid="LastFrame">0</xsi_param>
+					</XSI_Image>
+					<XSI_ImageFX>
+						<xsi_param sid="Hue">0.000000 </xsi_param>
+						<xsi_param sid="Gain">100.000000 </xsi_param>
+						<xsi_param sid="Saturation">100.000000 </xsi_param>
+						<xsi_param sid="Brightness">0.000000 </xsi_param>
+						<xsi_param sid="Radius">0.000000 </xsi_param>
+						<xsi_param sid="Amount">1.000000 </xsi_param>
+						<xsi_param sid="BlurAlpha">FALSE </xsi_param>
+						<xsi_param sid="Type">1 </xsi_param>
+						<xsi_param sid="ScaleX">0.500000 </xsi_param>
+						<xsi_param sid="ScaleY">0.500000 </xsi_param>
+						<xsi_param sid="FlipHorizontal">FALSE </xsi_param>
+						<xsi_param sid="FlipVertical">FALSE </xsi_param>
+						<xsi_param sid="RGBA2GS">FALSE </xsi_param>
+						<xsi_param sid="To16Bits">FALSE</xsi_param>
+					</XSI_ImageFX>
+					<XSI_ImageFX2>
+						<xsi_param sid="Exposure">0.000000 </xsi_param>
+						<xsi_param sid="DisplayGamma">2.200000 </xsi_param>
+						<xsi_param sid="DisplayGammaAffectsRendering">FALSE </xsi_param>
+						<xsi_param sid="RenderColorProfile">"sRGB" </xsi_param>
+						<xsi_param sid="RenderGamma">2.200000 </xsi_param>
+						<xsi_param sid="ImageDefinitionType">0 </xsi_param>
+						<xsi_param sid="EnableMipMap">FALSE </xsi_param>
+						<xsi_param sid="MipMapScale">1.000000 </xsi_param>
+						<xsi_param sid="oglmaxsize">1024 </xsi_param>
+						<xsi_param sid="oglmipmap">FALSE </xsi_param>
+						<xsi_param sid="oglminfilter">9729 </xsi_param>
+						<xsi_param sid="oglmagfilter">9729 </xsi_param>
+						<xsi_param sid="FieldType">0 </xsi_param>
+						<xsi_param sid="SourceTrack">0</xsi_param>
+					</XSI_ImageFX2>
+					<XSI_TimeControl>
+						<xsi_param sid="in">0.000000 </xsi_param>
+						<xsi_param sid="out">0.000000 </xsi_param>
+						<xsi_param sid="startOffset">0.000000 </xsi_param>
+						<xsi_param sid="scale">1.000000</xsi_param>
+						<XSI_Extrapolation name="Before">
+							<xsi_param sid="type">"HOLD" </xsi_param>
+							<xsi_param sid="value">0.000000</xsi_param>
+						</XSI_Extrapolation>
+						<XSI_Extrapolation name="After">
+							<xsi_param sid="type">"HOLD" </xsi_param>
+							<xsi_param sid="value">0.000000</xsi_param>
+						</XSI_Extrapolation>
+					</XSI_TimeControl>
+				</technique>
+			</extra>
+		</image>
+	</library_images>
+	<library_effects>
+		<effect id="MaterialLibrary.scoreboard_element_mat_fx" name="MaterialLibrary.scoreboard_element_mat_fx">
+			<profile_COMMON>
+				<newparam sid="scoreboard_texture_psd_surface">
+					<surface type="2D">
+						<init_from>scoreboard_texture_psd_img</init_from>
+					</surface>
+				</newparam>
+				<newparam sid="scoreboard_texture_psd_sampler">
+					<sampler2D>
+						<source>scoreboard_texture_psd_surface</source>
+					</sampler2D>
+				</newparam>
+				<technique sid="default">
+					<phong>
+						<emission>
+							<color sid="emission">0.000000 0.000000 0.000000 0.000000</color>
+						</emission>
+						<ambient>
+							<color sid="ambient">0.300000 0.300000 0.300000 1.000000</color>
+						</ambient>
+						<diffuse>
+							<texture texture="scoreboard_texture_psd_sampler" texcoord="diffuse_TEXCOORD"></texture>
+						</diffuse>
+						<specular>
+							<color sid="specular">1.000000 1.000000 1.000000 1.000000</color>
+						</specular>
+						<shininess>
+							<float sid="shininess">50.000000</float>
+						</shininess>
+						<reflective>
+							<color sid="reflective">0.000000 0.000000 0.000000 0.000000</color>
+						</reflective>
+						<reflectivity>
+							<float sid="reflectivity">1.000000</float>
+						</reflectivity>
+						<transparent opaque="RGB_ZERO">
+							<color sid="transparent">0.000000 0.000000 0.000000 0.000000</color>
+						</transparent>
+						<transparency>
+							<float sid="transparency">1.000000</float>
+						</transparency>
+						<index_of_refraction>
+							<float sid="index_of_refraction">1.000000</float>
+						</index_of_refraction>
+					</phong>
+				</technique>
+			</profile_COMMON>
+		</effect>
+	</library_effects>
+	<library_materials>
+		<material id="MaterialLibrary.scoreboard_element_mat" name="MaterialLibrary.scoreboard_element_mat">
+			<instance_effect url="#MaterialLibrary.scoreboard_element_mat_fx"></instance_effect>
+			<extra>
+				<technique profile="XSI">
+					<XSI_MaterialInfo></XSI_MaterialInfo>
+					<XSI_ShaderMultiPortConnection>
+						<xsi_param sid="parameter">"surface" </xsi_param>
+						<xsi_param sid="portname">"out"</xsi_param>
+					</XSI_ShaderMultiPortConnection>
+					<XSI_ShaderMultiPortConnection>
+						<xsi_param sid="parameter">"shadow" </xsi_param>
+						<xsi_param sid="portname">"out"</xsi_param>
+					</XSI_ShaderMultiPortConnection>
+					<XSI_ShaderMultiPortConnection>
+						<xsi_param sid="parameter">"photon" </xsi_param>
+						<xsi_param sid="portname">"out"</xsi_param>
+					</XSI_ShaderMultiPortConnection>
+				</technique>
+			</extra>
+		</material>
+	</library_materials>
+	<library_geometries>
+		<geometry id="geometries_0" name="geometries_0">
+			<mesh>
+				<source id="geometries_0-Pos">
+					<float_array id="geometries_0-Pos-array" count="24">
+						-0.787550 -0.935110 -0.227489 
+						0.787550 -0.935110 -0.227489 
+						-0.787550 0.935110 -0.227489 
+						0.787550 0.935110 -0.227489 
+						-0.787550 -0.935110 0.227489 
+						0.787550 -0.935110 0.227489 
+						-0.787550 0.935110 0.227489 
+						0.787550 0.935110 0.227489
+					</float_array>
+					<technique_common>
+						<accessor source="#geometries_0-Pos-array" count="8" stride="3">
+							<param name="X" type="float"/>
+							<param name="Y" type="float"/>
+							<param name="Z" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<source id="geometries_0-Texture_Projection">
+					<float_array id="geometries_0-Texture_Projection-array" count="48">
+						0.026241 0.878127 
+						0.026241 0.971872 
+						0.105193 0.971872 
+						0.105193 0.878127 
+						0.026241 0.878127 
+						0.105193 0.878127 
+						0.105193 0.878127 
+						0.026241 0.878127 
+						0.026241 0.878127 
+						0.026241 0.878127 
+						0.026241 0.971872 
+						0.026241 0.971872 
+						0.105193 0.878127 
+						0.105193 0.971872 
+						0.105193 0.971872 
+						0.105193 0.878127 
+						0.026241 0.971872 
+						0.026241 0.971872 
+						0.105193 0.971872 
+						0.105193 0.971872 
+						0.026241 0.878127 
+						0.105193 0.878127 
+						0.105193 0.971872 
+						0.026241 0.971872
+					</float_array>
+					<technique_common>
+						<accessor source="#geometries_0-Texture_Projection-array" count="24" stride="2">
+							<param name="S" type="float"/>
+							<param name="T" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<vertices id="geometries_0-Vtx">
+					<input semantic="POSITION" source="#geometries_0-Pos"/>
+				</vertices>
+				<polylist count="6" material="MaterialLibrary.scoreboard_element_mat">
+					<input semantic="VERTEX" source="#geometries_0-Vtx" offset="0"/>
+					<input semantic="TEXCOORD" source="#geometries_0-Texture_Projection" offset="1"/>
+					<vcount>
+						4 4 4 4 
+						4 4
+					</vcount>
+					<p>
+						0 0 
+						2 1 
+						3 2 
+						1 3 
+						0 4 
+						1 5 
+						5 6 
+						4 7 
+						0 8 
+						4 9 
+						6 10 
+						2 11 
+						1 12 
+						3 13 
+						7 14 
+						5 15 
+						2 16 
+						6 17 
+						7 18 
+						3 19 
+						4 20 
+						5 21 
+						7 22 
+						6 23
+					</p>
+				</polylist>
+			</mesh>
+			<extra>
+				<technique profile="XSI">
+					<XSI_VertexList>
+						<xsi_param sid="Attributes"> </xsi_param>
+						<xsi_param sid="nbAttributes">8 </xsi_param>
+						<xsi_param sid="position">0 1 2 3 4 5 6 7</xsi_param>
+					</XSI_VertexList>
+				</technique>
+			</extra>
+		</geometry>
+		<geometry id="geometries_1" name="geometries_1">
+			<mesh>
+				<source id="geometries_1-Pos">
+					<float_array id="geometries_1-Pos-array" count="24">
+						-0.787550 -0.935110 -0.227489 
+						0.787550 -0.935110 -0.227489 
+						-0.787550 0.935110 -0.227489 
+						0.787550 0.935110 -0.227489 
+						-0.787550 -0.935110 0.227489 
+						0.787550 -0.935110 0.227489 
+						-0.787550 0.935110 0.227489 
+						0.787550 0.935110 0.227489
+					</float_array>
+					<technique_common>
+						<accessor source="#geometries_1-Pos-array" count="8" stride="3">
+							<param name="X" type="float"/>
+							<param name="Y" type="float"/>
+							<param name="Z" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<source id="geometries_1-Texture_Projection">
+					<float_array id="geometries_1-Texture_Projection-array" count="48">
+						0.105291 0.878127 
+						0.105291 0.971872 
+						0.184243 0.971872 
+						0.184243 0.878127 
+						0.105291 0.878127 
+						0.184243 0.878127 
+						0.184243 0.878127 
+						0.105291 0.878127 
+						0.105291 0.878127 
+						0.105291 0.878127 
+						0.105291 0.971872 
+						0.105291 0.971872 
+						0.184243 0.878127 
+						0.184243 0.971872 
+						0.184243 0.971872 
+						0.184243 0.878127 
+						0.105291 0.971872 
+						0.105291 0.971872 
+						0.184243 0.971872 
+						0.184243 0.971872 
+						0.105291 0.878127 
+						0.184243 0.878127 
+						0.184243 0.971872 
+						0.105291 0.971872
+					</float_array>
+					<technique_common>
+						<accessor source="#geometries_1-Texture_Projection-array" count="24" stride="2">
+							<param name="S" type="float"/>
+							<param name="T" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<vertices id="geometries_1-Vtx">
+					<input semantic="POSITION" source="#geometries_1-Pos"/>
+				</vertices>
+				<polylist count="6" material="MaterialLibrary.scoreboard_element_mat">
+					<input semantic="VERTEX" source="#geometries_1-Vtx" offset="0"/>
+					<input semantic="TEXCOORD" source="#geometries_1-Texture_Projection" offset="1"/>
+					<vcount>
+						4 4 4 4 
+						4 4
+					</vcount>
+					<p>
+						0 0 
+						2 1 
+						3 2 
+						1 3 
+						0 4 
+						1 5 
+						5 6 
+						4 7 
+						0 8 
+						4 9 
+						6 10 
+						2 11 
+						1 12 
+						3 13 
+						7 14 
+						5 15 
+						2 16 
+						6 17 
+						7 18 
+						3 19 
+						4 20 
+						5 21 
+						7 22 
+						6 23
+					</p>
+				</polylist>
+			</mesh>
+			<extra>
+				<technique profile="XSI">
+					<XSI_VertexList>
+						<xsi_param sid="Attributes"> </xsi_param>
+						<xsi_param sid="nbAttributes">8 </xsi_param>
+						<xsi_param sid="position">0 1 2 3 4 5 6 7</xsi_param>
+					</XSI_VertexList>
+				</technique>
+			</extra>
+		</geometry>
+		<geometry id="geometries_2" name="geometries_2">
+			<mesh>
+				<source id="geometries_2-Pos">
+					<float_array id="geometries_2-Pos-array" count="24">
+						-0.787550 -0.935110 -0.227489 
+						0.787550 -0.935110 -0.227489 
+						-0.787550 0.935110 -0.227489 
+						0.787550 0.935110 -0.227489 
+						-0.787550 -0.935110 0.227489 
+						0.787550 -0.935110 0.227489 
+						-0.787550 0.935110 0.227489 
+						0.787550 0.935110 0.227489
+					</float_array>
+					<technique_common>
+						<accessor source="#geometries_2-Pos-array" count="8" stride="3">
+							<param name="X" type="float"/>
+							<param name="Y" type="float"/>
+							<param name="Z" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<source id="geometries_2-Texture_Projection">
+					<float_array id="geometries_2-Texture_Projection-array" count="48">
+						0.184406 0.878127 
+						0.184406 0.971872 
+						0.263358 0.971872 
+						0.263358 0.878127 
+						0.184406 0.878127 
+						0.263358 0.878127 
+						0.263358 0.878127 
+						0.184406 0.878127 
+						0.184406 0.878127 
+						0.184406 0.878127 
+						0.184406 0.971872 
+						0.184406 0.971872 
+						0.263358 0.878127 
+						0.263358 0.971872 
+						0.263358 0.971872 
+						0.263358 0.878127 
+						0.184406 0.971872 
+						0.184406 0.971872 
+						0.263358 0.971872 
+						0.263358 0.971872 
+						0.184406 0.878127 
+						0.263358 0.878127 
+						0.263358 0.971872 
+						0.184406 0.971872
+					</float_array>
+					<technique_common>
+						<accessor source="#geometries_2-Texture_Projection-array" count="24" stride="2">
+							<param name="S" type="float"/>
+							<param name="T" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<vertices id="geometries_2-Vtx">
+					<input semantic="POSITION" source="#geometries_2-Pos"/>
+				</vertices>
+				<polylist count="6" material="MaterialLibrary.scoreboard_element_mat">
+					<input semantic="VERTEX" source="#geometries_2-Vtx" offset="0"/>
+					<input semantic="TEXCOORD" source="#geometries_2-Texture_Projection" offset="1"/>
+					<vcount>
+						4 4 4 4 
+						4 4
+					</vcount>
+					<p>
+						0 0 
+						2 1 
+						3 2 
+						1 3 
+						0 4 
+						1 5 
+						5 6 
+						4 7 
+						0 8 
+						4 9 
+						6 10 
+						2 11 
+						1 12 
+						3 13 
+						7 14 
+						5 15 
+						2 16 
+						6 17 
+						7 18 
+						3 19 
+						4 20 
+						5 21 
+						7 22 
+						6 23
+					</p>
+				</polylist>
+			</mesh>
+			<extra>
+				<technique profile="XSI">
+					<XSI_VertexList>
+						<xsi_param sid="Attributes"> </xsi_param>
+						<xsi_param sid="nbAttributes">8 </xsi_param>
+						<xsi_param sid="position">0 1 2 3 4 5 6 7</xsi_param>
+					</XSI_VertexList>
+				</technique>
+			</extra>
+		</geometry>
+		<geometry id="geometries_3" name="geometries_3">
+			<mesh>
+				<source id="geometries_3-Pos">
+					<float_array id="geometries_3-Pos-array" count="24">
+						-0.787550 -0.935110 -0.227489 
+						0.787550 -0.935110 -0.227489 
+						-0.787550 0.935110 -0.227489 
+						0.787550 0.935110 -0.227489 
+						-0.787550 -0.935110 0.227489 
+						0.787550 -0.935110 0.227489 
+						-0.787550 0.935110 0.227489 
+						0.787550 0.935110 0.227489
+					</float_array>
+					<technique_common>
+						<accessor source="#geometries_3-Pos-array" count="8" stride="3">
+							<param name="X" type="float"/>
+							<param name="Y" type="float"/>
+							<param name="Z" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<source id="geometries_3-Texture_Projection">
+					<float_array id="geometries_3-Texture_Projection-array" count="48">
+						0.264949 0.878127 
+						0.264949 0.971872 
+						0.343901 0.971872 
+						0.343901 0.878127 
+						0.264949 0.878127 
+						0.343901 0.878127 
+						0.343901 0.878127 
+						0.264949 0.878127 
+						0.264949 0.878127 
+						0.264949 0.878127 
+						0.264949 0.971872 
+						0.264949 0.971872 
+						0.343901 0.878127 
+						0.343901 0.971872 
+						0.343901 0.971872 
+						0.343901 0.878127 
+						0.264949 0.971872 
+						0.264949 0.971872 
+						0.343901 0.971872 
+						0.343901 0.971872 
+						0.264949 0.878127 
+						0.343901 0.878127 
+						0.343901 0.971872 
+						0.264949 0.971872
+					</float_array>
+					<technique_common>
+						<accessor source="#geometries_3-Texture_Projection-array" count="24" stride="2">
+							<param name="S" type="float"/>
+							<param name="T" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<vertices id="geometries_3-Vtx">
+					<input semantic="POSITION" source="#geometries_3-Pos"/>
+				</vertices>
+				<polylist count="6" material="MaterialLibrary.scoreboard_element_mat">
+					<input semantic="VERTEX" source="#geometries_3-Vtx" offset="0"/>
+					<input semantic="TEXCOORD" source="#geometries_3-Texture_Projection" offset="1"/>
+					<vcount>
+						4 4 4 4 
+						4 4
+					</vcount>
+					<p>
+						0 0 
+						2 1 
+						3 2 
+						1 3 
+						0 4 
+						1 5 
+						5 6 
+						4 7 
+						0 8 
+						4 9 
+						6 10 
+						2 11 
+						1 12 
+						3 13 
+						7 14 
+						5 15 
+						2 16 
+						6 17 
+						7 18 
+						3 19 
+						4 20 
+						5 21 
+						7 22 
+						6 23
+					</p>
+				</polylist>
+			</mesh>
+			<extra>
+				<technique profile="XSI">
+					<XSI_VertexList>
+						<xsi_param sid="Attributes"> </xsi_param>
+						<xsi_param sid="nbAttributes">8 </xsi_param>
+						<xsi_param sid="position">0 1 2 3 4 5 6 7</xsi_param>
+					</XSI_VertexList>
+				</technique>
+			</extra>
+		</geometry>
+		<geometry id="geometries_4" name="geometries_4">
+			<mesh>
+				<source id="geometries_4-Pos">
+					<float_array id="geometries_4-Pos-array" count="24">
+						-0.787550 -0.935110 -0.227489 
+						0.787550 -0.935110 -0.227489 
+						-0.787550 0.935110 -0.227489 
+						0.787550 0.935110 -0.227489 
+						-0.787550 -0.935110 0.227489 
+						0.787550 -0.935110 0.227489 
+						-0.787550 0.935110 0.227489 
+						0.787550 0.935110 0.227489
+					</float_array>
+					<technique_common>
+						<accessor source="#geometries_4-Pos-array" count="8" stride="3">
+							<param name="X" type="float"/>
+							<param name="Y" type="float"/>
+							<param name="Z" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<source id="geometries_4-Texture_Projection">
+					<float_array id="geometries_4-Texture_Projection-array" count="48">
+						0.345206 0.878127 
+						0.345206 0.971872 
+						0.424158 0.971872 
+						0.424158 0.878127 
+						0.345206 0.878127 
+						0.424158 0.878127 
+						0.424158 0.878127 
+						0.345206 0.878127 
+						0.345206 0.878127 
+						0.345206 0.878127 
+						0.345206 0.971872 
+						0.345206 0.971872 
+						0.424158 0.878127 
+						0.424158 0.971872 
+						0.424158 0.971872 
+						0.424158 0.878127 
+						0.345206 0.971872 
+						0.345206 0.971872 
+						0.424158 0.971872 
+						0.424158 0.971872 
+						0.345206 0.878127 
+						0.424158 0.878127 
+						0.424158 0.971872 
+						0.345206 0.971872
+					</float_array>
+					<technique_common>
+						<accessor source="#geometries_4-Texture_Projection-array" count="24" stride="2">
+							<param name="S" type="float"/>
+							<param name="T" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<vertices id="geometries_4-Vtx">
+					<input semantic="POSITION" source="#geometries_4-Pos"/>
+				</vertices>
+				<polylist count="6" material="MaterialLibrary.scoreboard_element_mat">
+					<input semantic="VERTEX" source="#geometries_4-Vtx" offset="0"/>
+					<input semantic="TEXCOORD" source="#geometries_4-Texture_Projection" offset="1"/>
+					<vcount>
+						4 4 4 4 
+						4 4
+					</vcount>
+					<p>
+						0 0 
+						2 1 
+						3 2 
+						1 3 
+						0 4 
+						1 5 
+						5 6 
+						4 7 
+						0 8 
+						4 9 
+						6 10 
+						2 11 
+						1 12 
+						3 13 
+						7 14 
+						5 15 
+						2 16 
+						6 17 
+						7 18 
+						3 19 
+						4 20 
+						5 21 
+						7 22 
+						6 23
+					</p>
+				</polylist>
+			</mesh>
+			<extra>
+				<technique profile="XSI">
+					<XSI_VertexList>
+						<xsi_param sid="Attributes"> </xsi_param>
+						<xsi_param sid="nbAttributes">8 </xsi_param>
+						<xsi_param sid="position">0 1 2 3 4 5 6 7</xsi_param>
+					</XSI_VertexList>
+				</technique>
+			</extra>
+		</geometry>
+		<geometry id="geometries_5" name="geometries_5">
+			<mesh>
+				<source id="geometries_5-Pos">
+					<float_array id="geometries_5-Pos-array" count="24">
+						-0.787550 -0.935110 -0.227489 
+						0.787550 -0.935110 -0.227489 
+						-0.787550 0.935110 -0.227489 
+						0.787550 0.935110 -0.227489 
+						-0.787550 -0.935110 0.227489 
+						0.787550 -0.935110 0.227489 
+						-0.787550 0.935110 0.227489 
+						0.787550 0.935110 0.227489
+					</float_array>
+					<technique_common>
+						<accessor source="#geometries_5-Pos-array" count="8" stride="3">
+							<param name="X" type="float"/>
+							<param name="Y" type="float"/>
+							<param name="Z" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<source id="geometries_5-Texture_Projection">
+					<float_array id="geometries_5-Texture_Projection-array" count="48">
+						0.425504 0.878127 
+						0.425504 0.971872 
+						0.504457 0.971872 
+						0.504457 0.878127 
+						0.425504 0.878127 
+						0.504457 0.878127 
+						0.504457 0.878127 
+						0.425504 0.878127 
+						0.425504 0.878127 
+						0.425504 0.878127 
+						0.425504 0.971872 
+						0.425504 0.971872 
+						0.504457 0.878127 
+						0.504457 0.971872 
+						0.504457 0.971872 
+						0.504457 0.878127 
+						0.425504 0.971872 
+						0.425504 0.971872 
+						0.504457 0.971872 
+						0.504457 0.971872 
+						0.425504 0.878127 
+						0.504457 0.878127 
+						0.504457 0.971872 
+						0.425504 0.971872
+					</float_array>
+					<technique_common>
+						<accessor source="#geometries_5-Texture_Projection-array" count="24" stride="2">
+							<param name="S" type="float"/>
+							<param name="T" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<vertices id="geometries_5-Vtx">
+					<input semantic="POSITION" source="#geometries_5-Pos"/>
+				</vertices>
+				<polylist count="6" material="MaterialLibrary.scoreboard_element_mat">
+					<input semantic="VERTEX" source="#geometries_5-Vtx" offset="0"/>
+					<input semantic="TEXCOORD" source="#geometries_5-Texture_Projection" offset="1"/>
+					<vcount>
+						4 4 4 4 
+						4 4
+					</vcount>
+					<p>
+						0 0 
+						2 1 
+						3 2 
+						1 3 
+						0 4 
+						1 5 
+						5 6 
+						4 7 
+						0 8 
+						4 9 
+						6 10 
+						2 11 
+						1 12 
+						3 13 
+						7 14 
+						5 15 
+						2 16 
+						6 17 
+						7 18 
+						3 19 
+						4 20 
+						5 21 
+						7 22 
+						6 23
+					</p>
+				</polylist>
+			</mesh>
+			<extra>
+				<technique profile="XSI">
+					<XSI_VertexList>
+						<xsi_param sid="Attributes"> </xsi_param>
+						<xsi_param sid="nbAttributes">8 </xsi_param>
+						<xsi_param sid="position">0 1 2 3 4 5 6 7</xsi_param>
+					</XSI_VertexList>
+				</technique>
+			</extra>
+		</geometry>
+		<geometry id="geometries_6" name="geometries_6">
+			<mesh>
+				<source id="geometries_6-Pos">
+					<float_array id="geometries_6-Pos-array" count="24">
+						-0.787550 -0.935110 -0.227489 
+						0.787550 -0.935110 -0.227489 
+						-0.787550 0.935110 -0.227489 
+						0.787550 0.935110 -0.227489 
+						-0.787550 -0.935110 0.227489 
+						0.787550 -0.935110 0.227489 
+						-0.787550 0.935110 0.227489 
+						0.787550 0.935110 0.227489
+					</float_array>
+					<technique_common>
+						<accessor source="#geometries_6-Pos-array" count="8" stride="3">
+							<param name="X" type="float"/>
+							<param name="Y" type="float"/>
+							<param name="Z" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<source id="geometries_6-Texture_Projection">
+					<float_array id="geometries_6-Texture_Projection-array" count="48">
+						0.506730 0.878127 
+						0.506730 0.971872 
+						0.585682 0.971872 
+						0.585682 0.878127 
+						0.506730 0.878127 
+						0.585682 0.878127 
+						0.585682 0.878127 
+						0.506730 0.878127 
+						0.506730 0.878127 
+						0.506730 0.878127 
+						0.506730 0.971872 
+						0.506730 0.971872 
+						0.585682 0.878127 
+						0.585682 0.971872 
+						0.585682 0.971872 
+						0.585682 0.878127 
+						0.506730 0.971872 
+						0.506730 0.971872 
+						0.585682 0.971872 
+						0.585682 0.971872 
+						0.506730 0.878127 
+						0.585682 0.878127 
+						0.585682 0.971872 
+						0.506730 0.971872
+					</float_array>
+					<technique_common>
+						<accessor source="#geometries_6-Texture_Projection-array" count="24" stride="2">
+							<param name="S" type="float"/>
+							<param name="T" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<vertices id="geometries_6-Vtx">
+					<input semantic="POSITION" source="#geometries_6-Pos"/>
+				</vertices>
+				<polylist count="6" material="MaterialLibrary.scoreboard_element_mat">
+					<input semantic="VERTEX" source="#geometries_6-Vtx" offset="0"/>
+					<input semantic="TEXCOORD" source="#geometries_6-Texture_Projection" offset="1"/>
+					<vcount>
+						4 4 4 4 
+						4 4
+					</vcount>
+					<p>
+						0 0 
+						2 1 
+						3 2 
+						1 3 
+						0 4 
+						1 5 
+						5 6 
+						4 7 
+						0 8 
+						4 9 
+						6 10 
+						2 11 
+						1 12 
+						3 13 
+						7 14 
+						5 15 
+						2 16 
+						6 17 
+						7 18 
+						3 19 
+						4 20 
+						5 21 
+						7 22 
+						6 23
+					</p>
+				</polylist>
+			</mesh>
+			<extra>
+				<technique profile="XSI">
+					<XSI_VertexList>
+						<xsi_param sid="Attributes"> </xsi_param>
+						<xsi_param sid="nbAttributes">8 </xsi_param>
+						<xsi_param sid="position">0 1 2 3 4 5 6 7</xsi_param>
+					</XSI_VertexList>
+				</technique>
+			</extra>
+		</geometry>
+		<geometry id="geometries_7" name="geometries_7">
+			<mesh>
+				<source id="geometries_7-Pos">
+					<float_array id="geometries_7-Pos-array" count="24">
+						-0.787550 -0.935110 -0.227489 
+						0.787550 -0.935110 -0.227489 
+						-0.787550 0.935110 -0.227489 
+						0.787550 0.935110 -0.227489 
+						-0.787550 -0.935110 0.227489 
+						0.787550 -0.935110 0.227489 
+						-0.787550 0.935110 0.227489 
+						0.787550 0.935110 0.227489
+					</float_array>
+					<technique_common>
+						<accessor source="#geometries_7-Pos-array" count="8" stride="3">
+							<param name="X" type="float"/>
+							<param name="Y" type="float"/>
+							<param name="Z" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<source id="geometries_7-Texture_Projection">
+					<float_array id="geometries_7-Texture_Projection-array" count="48">
+						0.584867 0.878127 
+						0.584867 0.971872 
+						0.663819 0.971872 
+						0.663819 0.878127 
+						0.584867 0.878127 
+						0.663819 0.878127 
+						0.663819 0.878127 
+						0.584867 0.878127 
+						0.584867 0.878127 
+						0.584867 0.878127 
+						0.584867 0.971872 
+						0.584867 0.971872 
+						0.663819 0.878127 
+						0.663819 0.971872 
+						0.663819 0.971872 
+						0.663819 0.878127 
+						0.584867 0.971872 
+						0.584867 0.971872 
+						0.663819 0.971872 
+						0.663819 0.971872 
+						0.584867 0.878127 
+						0.663819 0.878127 
+						0.663819 0.971872 
+						0.584867 0.971872
+					</float_array>
+					<technique_common>
+						<accessor source="#geometries_7-Texture_Projection-array" count="24" stride="2">
+							<param name="S" type="float"/>
+							<param name="T" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<vertices id="geometries_7-Vtx">
+					<input semantic="POSITION" source="#geometries_7-Pos"/>
+				</vertices>
+				<polylist count="6" material="MaterialLibrary.scoreboard_element_mat">
+					<input semantic="VERTEX" source="#geometries_7-Vtx" offset="0"/>
+					<input semantic="TEXCOORD" source="#geometries_7-Texture_Projection" offset="1"/>
+					<vcount>
+						4 4 4 4 
+						4 4
+					</vcount>
+					<p>
+						0 0 
+						2 1 
+						3 2 
+						1 3 
+						0 4 
+						1 5 
+						5 6 
+						4 7 
+						0 8 
+						4 9 
+						6 10 
+						2 11 
+						1 12 
+						3 13 
+						7 14 
+						5 15 
+						2 16 
+						6 17 
+						7 18 
+						3 19 
+						4 20 
+						5 21 
+						7 22 
+						6 23
+					</p>
+				</polylist>
+			</mesh>
+			<extra>
+				<technique profile="XSI">
+					<XSI_VertexList>
+						<xsi_param sid="Attributes"> </xsi_param>
+						<xsi_param sid="nbAttributes">8 </xsi_param>
+						<xsi_param sid="position">0 1 2 3 4 5 6 7</xsi_param>
+					</XSI_VertexList>
+				</technique>
+			</extra>
+		</geometry>
+		<geometry id="geometries_8" name="geometries_8">
+			<mesh>
+				<source id="geometries_8-Pos">
+					<float_array id="geometries_8-Pos-array" count="24">
+						-0.787550 -0.935110 -0.227489 
+						0.787550 -0.935110 -0.227489 
+						-0.787550 0.935110 -0.227489 
+						0.787550 0.935110 -0.227489 
+						-0.787550 -0.935110 0.227489 
+						0.787550 -0.935110 0.227489 
+						-0.787550 0.935110 0.227489 
+						0.787550 0.935110 0.227489
+					</float_array>
+					<technique_common>
+						<accessor source="#geometries_8-Pos-array" count="8" stride="3">
+							<param name="X" type="float"/>
+							<param name="Y" type="float"/>
+							<param name="Z" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<source id="geometries_8-Texture_Projection">
+					<float_array id="geometries_8-Texture_Projection-array" count="48">
+						0.666377 0.878127 
+						0.666377 0.971872 
+						0.745330 0.971872 
+						0.745330 0.878127 
+						0.666377 0.878127 
+						0.745330 0.878127 
+						0.745330 0.878127 
+						0.666377 0.878127 
+						0.666377 0.878127 
+						0.666377 0.878127 
+						0.666377 0.971872 
+						0.666377 0.971872 
+						0.745330 0.878127 
+						0.745330 0.971872 
+						0.745330 0.971872 
+						0.745330 0.878127 
+						0.666377 0.971872 
+						0.666377 0.971872 
+						0.745330 0.971872 
+						0.745330 0.971872 
+						0.666377 0.878127 
+						0.745330 0.878127 
+						0.745330 0.971872 
+						0.666377 0.971872
+					</float_array>
+					<technique_common>
+						<accessor source="#geometries_8-Texture_Projection-array" count="24" stride="2">
+							<param name="S" type="float"/>
+							<param name="T" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<vertices id="geometries_8-Vtx">
+					<input semantic="POSITION" source="#geometries_8-Pos"/>
+				</vertices>
+				<polylist count="6" material="MaterialLibrary.scoreboard_element_mat">
+					<input semantic="VERTEX" source="#geometries_8-Vtx" offset="0"/>
+					<input semantic="TEXCOORD" source="#geometries_8-Texture_Projection" offset="1"/>
+					<vcount>
+						4 4 4 4 
+						4 4
+					</vcount>
+					<p>
+						0 0 
+						2 1 
+						3 2 
+						1 3 
+						0 4 
+						1 5 
+						5 6 
+						4 7 
+						0 8 
+						4 9 
+						6 10 
+						2 11 
+						1 12 
+						3 13 
+						7 14 
+						5 15 
+						2 16 
+						6 17 
+						7 18 
+						3 19 
+						4 20 
+						5 21 
+						7 22 
+						6 23
+					</p>
+				</polylist>
+			</mesh>
+			<extra>
+				<technique profile="XSI">
+					<XSI_VertexList>
+						<xsi_param sid="Attributes"> </xsi_param>
+						<xsi_param sid="nbAttributes">8 </xsi_param>
+						<xsi_param sid="position">0 1 2 3 4 5 6 7</xsi_param>
+					</XSI_VertexList>
+				</technique>
+			</extra>
+		</geometry>
+		<geometry id="geometries_9" name="geometries_9">
+			<mesh>
+				<source id="geometries_9-Pos">
+					<float_array id="geometries_9-Pos-array" count="24">
+						-0.787550 -0.935110 -0.227489 
+						0.787550 -0.935110 -0.227489 
+						-0.787550 0.935110 -0.227489 
+						0.787550 0.935110 -0.227489 
+						-0.787550 -0.935110 0.227489 
+						0.787550 -0.935110 0.227489 
+						-0.787550 0.935110 0.227489 
+						0.787550 0.935110 0.227489
+					</float_array>
+					<technique_common>
+						<accessor source="#geometries_9-Pos-array" count="8" stride="3">
+							<param name="X" type="float"/>
+							<param name="Y" type="float"/>
+							<param name="Z" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<source id="geometries_9-Texture_Projection">
+					<float_array id="geometries_9-Texture_Projection-array" count="48">
+						0.745720 0.878127 
+						0.745720 0.971872 
+						0.824672 0.971872 
+						0.824672 0.878127 
+						0.745720 0.878127 
+						0.824672 0.878127 
+						0.824672 0.878127 
+						0.745720 0.878127 
+						0.745720 0.878127 
+						0.745720 0.878127 
+						0.745720 0.971872 
+						0.745720 0.971872 
+						0.824672 0.878127 
+						0.824672 0.971872 
+						0.824672 0.971872 
+						0.824672 0.878127 
+						0.745720 0.971872 
+						0.745720 0.971872 
+						0.824672 0.971872 
+						0.824672 0.971872 
+						0.745720 0.878127 
+						0.824672 0.878127 
+						0.824672 0.971872 
+						0.745720 0.971872
+					</float_array>
+					<technique_common>
+						<accessor source="#geometries_9-Texture_Projection-array" count="24" stride="2">
+							<param name="S" type="float"/>
+							<param name="T" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<vertices id="geometries_9-Vtx">
+					<input semantic="POSITION" source="#geometries_9-Pos"/>
+				</vertices>
+				<polylist count="6" material="MaterialLibrary.scoreboard_element_mat">
+					<input semantic="VERTEX" source="#geometries_9-Vtx" offset="0"/>
+					<input semantic="TEXCOORD" source="#geometries_9-Texture_Projection" offset="1"/>
+					<vcount>
+						4 4 4 4 
+						4 4
+					</vcount>
+					<p>
+						0 0 
+						2 1 
+						3 2 
+						1 3 
+						0 4 
+						1 5 
+						5 6 
+						4 7 
+						0 8 
+						4 9 
+						6 10 
+						2 11 
+						1 12 
+						3 13 
+						7 14 
+						5 15 
+						2 16 
+						6 17 
+						7 18 
+						3 19 
+						4 20 
+						5 21 
+						7 22 
+						6 23
+					</p>
+				</polylist>
+			</mesh>
+			<extra>
+				<technique profile="XSI">
+					<XSI_VertexList>
+						<xsi_param sid="Attributes"> </xsi_param>
+						<xsi_param sid="nbAttributes">8 </xsi_param>
+						<xsi_param sid="position">0 1 2 3 4 5 6 7</xsi_param>
+					</XSI_VertexList>
+				</technique>
+			</extra>
+		</geometry>
+		<geometry id="geometries_10" name="geometries_10">
+			<mesh>
+				<source id="geometries_10-Pos">
+					<float_array id="geometries_10-Pos-array" count="24">
+						-11.442904 -1.183459 -0.227489 
+						11.442904 -1.183459 -0.227489 
+						-11.442904 1.183459 -0.227489 
+						11.442904 1.183459 -0.227489 
+						-11.442904 -1.183459 0.227489 
+						11.442904 -1.183459 0.227489 
+						-11.442904 1.183459 0.227489 
+						11.442904 1.183459 0.227489
+					</float_array>
+					<technique_common>
+						<accessor source="#geometries_10-Pos-array" count="8" stride="3">
+							<param name="X" type="float"/>
+							<param name="Y" type="float"/>
+							<param name="Z" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<source id="geometries_10-Texture_Projection">
+					<float_array id="geometries_10-Texture_Projection-array" count="48">
+						-0.295812 0.529660 
+						-0.295812 0.633083 
+						0.704188 0.633083 
+						0.704188 0.529660 
+						-0.295812 0.529660 
+						0.704188 0.529660 
+						0.704188 0.529660 
+						-0.295812 0.529660 
+						-0.295812 0.529660 
+						-0.295812 0.529660 
+						-0.295812 0.633083 
+						-0.295812 0.633083 
+						0.704188 0.529660 
+						0.704188 0.633083 
+						0.704188 0.633083 
+						0.704188 0.529660 
+						-0.295812 0.633083 
+						-0.295812 0.633083 
+						0.704188 0.633083 
+						0.704188 0.633083 
+						-0.295812 0.529660 
+						0.704188 0.529660 
+						0.704188 0.633083 
+						-0.295812 0.633083
+					</float_array>
+					<technique_common>
+						<accessor source="#geometries_10-Texture_Projection-array" count="24" stride="2">
+							<param name="S" type="float"/>
+							<param name="T" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<vertices id="geometries_10-Vtx">
+					<input semantic="POSITION" source="#geometries_10-Pos"/>
+				</vertices>
+				<polylist count="6" material="MaterialLibrary.scoreboard_element_mat">
+					<input semantic="VERTEX" source="#geometries_10-Vtx" offset="0"/>
+					<input semantic="TEXCOORD" source="#geometries_10-Texture_Projection" offset="1"/>
+					<vcount>
+						4 4 4 4 
+						4 4
+					</vcount>
+					<p>
+						0 0 
+						2 1 
+						3 2 
+						1 3 
+						0 4 
+						1 5 
+						5 6 
+						4 7 
+						0 8 
+						4 9 
+						6 10 
+						2 11 
+						1 12 
+						3 13 
+						7 14 
+						5 15 
+						2 16 
+						6 17 
+						7 18 
+						3 19 
+						4 20 
+						5 21 
+						7 22 
+						6 23
+					</p>
+				</polylist>
+			</mesh>
+			<extra>
+				<technique profile="XSI">
+					<XSI_VertexList>
+						<xsi_param sid="Attributes"> </xsi_param>
+						<xsi_param sid="nbAttributes">8 </xsi_param>
+						<xsi_param sid="position">0 1 2 3 4 5 6 7</xsi_param>
+					</XSI_VertexList>
+				</technique>
+			</extra>
+		</geometry>
+		<geometry id="geometries_11" name="geometries_11">
+			<mesh>
+				<source id="geometries_11-Pos">
+					<float_array id="geometries_11-Pos-array" count="24">
+						-11.442904 -1.183459 -0.227489 
+						11.442904 -1.183459 -0.227489 
+						-11.442904 1.183459 -0.227489 
+						11.442904 1.183459 -0.227489 
+						-11.442904 -1.183459 0.227489 
+						11.442904 -1.183459 0.227489 
+						-11.442904 1.183459 0.227489 
+						11.442904 1.183459 0.227489
+					</float_array>
+					<technique_common>
+						<accessor source="#geometries_11-Pos-array" count="8" stride="3">
+							<param name="X" type="float"/>
+							<param name="Y" type="float"/>
+							<param name="Z" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<source id="geometries_11-Texture_Projection">
+					<float_array id="geometries_11-Texture_Projection-array" count="48">
+						-0.176556 0.421552 
+						-0.176556 0.524975 
+						0.823444 0.524975 
+						0.823444 0.421552 
+						-0.176556 0.421552 
+						0.823444 0.421552 
+						0.823444 0.421552 
+						-0.176556 0.421552 
+						-0.176556 0.421552 
+						-0.176556 0.421552 
+						-0.176556 0.524975 
+						-0.176556 0.524975 
+						0.823444 0.421552 
+						0.823444 0.524975 
+						0.823444 0.524975 
+						0.823444 0.421552 
+						-0.176556 0.524975 
+						-0.176556 0.524975 
+						0.823444 0.524975 
+						0.823444 0.524975 
+						-0.176556 0.421552 
+						0.823444 0.421552 
+						0.823444 0.524975 
+						-0.176556 0.524975
+					</float_array>
+					<technique_common>
+						<accessor source="#geometries_11-Texture_Projection-array" count="24" stride="2">
+							<param name="S" type="float"/>
+							<param name="T" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<vertices id="geometries_11-Vtx">
+					<input semantic="POSITION" source="#geometries_11-Pos"/>
+				</vertices>
+				<polylist count="6" material="MaterialLibrary.scoreboard_element_mat">
+					<input semantic="VERTEX" source="#geometries_11-Vtx" offset="0"/>
+					<input semantic="TEXCOORD" source="#geometries_11-Texture_Projection" offset="1"/>
+					<vcount>
+						4 4 4 4 
+						4 4
+					</vcount>
+					<p>
+						0 0 
+						2 1 
+						3 2 
+						1 3 
+						0 4 
+						1 5 
+						5 6 
+						4 7 
+						0 8 
+						4 9 
+						6 10 
+						2 11 
+						1 12 
+						3 13 
+						7 14 
+						5 15 
+						2 16 
+						6 17 
+						7 18 
+						3 19 
+						4 20 
+						5 21 
+						7 22 
+						6 23
+					</p>
+				</polylist>
+			</mesh>
+			<extra>
+				<technique profile="XSI">
+					<XSI_VertexList>
+						<xsi_param sid="Attributes"> </xsi_param>
+						<xsi_param sid="nbAttributes">8 </xsi_param>
+						<xsi_param sid="position">0 1 2 3 4 5 6 7</xsi_param>
+					</XSI_VertexList>
+				</technique>
+			</extra>
+		</geometry>
+		<geometry id="geometries_12" name="geometries_12">
+			<mesh>
+				<source id="geometries_12-Pos">
+					<float_array id="geometries_12-Pos-array" count="24">
+						-11.442904 -1.183459 -0.227489 
+						11.442904 -1.183459 -0.227489 
+						-11.442904 1.183459 -0.227489 
+						11.442904 1.183459 -0.227489 
+						-11.442904 -1.183459 0.227489 
+						11.442904 -1.183459 0.227489 
+						-11.442904 1.183459 0.227489 
+						11.442904 1.183459 0.227489
+					</float_array>
+					<technique_common>
+						<accessor source="#geometries_12-Pos-array" count="8" stride="3">
+							<param name="X" type="float"/>
+							<param name="Y" type="float"/>
+							<param name="Z" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<source id="geometries_12-Texture_Projection">
+					<float_array id="geometries_12-Texture_Projection-array" count="48">
+						-0.302562 0.644525 
+						-0.302562 0.747948 
+						0.697438 0.747948 
+						0.697438 0.644525 
+						-0.302562 0.644525 
+						0.697438 0.644525 
+						0.697438 0.644525 
+						-0.302562 0.644525 
+						-0.302562 0.644525 
+						-0.302562 0.644525 
+						-0.302562 0.747948 
+						-0.302562 0.747948 
+						0.697438 0.644525 
+						0.697438 0.747948 
+						0.697438 0.747948 
+						0.697438 0.644525 
+						-0.302562 0.747948 
+						-0.302562 0.747948 
+						0.697438 0.747948 
+						0.697438 0.747948 
+						-0.302562 0.644525 
+						0.697438 0.644525 
+						0.697438 0.747948 
+						-0.302562 0.747948
+					</float_array>
+					<technique_common>
+						<accessor source="#geometries_12-Texture_Projection-array" count="24" stride="2">
+							<param name="S" type="float"/>
+							<param name="T" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<vertices id="geometries_12-Vtx">
+					<input semantic="POSITION" source="#geometries_12-Pos"/>
+				</vertices>
+				<polylist count="6" material="MaterialLibrary.scoreboard_element_mat">
+					<input semantic="VERTEX" source="#geometries_12-Vtx" offset="0"/>
+					<input semantic="TEXCOORD" source="#geometries_12-Texture_Projection" offset="1"/>
+					<vcount>
+						4 4 4 4 
+						4 4
+					</vcount>
+					<p>
+						0 0 
+						2 1 
+						3 2 
+						1 3 
+						0 4 
+						1 5 
+						5 6 
+						4 7 
+						0 8 
+						4 9 
+						6 10 
+						2 11 
+						1 12 
+						3 13 
+						7 14 
+						5 15 
+						2 16 
+						6 17 
+						7 18 
+						3 19 
+						4 20 
+						5 21 
+						7 22 
+						6 23
+					</p>
+				</polylist>
+			</mesh>
+			<extra>
+				<technique profile="XSI">
+					<XSI_VertexList>
+						<xsi_param sid="Attributes"> </xsi_param>
+						<xsi_param sid="nbAttributes">8 </xsi_param>
+						<xsi_param sid="position">0 1 2 3 4 5 6 7</xsi_param>
+					</XSI_VertexList>
+				</technique>
+			</extra>
+		</geometry>
+		<geometry id="geometries_13" name="geometries_13">
+			<mesh>
+				<source id="geometries_13-Pos">
+					<float_array id="geometries_13-Pos-array" count="24">
+						-11.442904 -1.183459 -0.227489 
+						11.442904 -1.183459 -0.227489 
+						-11.442904 1.183459 -0.227489 
+						11.442904 1.183459 -0.227489 
+						-11.442904 -1.183459 0.227489 
+						11.442904 -1.183459 0.227489 
+						-11.442904 1.183459 0.227489 
+						11.442904 1.183459 0.227489
+					</float_array>
+					<technique_common>
+						<accessor source="#geometries_13-Pos-array" count="8" stride="3">
+							<param name="X" type="float"/>
+							<param name="Y" type="float"/>
+							<param name="Z" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<source id="geometries_13-Texture_Projection">
+					<float_array id="geometries_13-Texture_Projection-array" count="48">
+						-0.237309 0.754885 
+						-0.237309 0.858308 
+						0.762691 0.858308 
+						0.762691 0.754885 
+						-0.237309 0.754885 
+						0.762691 0.754885 
+						0.762691 0.754885 
+						-0.237309 0.754885 
+						-0.237309 0.754885 
+						-0.237309 0.754885 
+						-0.237309 0.858308 
+						-0.237309 0.858308 
+						0.762691 0.754885 
+						0.762691 0.858308 
+						0.762691 0.858308 
+						0.762691 0.754885 
+						-0.237309 0.858308 
+						-0.237309 0.858308 
+						0.762691 0.858308 
+						0.762691 0.858308 
+						-0.237309 0.754885 
+						0.762691 0.754885 
+						0.762691 0.858308 
+						-0.237309 0.858308
+					</float_array>
+					<technique_common>
+						<accessor source="#geometries_13-Texture_Projection-array" count="24" stride="2">
+							<param name="S" type="float"/>
+							<param name="T" type="float"/>
+						</accessor>
+					</technique_common>
+				</source>
+				<vertices id="geometries_13-Vtx">
+					<input semantic="POSITION" source="#geometries_13-Pos"/>
+				</vertices>
+				<polylist count="6" material="MaterialLibrary.scoreboard_element_mat">
+					<input semantic="VERTEX" source="#geometries_13-Vtx" offset="0"/>
+					<input semantic="TEXCOORD" source="#geometries_13-Texture_Projection" offset="1"/>
+					<vcount>
+						4 4 4 4 
+						4 4
+					</vcount>
+					<p>
+						0 0 
+						2 1 
+						3 2 
+						1 3 
+						0 4 
+						1 5 
+						5 6 
+						4 7 
+						0 8 
+						4 9 
+						6 10 
+						2 11 
+						1 12 
+						3 13 
+						7 14 
+						5 15 
+						2 16 
+						6 17 
+						7 18 
+						3 19 
+						4 20 
+						5 21 
+						7 22 
+						6 23
+					</p>
+				</polylist>
+			</mesh>
+			<extra>
+				<technique profile="XSI">
+					<XSI_VertexList>
+						<xsi_param sid="Attributes"> </xsi_param>
+						<xsi_param sid="nbAttributes">8 </xsi_param>
+						<xsi_param sid="position">0 1 2 3 4 5 6 7</xsi_param>
+					</XSI_VertexList>
+				</technique>
+			</extra>
+		</geometry>
+	</library_geometries>
+	<library_visual_scenes>
+		<visual_scene id="visual_scenes_0" name="visual_scenes_0">
+			<node id="Mesh_X_inn0" name="Mesh_X_inn0">
+				<translate sid="translation">0.000000 0.000000 0.000000</translate>
+				<rotate sid="rotation_z">0.000000 0.000000 1.000000 0.000000</rotate>
+				<rotate sid="rotation_y">0.000000 1.000000 0.000000 0.000000</rotate>
+				<rotate sid="rotation_x">1.000000 0.000000 0.000000 0.000000</rotate>
+				<scale sid="scale">1.000000 1.000000 1.000000</scale>
+				<instance_geometry url="#geometries_0">
+					<bind_material>
+						<technique_common>
+							<instance_material symbol="MaterialLibrary.scoreboard_element_mat" target="#MaterialLibrary.scoreboard_element_mat">
+								<bind semantic="diffuse_TEXCOORD" target="geometries_0-Texture_Projection"></bind>
+							</instance_material>
+						</technique_common>
+					</bind_material>
+				</instance_geometry>
+				<extra>
+					<technique profile="XSI">
+						<SI_Visibility>
+							<xsi_param sid="visibility">TRUE</xsi_param>
+						</SI_Visibility>
+						<XSI_Transform>
+							<xsi_param sid="rotorder">"XYZ" </xsi_param>
+							<xsi_param sid="siscaling">TRUE</xsi_param>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posx" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posy" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posz" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"rotx" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"roty" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"rotz" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+						</XSI_Transform>
+						<SI_GlobalMaterial>
+							<xsi_param sid="reference">"MaterialLibrary.scoreboard_element_mat" </xsi_param>
+							<xsi_param sid="propagation">"NODE"</xsi_param>
+						</SI_GlobalMaterial>
+					</technique>
+				</extra>
+			</node>
+			<node id="Mesh_X_inn1" name="Mesh_X_inn1">
+				<translate sid="translation">0.000000 0.000000 0.000000</translate>
+				<rotate sid="rotation_z">0.000000 0.000000 1.000000 0.000000</rotate>
+				<rotate sid="rotation_y">0.000000 1.000000 0.000000 0.000000</rotate>
+				<rotate sid="rotation_x">1.000000 0.000000 0.000000 0.000000</rotate>
+				<scale sid="scale">1.000000 1.000000 1.000000</scale>
+				<instance_geometry url="#geometries_1">
+					<bind_material>
+						<technique_common>
+							<instance_material symbol="MaterialLibrary.scoreboard_element_mat" target="#MaterialLibrary.scoreboard_element_mat">
+								<bind semantic="diffuse_TEXCOORD" target="geometries_1-Texture_Projection"></bind>
+							</instance_material>
+						</technique_common>
+					</bind_material>
+				</instance_geometry>
+				<extra>
+					<technique profile="XSI">
+						<SI_Visibility>
+							<xsi_param sid="visibility">TRUE</xsi_param>
+						</SI_Visibility>
+						<XSI_Transform>
+							<xsi_param sid="rotorder">"XYZ" </xsi_param>
+							<xsi_param sid="siscaling">TRUE</xsi_param>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posx" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posy" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posz" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"rotx" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"roty" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"rotz" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+						</XSI_Transform>
+						<SI_GlobalMaterial>
+							<xsi_param sid="reference">"MaterialLibrary.scoreboard_element_mat" </xsi_param>
+							<xsi_param sid="propagation">"NODE"</xsi_param>
+						</SI_GlobalMaterial>
+					</technique>
+				</extra>
+			</node>
+			<node id="Mesh_X_inn2" name="Mesh_X_inn2">
+				<translate sid="translation">0.000000 0.000000 0.000000</translate>
+				<rotate sid="rotation_z">0.000000 0.000000 1.000000 0.000000</rotate>
+				<rotate sid="rotation_y">0.000000 1.000000 0.000000 0.000000</rotate>
+				<rotate sid="rotation_x">1.000000 0.000000 0.000000 0.000000</rotate>
+				<scale sid="scale">1.000000 1.000000 1.000000</scale>
+				<instance_geometry url="#geometries_2">
+					<bind_material>
+						<technique_common>
+							<instance_material symbol="MaterialLibrary.scoreboard_element_mat" target="#MaterialLibrary.scoreboard_element_mat">
+								<bind semantic="diffuse_TEXCOORD" target="geometries_2-Texture_Projection"></bind>
+							</instance_material>
+						</technique_common>
+					</bind_material>
+				</instance_geometry>
+				<extra>
+					<technique profile="XSI">
+						<SI_Visibility>
+							<xsi_param sid="visibility">TRUE</xsi_param>
+						</SI_Visibility>
+						<XSI_Transform>
+							<xsi_param sid="rotorder">"XYZ" </xsi_param>
+							<xsi_param sid="siscaling">TRUE</xsi_param>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posx" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posy" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posz" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"rotx" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"roty" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"rotz" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+						</XSI_Transform>
+						<SI_GlobalMaterial>
+							<xsi_param sid="reference">"MaterialLibrary.scoreboard_element_mat" </xsi_param>
+							<xsi_param sid="propagation">"NODE"</xsi_param>
+						</SI_GlobalMaterial>
+					</technique>
+				</extra>
+			</node>
+			<node id="Mesh_X_inn3" name="Mesh_X_inn3">
+				<translate sid="translation">0.000000 0.000000 0.000000</translate>
+				<rotate sid="rotation_z">0.000000 0.000000 1.000000 0.000000</rotate>
+				<rotate sid="rotation_y">0.000000 1.000000 0.000000 0.000000</rotate>
+				<rotate sid="rotation_x">1.000000 0.000000 0.000000 0.000000</rotate>
+				<scale sid="scale">1.000000 1.000000 1.000000</scale>
+				<instance_geometry url="#geometries_3">
+					<bind_material>
+						<technique_common>
+							<instance_material symbol="MaterialLibrary.scoreboard_element_mat" target="#MaterialLibrary.scoreboard_element_mat">
+								<bind semantic="diffuse_TEXCOORD" target="geometries_3-Texture_Projection"></bind>
+							</instance_material>
+						</technique_common>
+					</bind_material>
+				</instance_geometry>
+				<extra>
+					<technique profile="XSI">
+						<SI_Visibility>
+							<xsi_param sid="visibility">TRUE</xsi_param>
+						</SI_Visibility>
+						<XSI_Transform>
+							<xsi_param sid="rotorder">"XYZ" </xsi_param>
+							<xsi_param sid="siscaling">TRUE</xsi_param>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posx" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posy" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posz" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"rotx" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"roty" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"rotz" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+						</XSI_Transform>
+						<SI_GlobalMaterial>
+							<xsi_param sid="reference">"MaterialLibrary.scoreboard_element_mat" </xsi_param>
+							<xsi_param sid="propagation">"NODE"</xsi_param>
+						</SI_GlobalMaterial>
+					</technique>
+				</extra>
+			</node>
+			<node id="Mesh_X_inn4" name="Mesh_X_inn4">
+				<translate sid="translation">0.000000 0.000000 0.000000</translate>
+				<rotate sid="rotation_z">0.000000 0.000000 1.000000 0.000000</rotate>
+				<rotate sid="rotation_y">0.000000 1.000000 0.000000 0.000000</rotate>
+				<rotate sid="rotation_x">1.000000 0.000000 0.000000 0.000000</rotate>
+				<scale sid="scale">1.000000 1.000000 1.000000</scale>
+				<instance_geometry url="#geometries_4">
+					<bind_material>
+						<technique_common>
+							<instance_material symbol="MaterialLibrary.scoreboard_element_mat" target="#MaterialLibrary.scoreboard_element_mat">
+								<bind semantic="diffuse_TEXCOORD" target="geometries_4-Texture_Projection"></bind>
+							</instance_material>
+						</technique_common>
+					</bind_material>
+				</instance_geometry>
+				<extra>
+					<technique profile="XSI">
+						<SI_Visibility>
+							<xsi_param sid="visibility">TRUE</xsi_param>
+						</SI_Visibility>
+						<XSI_Transform>
+							<xsi_param sid="rotorder">"XYZ" </xsi_param>
+							<xsi_param sid="siscaling">TRUE</xsi_param>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posx" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posy" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posz" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"rotx" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"roty" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"rotz" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+						</XSI_Transform>
+						<SI_GlobalMaterial>
+							<xsi_param sid="reference">"MaterialLibrary.scoreboard_element_mat" </xsi_param>
+							<xsi_param sid="propagation">"NODE"</xsi_param>
+						</SI_GlobalMaterial>
+					</technique>
+				</extra>
+			</node>
+			<node id="Mesh_X_inn5" name="Mesh_X_inn5">
+				<translate sid="translation">0.000000 0.000000 0.000000</translate>
+				<rotate sid="rotation_z">0.000000 0.000000 1.000000 0.000000</rotate>
+				<rotate sid="rotation_y">0.000000 1.000000 0.000000 0.000000</rotate>
+				<rotate sid="rotation_x">1.000000 0.000000 0.000000 0.000000</rotate>
+				<scale sid="scale">1.000000 1.000000 1.000000</scale>
+				<instance_geometry url="#geometries_5">
+					<bind_material>
+						<technique_common>
+							<instance_material symbol="MaterialLibrary.scoreboard_element_mat" target="#MaterialLibrary.scoreboard_element_mat">
+								<bind semantic="diffuse_TEXCOORD" target="geometries_5-Texture_Projection"></bind>
+							</instance_material>
+						</technique_common>
+					</bind_material>
+				</instance_geometry>
+				<extra>
+					<technique profile="XSI">
+						<SI_Visibility>
+							<xsi_param sid="visibility">TRUE</xsi_param>
+						</SI_Visibility>
+						<XSI_Transform>
+							<xsi_param sid="rotorder">"XYZ" </xsi_param>
+							<xsi_param sid="siscaling">TRUE</xsi_param>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posx" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posy" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posz" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"rotx" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"roty" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"rotz" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+						</XSI_Transform>
+						<SI_GlobalMaterial>
+							<xsi_param sid="reference">"MaterialLibrary.scoreboard_element_mat" </xsi_param>
+							<xsi_param sid="propagation">"NODE"</xsi_param>
+						</SI_GlobalMaterial>
+					</technique>
+				</extra>
+			</node>
+			<node id="Mesh_X_inn6" name="Mesh_X_inn6">
+				<translate sid="translation">0.000000 0.000000 0.000000</translate>
+				<rotate sid="rotation_z">0.000000 0.000000 1.000000 0.000000</rotate>
+				<rotate sid="rotation_y">0.000000 1.000000 0.000000 0.000000</rotate>
+				<rotate sid="rotation_x">1.000000 0.000000 0.000000 0.000000</rotate>
+				<scale sid="scale">1.000000 1.000000 1.000000</scale>
+				<instance_geometry url="#geometries_6">
+					<bind_material>
+						<technique_common>
+							<instance_material symbol="MaterialLibrary.scoreboard_element_mat" target="#MaterialLibrary.scoreboard_element_mat">
+								<bind semantic="diffuse_TEXCOORD" target="geometries_6-Texture_Projection"></bind>
+							</instance_material>
+						</technique_common>
+					</bind_material>
+				</instance_geometry>
+				<extra>
+					<technique profile="XSI">
+						<SI_Visibility>
+							<xsi_param sid="visibility">TRUE</xsi_param>
+						</SI_Visibility>
+						<XSI_Transform>
+							<xsi_param sid="rotorder">"XYZ" </xsi_param>
+							<xsi_param sid="siscaling">TRUE</xsi_param>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posx" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posy" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posz" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"rotx" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"roty" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"rotz" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+						</XSI_Transform>
+						<SI_GlobalMaterial>
+							<xsi_param sid="reference">"MaterialLibrary.scoreboard_element_mat" </xsi_param>
+							<xsi_param sid="propagation">"NODE"</xsi_param>
+						</SI_GlobalMaterial>
+					</technique>
+				</extra>
+			</node>
+			<node id="Mesh_X_inn7" name="Mesh_X_inn7">
+				<translate sid="translation">0.000000 0.000000 0.000000</translate>
+				<rotate sid="rotation_z">0.000000 0.000000 1.000000 0.000000</rotate>
+				<rotate sid="rotation_y">0.000000 1.000000 0.000000 0.000000</rotate>
+				<rotate sid="rotation_x">1.000000 0.000000 0.000000 0.000000</rotate>
+				<scale sid="scale">1.000000 1.000000 1.000000</scale>
+				<instance_geometry url="#geometries_7">
+					<bind_material>
+						<technique_common>
+							<instance_material symbol="MaterialLibrary.scoreboard_element_mat" target="#MaterialLibrary.scoreboard_element_mat">
+								<bind semantic="diffuse_TEXCOORD" target="geometries_7-Texture_Projection"></bind>
+							</instance_material>
+						</technique_common>
+					</bind_material>
+				</instance_geometry>
+				<extra>
+					<technique profile="XSI">
+						<SI_Visibility>
+							<xsi_param sid="visibility">TRUE</xsi_param>
+						</SI_Visibility>
+						<XSI_Transform>
+							<xsi_param sid="rotorder">"XYZ" </xsi_param>
+							<xsi_param sid="siscaling">TRUE</xsi_param>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posx" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posy" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posz" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"rotx" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"roty" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"rotz" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+						</XSI_Transform>
+						<SI_GlobalMaterial>
+							<xsi_param sid="reference">"MaterialLibrary.scoreboard_element_mat" </xsi_param>
+							<xsi_param sid="propagation">"NODE"</xsi_param>
+						</SI_GlobalMaterial>
+					</technique>
+				</extra>
+			</node>
+			<node id="Mesh_X_inn8" name="Mesh_X_inn8">
+				<translate sid="translation">0.000000 0.000000 0.000000</translate>
+				<rotate sid="rotation_z">0.000000 0.000000 1.000000 0.000000</rotate>
+				<rotate sid="rotation_y">0.000000 1.000000 0.000000 0.000000</rotate>
+				<rotate sid="rotation_x">1.000000 0.000000 0.000000 0.000000</rotate>
+				<scale sid="scale">1.000000 1.000000 1.000000</scale>
+				<instance_geometry url="#geometries_8">
+					<bind_material>
+						<technique_common>
+							<instance_material symbol="MaterialLibrary.scoreboard_element_mat" target="#MaterialLibrary.scoreboard_element_mat">
+								<bind semantic="diffuse_TEXCOORD" target="geometries_8-Texture_Projection"></bind>
+							</instance_material>
+						</technique_common>
+					</bind_material>
+				</instance_geometry>
+				<extra>
+					<technique profile="XSI">
+						<SI_Visibility>
+							<xsi_param sid="visibility">TRUE</xsi_param>
+						</SI_Visibility>
+						<XSI_Transform>
+							<xsi_param sid="rotorder">"XYZ" </xsi_param>
+							<xsi_param sid="siscaling">TRUE</xsi_param>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posx" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posy" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posz" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"rotx" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"roty" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"rotz" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+						</XSI_Transform>
+						<SI_GlobalMaterial>
+							<xsi_param sid="reference">"MaterialLibrary.scoreboard_element_mat" </xsi_param>
+							<xsi_param sid="propagation">"NODE"</xsi_param>
+						</SI_GlobalMaterial>
+					</technique>
+				</extra>
+			</node>
+			<node id="Mesh_X_inn9" name="Mesh_X_inn9">
+				<translate sid="translation">0.000000 0.000000 0.000000</translate>
+				<rotate sid="rotation_z">0.000000 0.000000 1.000000 0.000000</rotate>
+				<rotate sid="rotation_y">0.000000 1.000000 0.000000 0.000000</rotate>
+				<rotate sid="rotation_x">1.000000 0.000000 0.000000 0.000000</rotate>
+				<scale sid="scale">1.000000 1.000000 1.000000</scale>
+				<instance_geometry url="#geometries_9">
+					<bind_material>
+						<technique_common>
+							<instance_material symbol="MaterialLibrary.scoreboard_element_mat" target="#MaterialLibrary.scoreboard_element_mat">
+								<bind semantic="diffuse_TEXCOORD" target="geometries_9-Texture_Projection"></bind>
+							</instance_material>
+						</technique_common>
+					</bind_material>
+				</instance_geometry>
+				<extra>
+					<technique profile="XSI">
+						<SI_Visibility>
+							<xsi_param sid="visibility">TRUE</xsi_param>
+						</SI_Visibility>
+						<XSI_Transform>
+							<xsi_param sid="rotorder">"XYZ" </xsi_param>
+							<xsi_param sid="siscaling">TRUE</xsi_param>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posx" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posy" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posz" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"rotx" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"roty" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"rotz" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+						</XSI_Transform>
+						<SI_GlobalMaterial>
+							<xsi_param sid="reference">"MaterialLibrary.scoreboard_element_mat" </xsi_param>
+							<xsi_param sid="propagation">"NODE"</xsi_param>
+						</SI_GlobalMaterial>
+					</technique>
+				</extra>
+			</node>
+			<node id="Mesh_X_stateFlyOut" name="Mesh_X_stateFlyOut">
+				<translate sid="translation">0.000000 0.000000 0.000000</translate>
+				<rotate sid="rotation_z">0.000000 0.000000 1.000000 0.000000</rotate>
+				<rotate sid="rotation_y">0.000000 1.000000 0.000000 0.000000</rotate>
+				<rotate sid="rotation_x">1.000000 0.000000 0.000000 0.000000</rotate>
+				<scale sid="scale">1.000000 1.000000 1.000000</scale>
+				<instance_geometry url="#geometries_10">
+					<bind_material>
+						<technique_common>
+							<instance_material symbol="MaterialLibrary.scoreboard_element_mat" target="#MaterialLibrary.scoreboard_element_mat">
+								<bind semantic="diffuse_TEXCOORD" target="geometries_10-Texture_Projection"></bind>
+							</instance_material>
+						</technique_common>
+					</bind_material>
+				</instance_geometry>
+				<extra>
+					<technique profile="XSI">
+						<SI_Visibility>
+							<xsi_param sid="visibility">TRUE</xsi_param>
+						</SI_Visibility>
+						<XSI_Transform>
+							<xsi_param sid="rotorder">"XYZ" </xsi_param>
+							<xsi_param sid="siscaling">TRUE</xsi_param>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posx" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posy" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posz" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"rotx" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"roty" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"rotz" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+						</XSI_Transform>
+						<SI_GlobalMaterial>
+							<xsi_param sid="reference">"MaterialLibrary.scoreboard_element_mat" </xsi_param>
+							<xsi_param sid="propagation">"NODE"</xsi_param>
+						</SI_GlobalMaterial>
+					</technique>
+				</extra>
+			</node>
+			<node id="Mesh_X_stateGroundOut" name="Mesh_X_stateGroundOut">
+				<translate sid="translation">0.000000 0.000000 0.000000</translate>
+				<rotate sid="rotation_z">0.000000 0.000000 1.000000 0.000000</rotate>
+				<rotate sid="rotation_y">0.000000 1.000000 0.000000 0.000000</rotate>
+				<rotate sid="rotation_x">1.000000 0.000000 0.000000 0.000000</rotate>
+				<scale sid="scale">1.000000 1.000000 1.000000</scale>
+				<instance_geometry url="#geometries_11">
+					<bind_material>
+						<technique_common>
+							<instance_material symbol="MaterialLibrary.scoreboard_element_mat" target="#MaterialLibrary.scoreboard_element_mat">
+								<bind semantic="diffuse_TEXCOORD" target="geometries_11-Texture_Projection"></bind>
+							</instance_material>
+						</technique_common>
+					</bind_material>
+				</instance_geometry>
+				<extra>
+					<technique profile="XSI">
+						<SI_Visibility>
+							<xsi_param sid="visibility">TRUE</xsi_param>
+						</SI_Visibility>
+						<XSI_Transform>
+							<xsi_param sid="rotorder">"XYZ" </xsi_param>
+							<xsi_param sid="siscaling">TRUE</xsi_param>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posx" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posy" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posz" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"rotx" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"roty" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"rotz" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+						</XSI_Transform>
+						<SI_GlobalMaterial>
+							<xsi_param sid="reference">"MaterialLibrary.scoreboard_element_mat" </xsi_param>
+							<xsi_param sid="propagation">"NODE"</xsi_param>
+						</SI_GlobalMaterial>
+					</technique>
+				</extra>
+			</node>
+			<node id="Mesh_X_stateStrike" name="Mesh_X_stateStrike">
+				<translate sid="translation">0.000000 0.000000 0.000000</translate>
+				<rotate sid="rotation_z">0.000000 0.000000 1.000000 0.000000</rotate>
+				<rotate sid="rotation_y">0.000000 1.000000 0.000000 0.000000</rotate>
+				<rotate sid="rotation_x">1.000000 0.000000 0.000000 0.000000</rotate>
+				<scale sid="scale">1.000000 1.000000 1.000000</scale>
+				<instance_geometry url="#geometries_12">
+					<bind_material>
+						<technique_common>
+							<instance_material symbol="MaterialLibrary.scoreboard_element_mat" target="#MaterialLibrary.scoreboard_element_mat">
+								<bind semantic="diffuse_TEXCOORD" target="geometries_12-Texture_Projection"></bind>
+							</instance_material>
+						</technique_common>
+					</bind_material>
+				</instance_geometry>
+				<extra>
+					<technique profile="XSI">
+						<SI_Visibility>
+							<xsi_param sid="visibility">TRUE</xsi_param>
+						</SI_Visibility>
+						<XSI_Transform>
+							<xsi_param sid="rotorder">"XYZ" </xsi_param>
+							<xsi_param sid="siscaling">TRUE</xsi_param>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posx" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posy" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posz" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"rotx" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"roty" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"rotz" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+						</XSI_Transform>
+						<SI_GlobalMaterial>
+							<xsi_param sid="reference">"MaterialLibrary.scoreboard_element_mat" </xsi_param>
+							<xsi_param sid="propagation">"NODE"</xsi_param>
+						</SI_GlobalMaterial>
+					</technique>
+				</extra>
+			</node>
+			<node id="Mesh_X_stateWaiting" name="Mesh_X_stateWaiting">
+				<translate sid="translation">0.000000 0.000000 0.000000</translate>
+				<rotate sid="rotation_z">0.000000 0.000000 1.000000 0.000000</rotate>
+				<rotate sid="rotation_y">0.000000 1.000000 0.000000 0.000000</rotate>
+				<rotate sid="rotation_x">1.000000 0.000000 0.000000 0.000000</rotate>
+				<scale sid="scale">1.000000 1.000000 1.000000</scale>
+				<instance_geometry url="#geometries_13">
+					<bind_material>
+						<technique_common>
+							<instance_material symbol="MaterialLibrary.scoreboard_element_mat" target="#MaterialLibrary.scoreboard_element_mat">
+								<bind semantic="diffuse_TEXCOORD" target="geometries_13-Texture_Projection"></bind>
+							</instance_material>
+						</technique_common>
+					</bind_material>
+				</instance_geometry>
+				<extra>
+					<technique profile="XSI">
+						<SI_Visibility>
+							<xsi_param sid="visibility">TRUE</xsi_param>
+						</SI_Visibility>
+						<XSI_Transform>
+							<xsi_param sid="rotorder">"XYZ" </xsi_param>
+							<xsi_param sid="siscaling">TRUE</xsi_param>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posx" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posy" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"posz" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"rotx" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"roty" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+							<XSI_Limit>
+								<xsi_param sid="parameter">"rotz" </xsi_param>
+								<xsi_param sid="minactive">FALSE </xsi_param>
+								<xsi_param sid="minlimit">0.000000 </xsi_param>
+								<xsi_param sid="maxactive">FALSE </xsi_param>
+								<xsi_param sid="maxlimit">0.000000</xsi_param>
+							</XSI_Limit>
+						</XSI_Transform>
+						<SI_GlobalMaterial>
+							<xsi_param sid="reference">"MaterialLibrary.scoreboard_element_mat" </xsi_param>
+							<xsi_param sid="propagation">"NODE"</xsi_param>
+						</SI_GlobalMaterial>
+					</technique>
+				</extra>
+			</node>
+		</visual_scene>
+	</library_visual_scenes>
+	<scene>
+		<instance_visual_scene url="#visual_scenes_0"/>
+	</scene>
+	<extra>
+		<technique profile="XSI">
+			<SI_Scene>
+				<xsi_param sid="timing">"SECONDS" </xsi_param>
+				<xsi_param sid="start">1.000000 </xsi_param>
+				<xsi_param sid="end">100.000000 </xsi_param>
+				<xsi_param sid="frameRate">29.970030</xsi_param>
+			</SI_Scene>
+			<SI_Angle>
+				<xsi_param sid="type">0</xsi_param>
+			</SI_Angle>
+			<SI_Ambience>
+				<xsi_param sid="red">0.000000 </xsi_param>
+				<xsi_param sid="green">0.000000 </xsi_param>
+				<xsi_param sid="blue">0.000000</xsi_param>
+			</SI_Ambience>
+			<SI_CoordinateSystem>
+				<xsi_param sid="handRotation">1 </xsi_param>
+				<xsi_param sid="uAxis">0 </xsi_param>
+				<xsi_param sid="vAxis">1 </xsi_param>
+				<xsi_param sid="xAxis">0 </xsi_param>
+				<xsi_param sid="yAxis">2 </xsi_param>
+				<xsi_param sid="zAxis">5</xsi_param>
+			</SI_CoordinateSystem>
+			<XSI_PolygonList>
+				<xsi_param sid="Attributes"> </xsi_param>
+				<xsi_param sid="Material">"" </xsi_param>
+				<xsi_param sid="NbPolynodes">0 </xsi_param>
+				<xsi_param sid="NbPolygons">0 </xsi_param>
+				<xsi_param sid="polygoneNodeCounts">4 4 4 4 4 4 </xsi_param>
+				<xsi_param sid="vertexIndices">0 2 3 1 0 1 5 4 0 4 6 2 1 3 7 5 2 6 7 3 4 5 7 6 </xsi_param>
+				<xsi_param sid="Texture_Projection">0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23</xsi_param>
+			</XSI_PolygonList>
+			<XSI_PolygonList>
+				<xsi_param sid="Attributes"> </xsi_param>
+				<xsi_param sid="Material">"" </xsi_param>
+				<xsi_param sid="NbPolynodes">0 </xsi_param>
+				<xsi_param sid="NbPolygons">0 </xsi_param>
+				<xsi_param sid="polygoneNodeCounts">4 4 4 4 4 4 </xsi_param>
+				<xsi_param sid="vertexIndices">0 2 3 1 0 1 5 4 0 4 6 2 1 3 7 5 2 6 7 3 4 5 7 6 </xsi_param>
+				<xsi_param sid="Texture_Projection">0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23</xsi_param>
+			</XSI_PolygonList>
+			<XSI_PolygonList>
+				<xsi_param sid="Attributes"> </xsi_param>
+				<xsi_param sid="Material">"" </xsi_param>
+				<xsi_param sid="NbPolynodes">0 </xsi_param>
+				<xsi_param sid="NbPolygons">0 </xsi_param>
+				<xsi_param sid="polygoneNodeCounts">4 4 4 4 4 4 </xsi_param>
+				<xsi_param sid="vertexIndices">0 2 3 1 0 1 5 4 0 4 6 2 1 3 7 5 2 6 7 3 4 5 7 6 </xsi_param>
+				<xsi_param sid="Texture_Projection">0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23</xsi_param>
+			</XSI_PolygonList>
+			<XSI_PolygonList>
+				<xsi_param sid="Attributes"> </xsi_param>
+				<xsi_param sid="Material">"" </xsi_param>
+				<xsi_param sid="NbPolynodes">0 </xsi_param>
+				<xsi_param sid="NbPolygons">0 </xsi_param>
+				<xsi_param sid="polygoneNodeCounts">4 4 4 4 4 4 </xsi_param>
+				<xsi_param sid="vertexIndices">0 2 3 1 0 1 5 4 0 4 6 2 1 3 7 5 2 6 7 3 4 5 7 6 </xsi_param>
+				<xsi_param sid="Texture_Projection">0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23</xsi_param>
+			</XSI_PolygonList>
+			<XSI_PolygonList>
+				<xsi_param sid="Attributes"> </xsi_param>
+				<xsi_param sid="Material">"" </xsi_param>
+				<xsi_param sid="NbPolynodes">0 </xsi_param>
+				<xsi_param sid="NbPolygons">0 </xsi_param>
+				<xsi_param sid="polygoneNodeCounts">4 4 4 4 4 4 </xsi_param>
+				<xsi_param sid="vertexIndices">0 2 3 1 0 1 5 4 0 4 6 2 1 3 7 5 2 6 7 3 4 5 7 6 </xsi_param>
+				<xsi_param sid="Texture_Projection">0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23</xsi_param>
+			</XSI_PolygonList>
+			<XSI_PolygonList>
+				<xsi_param sid="Attributes"> </xsi_param>
+				<xsi_param sid="Material">"" </xsi_param>
+				<xsi_param sid="NbPolynodes">0 </xsi_param>
+				<xsi_param sid="NbPolygons">0 </xsi_param>
+				<xsi_param sid="polygoneNodeCounts">4 4 4 4 4 4 </xsi_param>
+				<xsi_param sid="vertexIndices">0 2 3 1 0 1 5 4 0 4 6 2 1 3 7 5 2 6 7 3 4 5 7 6 </xsi_param>
+				<xsi_param sid="Texture_Projection">0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23</xsi_param>
+			</XSI_PolygonList>
+			<XSI_PolygonList>
+				<xsi_param sid="Attributes"> </xsi_param>
+				<xsi_param sid="Material">"" </xsi_param>
+				<xsi_param sid="NbPolynodes">0 </xsi_param>
+				<xsi_param sid="NbPolygons">0 </xsi_param>
+				<xsi_param sid="polygoneNodeCounts">4 4 4 4 4 4 </xsi_param>
+				<xsi_param sid="vertexIndices">0 2 3 1 0 1 5 4 0 4 6 2 1 3 7 5 2 6 7 3 4 5 7 6 </xsi_param>
+				<xsi_param sid="Texture_Projection">0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23</xsi_param>
+			</XSI_PolygonList>
+			<XSI_PolygonList>
+				<xsi_param sid="Attributes"> </xsi_param>
+				<xsi_param sid="Material">"" </xsi_param>
+				<xsi_param sid="NbPolynodes">0 </xsi_param>
+				<xsi_param sid="NbPolygons">0 </xsi_param>
+				<xsi_param sid="polygoneNodeCounts">4 4 4 4 4 4 </xsi_param>
+				<xsi_param sid="vertexIndices">0 2 3 1 0 1 5 4 0 4 6 2 1 3 7 5 2 6 7 3 4 5 7 6 </xsi_param>
+				<xsi_param sid="Texture_Projection">0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23</xsi_param>
+			</XSI_PolygonList>
+			<XSI_PolygonList>
+				<xsi_param sid="Attributes"> </xsi_param>
+				<xsi_param sid="Material">"" </xsi_param>
+				<xsi_param sid="NbPolynodes">0 </xsi_param>
+				<xsi_param sid="NbPolygons">0 </xsi_param>
+				<xsi_param sid="polygoneNodeCounts">4 4 4 4 4 4 </xsi_param>
+				<xsi_param sid="vertexIndices">0 2 3 1 0 1 5 4 0 4 6 2 1 3 7 5 2 6 7 3 4 5 7 6 </xsi_param>
+				<xsi_param sid="Texture_Projection">0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23</xsi_param>
+			</XSI_PolygonList>
+			<XSI_PolygonList>
+				<xsi_param sid="Attributes"> </xsi_param>
+				<xsi_param sid="Material">"" </xsi_param>
+				<xsi_param sid="NbPolynodes">0 </xsi_param>
+				<xsi_param sid="NbPolygons">0 </xsi_param>
+				<xsi_param sid="polygoneNodeCounts">4 4 4 4 4 4 </xsi_param>
+				<xsi_param sid="vertexIndices">0 2 3 1 0 1 5 4 0 4 6 2 1 3 7 5 2 6 7 3 4 5 7 6 </xsi_param>
+				<xsi_param sid="Texture_Projection">0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23</xsi_param>
+			</XSI_PolygonList>
+			<XSI_PolygonList>
+				<xsi_param sid="Attributes"> </xsi_param>
+				<xsi_param sid="Material">"" </xsi_param>
+				<xsi_param sid="NbPolynodes">0 </xsi_param>
+				<xsi_param sid="NbPolygons">0 </xsi_param>
+				<xsi_param sid="polygoneNodeCounts">4 4 4 4 4 4 </xsi_param>
+				<xsi_param sid="vertexIndices">0 2 3 1 0 1 5 4 0 4 6 2 1 3 7 5 2 6 7 3 4 5 7 6 </xsi_param>
+				<xsi_param sid="Texture_Projection">0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23</xsi_param>
+			</XSI_PolygonList>
+			<XSI_PolygonList>
+				<xsi_param sid="Attributes"> </xsi_param>
+				<xsi_param sid="Material">"" </xsi_param>
+				<xsi_param sid="NbPolynodes">0 </xsi_param>
+				<xsi_param sid="NbPolygons">0 </xsi_param>
+				<xsi_param sid="polygoneNodeCounts">4 4 4 4 4 4 </xsi_param>
+				<xsi_param sid="vertexIndices">0 2 3 1 0 1 5 4 0 4 6 2 1 3 7 5 2 6 7 3 4 5 7 6 </xsi_param>
+				<xsi_param sid="Texture_Projection">0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23</xsi_param>
+			</XSI_PolygonList>
+			<XSI_PolygonList>
+				<xsi_param sid="Attributes"> </xsi_param>
+				<xsi_param sid="Material">"" </xsi_param>
+				<xsi_param sid="NbPolynodes">0 </xsi_param>
+				<xsi_param sid="NbPolygons">0 </xsi_param>
+				<xsi_param sid="polygoneNodeCounts">4 4 4 4 4 4 </xsi_param>
+				<xsi_param sid="vertexIndices">0 2 3 1 0 1 5 4 0 4 6 2 1 3 7 5 2 6 7 3 4 5 7 6 </xsi_param>
+				<xsi_param sid="Texture_Projection">0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23</xsi_param>
+			</XSI_PolygonList>
+			<XSI_PolygonList>
+				<xsi_param sid="Attributes"> </xsi_param>
+				<xsi_param sid="Material">"" </xsi_param>
+				<xsi_param sid="NbPolynodes">0 </xsi_param>
+				<xsi_param sid="NbPolygons">0 </xsi_param>
+				<xsi_param sid="polygoneNodeCounts">4 4 4 4 4 4 </xsi_param>
+				<xsi_param sid="vertexIndices">0 2 3 1 0 1 5 4 0 4 6 2 1 3 7 5 2 6 7 3 4 5 7 6 </xsi_param>
+				<xsi_param sid="Texture_Projection">0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23</xsi_param>
+			</XSI_PolygonList>
+		</technique>
+	</extra>
+</COLLADA>

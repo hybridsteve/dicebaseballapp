@@ -37,10 +37,10 @@
     <Reference Include="System.XML" />
 	<Reference Include="System.Core" />
 	<Reference Include="UnityEngine">
-	  <HintPath>E:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>D:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>E:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>D:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -72,6 +72,7 @@
      <None Include="Assets\Resources\Graphite18.txt" />
      <None Include="Assets\Resources\startMenuUI2x.txt" />
      <None Include="Assets\Resources\test_JSON.txt" />
+     <None Include="Assets\Resources\Trebuchet24White.txt" />
      <None Include="Assets\Resources\Graphite36.txt" />
      <None Include="Assets\Resources\graph.txt" />
      <None Include="Assets\Resources\Graphite15.txt" />
@@ -81,6 +82,7 @@
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Particle Shaders\Mobile Particles Additive Culled.shader" />
      <None Include="Assets\Resources\graph2x.txt" />
      <None Include="Assets\Resources\Graphite20.txt" />
+     <None Include="Assets\Resources\treb24White.txt" />
      <None Include="Assets\Resources\Trebuchet24.txt" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Vertex Colored Shaders\Mobile Vertex Colored.shader" />
      <None Include="Assets\Resources\Graphite362x.txt" />

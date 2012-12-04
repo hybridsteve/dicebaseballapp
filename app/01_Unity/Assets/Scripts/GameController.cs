@@ -16,6 +16,8 @@ public class GameController : MonoBehaviour {
 	public GameObject Die;
 	public GameObject Batter;
 	
+	private ScoreboardController Scoreboard;
+	
 	private bool createdDice = false;
 	private List<GameObject> Dice = new List<GameObject>();
 	private List<GameObject> Runners = new List<GameObject>();
@@ -68,10 +70,16 @@ public class GameController : MonoBehaviour {
 		//cameraController = (GameCamera) GameCamera.GetComponent(typeof(GameCamera));
 		cameraController = GameCamera.GetComponent<GameCamera>();
 		
-		// create some text
-		ScoreboardText = new UIText( "Trebuchet14", "Trebuchet14.png" );
-		ScoreboardTextInstance = ScoreboardText.addTextInstance( "Initial Setup", 0f, 0f, 1f, 0 );
-		ScoreboardTextInstance.positionFromTop( 0.05f );
+		// find the scoreboard controller
+		Scoreboard = GameObject.Find( "ScoreboardController" ).GetComponent<ScoreboardController>();
+		
+		// debug text setup
+		if ( debugMode )
+		{
+			ScoreboardText = new UIText( Treb18, "Trebuchet14", "Trebuchet14.png" );
+			ScoreboardTextInstance = ScoreboardText.addTextInstance( "Initial Setup", 0f, 0f, 1f, 0 );
+			ScoreboardTextInstance.positionFromTop( 0.05f );
+		}
 		
 		// todo set gametype based on menu choice
 		//GameType = GameTypes.Single;
@@ -279,9 +287,9 @@ public class GameController : MonoBehaviour {
 	
 	private void LoadGame()
 	{
-		// get the game date from somewhere
+		// todo get the game date from somewhere
 		
-		// instantiate game class with data
+		// todo instantiate game class with data
 	}
 	
 	/// <summary>
@@ -294,6 +302,18 @@ public class GameController : MonoBehaviour {
 		// set up batter
 		ShowBatter();
 		
+		if ( debugMode )
+		{
+			ShowDebugStats();
+		}
+		
+		// add a touch event handler - player touch sends game into dice roll mode
+		// todo do we want the AI to do this automatically?
+		TouchEvent += new TouchEventDelegate( DiceView );
+	}
+	
+	private void ShowDebugStats()
+	{
 		// show / update scoreboard stuff
 		string scoreBoardString = "Batter Up!      " + InningType + " of the " + Inning + "th \n";
 		if (CurrentPlayer == 1)
@@ -308,10 +328,6 @@ public class GameController : MonoBehaviour {
 		scoreBoardString += HomeName + " Score: " + HomeScore + "  \n" + VisitorName + " Score: " + VisitorScore + " \n \n";
 		scoreBoardString += Runners.Count + " runners! Tap to roll!";
 		ScoreboardTextInstance.text = scoreBoardString;
-		
-		// add a touch event handler - player touch sends game into dice roll mode
-		// todo do we want the AI to do this automatically?
-		TouchEvent += new TouchEventDelegate( DiceView );
 	}
 	
 	/// <summary>
@@ -439,6 +455,9 @@ public class GameController : MonoBehaviour {
 			ReturnToBatter();
 			break;
 		}
+		
+		// set the scoreboard display to the roll result
+		Scoreboard.SetStatus( (int) Result );
 		
 		cameraController.FinishedMoving -= new GameCamera.CameraEventHandler( HandleRollOutcome );
 	}
@@ -595,7 +614,11 @@ public class GameController : MonoBehaviour {
 			Destroy( runner );
 		}
 		
-		ScoreboardTextInstance.text = "( Changing Teams )";
+		if ( debugMode )
+		{
+			ScoreboardTextInstance.text = "( Changing Teams )";
+		}
+		
 		if ( CurrentPlayer == 1 )
 		{
 			CurrentPlayer = 2;	
@@ -621,7 +644,10 @@ public class GameController : MonoBehaviour {
 			victoryString = VisitorName + " Wins!";	
 		}
 		
-		ScoreboardTextInstance.text = "( Game Ended ) \n" + victoryString;
+		if ( debugMode )
+		{
+			ScoreboardTextInstance.text = "( Game Ended ) \n" + victoryString;
+		}
 	}
 	
 	// hack a generic loop back to the batter up phase that lasts 3 seconds
@@ -644,14 +670,20 @@ public class GameController : MonoBehaviour {
 	// hack sets the scoreboard to whatever ResultString is 
 	private void UpdateScoreboard( string newText )
 	{
-		ScoreboardTextInstance.text = newText;
+		if ( debugMode )
+		{
+			ScoreboardTextInstance.text = newText;
+		}
 	}
 	
 	// hack clears the scoreboard
 	private void ClearScoreboard( object sender, EventArgs args )
 	{
-		ScoreboardTextInstance.text = "";
-		cameraController.StartedMoving -= new GameCamera.CameraEventHandler( ClearScoreboard );
+		if ( debugMode )
+		{
+			ScoreboardTextInstance.text = "";
+			cameraController.StartedMoving -= new GameCamera.CameraEventHandler( ClearScoreboard );
+		}
 	}
 	
 	// TODO this is a debug shorthand method
