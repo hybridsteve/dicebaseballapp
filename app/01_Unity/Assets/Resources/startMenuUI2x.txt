@@ -1,12 +1,52 @@
 {"frames": {
 
+"arrowFieldSelectLeft.png":
+{
+	"frame": {"x":1836,"y":122,"w":114,"h":114},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":114,"h":114},
+	"sourceSize": {"w":114,"h":114}
+},
+"arrowFieldSelectRight.png":
+{
+	"frame": {"x":1836,"y":4,"w":114,"h":114},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":114,"h":114},
+	"sourceSize": {"w":114,"h":114}
+},
+"backButton.png":
+{
+	"frame": {"x":1954,"y":158,"w":68,"h":66},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":68,"h":66},
+	"sourceSize": {"w":68,"h":66}
+},
+"backButtonDown.png":
+{
+	"frame": {"x":1954,"y":88,"w":68,"h":66},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":68,"h":66},
+	"sourceSize": {"w":68,"h":66}
+},
+"black.png":
+{
+	"frame": {"x":2036,"y":102,"w":6,"h":6},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":6,"h":6},
+	"sourceSize": {"w":6,"h":6}
+},
 "currentGame.png":
 {
-	"frame": {"x":1144,"y":386,"w":210,"h":164},
+	"frame": {"x":1608,"y":166,"w":210,"h":164},
 	"rotated": false,
-	"trimmed": true,
+	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":164},
-	"sourceSize": {"w":209,"h":163}
+	"sourceSize": {"w":210,"h":164}
 },
 "currentGamesBG.png":
 {
@@ -16,29 +56,45 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":640,"h":288},
 	"sourceSize": {"w":640,"h":288}
 },
+"dieBulletPoint.png":
+{
+	"frame": {"x":1954,"y":4,"w":84,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":84,"h":80},
+	"sourceSize": {"w":84,"h":80}
+},
 "dieButtonLarge.png":
 {
 	"frame": {"x":896,"y":296,"w":244,"h":230},
 	"rotated": false,
-	"trimmed": true,
+	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":244,"h":230},
-	"sourceSize": {"w":244,"h":229}
+	"sourceSize": {"w":244,"h":230}
 },
 "dieButtonLargeDown.png":
 {
 	"frame": {"x":648,"y":296,"w":244,"h":230},
 	"rotated": false,
-	"trimmed": true,
+	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":244,"h":230},
-	"sourceSize": {"w":244,"h":229}
+	"sourceSize": {"w":244,"h":230}
+},
+"empty.png":
+{
+	"frame": {"x":2026,"y":88,"w":10,"h":10},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":10},
+	"sourceSize": {"w":10,"h":10}
 },
 "howToPlayButton.png":
 {
 	"frame": {"x":1292,"y":166,"w":312,"h":216},
 	"rotated": false,
-	"trimmed": true,
+	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":312,"h":216},
-	"sourceSize": {"w":312,"h":215}
+	"sourceSize": {"w":312,"h":216}
 },
 "stadiumBG.png":
 {
@@ -50,19 +106,27 @@
 },
 "statsButton.png":
 {
-	"frame": {"x":1608,"y":166,"w":292,"h":278},
+	"frame": {"x":1608,"y":334,"w":292,"h":278},
 	"rotated": false,
-	"trimmed": true,
+	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":292,"h":278},
-	"sourceSize": {"w":292,"h":277}
+	"sourceSize": {"w":292,"h":278}
 },
 "title.png":
 {
 	"frame": {"x":1292,"y":4,"w":540,"h":158},
 	"rotated": false,
-	"trimmed": true,
+	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":540,"h":158},
-	"sourceSize": {"w":539,"h":158}
+	"sourceSize": {"w":540,"h":158}
+},
+"white.png":
+{
+	"frame": {"x":2026,"y":102,"w":6,"h":6},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":6,"h":6},
+	"sourceSize": {"w":6,"h":6}
 }},
 "meta": {
 	"app": "http://www.texturepacker.com",
@@ -71,6 +135,6 @@
 	"format": "RGBA8888",
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:35781f4d263e0e4d75f8335b97a16dac$"
+	"smartupdate": "$TexturePacker:SmartUpdate:c698d95050a2d79d33a7c15eb7568443$"
 }
 }

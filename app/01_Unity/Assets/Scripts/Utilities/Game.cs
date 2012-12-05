@@ -15,6 +15,7 @@ public class Game : System.Object
 	public string opponentName;
 	public int playerScore;
 	public int opponentScore;
+	public DateTime date;
 	
 	public Game( Hashtable gameData )
 	{
@@ -53,6 +54,9 @@ public class Game : System.Object
 					break;
 				case "opponentScore":
 					opponentScore = Convert.ToInt32( gameStatus[key] );
+					break;
+				case "date":
+					date = DateTime.Parse( gameStatus[key].ToString() );
 					break;
 				default:
 					Debug.Log( key + " in the game hashtable not found in class." );

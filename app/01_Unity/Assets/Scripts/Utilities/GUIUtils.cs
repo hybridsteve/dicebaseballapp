@@ -250,8 +250,14 @@ public static class GUIUtils
 	
 	public static void textWrapperScale( UIAbstractContainer layout, UISprite textWrapper, UITextInstance text )
 	{
+		float width = layout.width;
+		textWrapperScale( width, textWrapper, text );
+	}
+	
+	public static void textWrapperScale( float width, UISprite textWrapper, UITextInstance text )
+	{
 		Vector2 textDimensions = text._parentText.sizeForText( text.text );
-		textWrapper.scale = (new Vector3(layout.width / 5, textDimensions.y / 5, 1));
+		textWrapper.scale = (new Vector3(width / 5, textDimensions.y / 5, 1));
 	}
 	
 	public static UISprite createTextWrapper( UIToolkit uiTools, UITextInstance text, UIAbstractContainer layout )
@@ -259,10 +265,21 @@ public static class GUIUtils
 		// Get the right wrapping for the text
 		setTextLayoutWrap( layout, text );
 		
+		return createTextWrapper( uiTools, text, layout.width, true );
+	}
+	
+	public static UISprite createTextWrapper( UIToolkit uiTools, UITextInstance text, float width, bool wrapped )
+	{
+		// Get the right wrapping for the text.
+		if( !wrapped )
+		{
+			setTextWrap( text, width );
+		}
+		
 		// Create the wrapper and scale it
 		// TODO: Check if empty.png exists if not then throw a clear error.
 		UISprite textWrapper = uiTools.addSprite( "empty.png", 0, 0 );
-		textWrapperScale( layout, textWrapper, text );
+		textWrapperScale( width, textWrapper, text );
 		
 		// Make the text a child of the wrapper
 		text.parentUIObject = textWrapper;
@@ -272,6 +289,7 @@ public static class GUIUtils
 		
 		// Return the wrapper
 		return textWrapper;
+		
 	}
 	
 	#endregion
