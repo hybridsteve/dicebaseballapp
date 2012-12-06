@@ -44,8 +44,15 @@ public class GameController : MonoBehaviour {
 	
 	public delegate void WaitBeforeDoingDelegate();
 	public delegate void TouchEventDelegate();
+	public delegate void ScoreUpdatedDelegate();
+	public delegate void AdvancedAnInningDelegate();
+	public delegate void OutDelegate();
 	
 	public event TouchEventDelegate TouchEvent;
+	public event ScoreUpdatedDelegate HomeScoreUpdated;
+	public event ScoreUpdatedDelegate VisitorScoreUpdated;
+	public event AdvancedAnInningDelegate AdvancedAnInning;
+	public event OutDelegate GotAnOut;
 	
 	// todo put in class container
 	public enum InningTypes : int { Top=0, Bottom=1 };
@@ -59,6 +66,8 @@ public class GameController : MonoBehaviour {
 	public string HomeName = "Home Team";
 	public int VisitorScore = 0;
 	public string VisitorName = "Visiting Team";
+	//public int[,] ScoreByInning = new int[,] { { 0 , 0 } , { 0 , 0 } , { 0 , 0 } , { 0 , 0 } , { 0 , 0 } , { 0 , 0 } , { 0 , 0 } , { 0 , 0 } , { 0 , 0 } , { 0 , 0 } };
+	public List<int[]> ScoreByInning = new List<int[]>();
 	public int CurrentPlayer = 2; // 1 is home team, 2 is visitor
 	
 	// todo move this into a mesh controller singleton
@@ -189,7 +198,7 @@ public class GameController : MonoBehaviour {
 			 	Debug.Log( "total rolled is: " + DiceTotal );
 				SetResult( DiceTotal );
 				ScoreboardResultText = DiceTotal + "! " + ResultString;
-				WaitBeforeDoing( 2f, new WaitBeforeDoingDelegate( cameraController.ZoomToField ) );
+				WaitBeforeDoing( 1f, new WaitBeforeDoingDelegate( cameraController.ZoomToField ) );
 				cameraController.FinishedMoving += new GameCamera.CameraEventHandler( HandleRollOutcome );
 				
 				State = States.Rolled;
@@ -266,6 +275,7 @@ public class GameController : MonoBehaviour {
 			// todo instantiate game class
 			Inning = 1;
 			InningType = InningTypes.Top;
+			ScoreByInning.Add( new int[] { 0, 0 } );
 			
 			if ( gameType == GameTypes.Local )
 			{
@@ -283,6 +293,8 @@ public class GameController : MonoBehaviour {
 			// todo loaded a game
 			LoadGame();
 		}
+		
+		Scoreboard.SetInning( Inning );
 	}
 	
 	private void LoadGame()
@@ -301,6 +313,8 @@ public class GameController : MonoBehaviour {
 		
 		// set up batter
 		ShowBatter();
+		
+		Scoreboard.SetStatus( 0 );
 		
 		if ( debugMode )
 		{
@@ -482,6 +496,7 @@ public class GameController : MonoBehaviour {
 		Strikes = 0;
 		//Fouls = 0;
 		Outs += 1;
+		GotAnOut();
 		
 		if ( Outs >= 3 )
 		{
@@ -489,7 +504,7 @@ public class GameController : MonoBehaviour {
 		}
 		else
 		{
-			ReturnToBatter();	
+			ReturnToBatter();
 		}
 	}
 	
@@ -565,11 +580,29 @@ public class GameController : MonoBehaviour {
 	{
 		if ( CurrentPlayer == 1 )
 		{
-			HomeScore += 1;
+			//HomeScore += 1;
+			ScoreByInning[ Inning - 1 ][ 0 ] += 1;
+			int length = ScoreByInning.Count;
+			int totalScore = 0;
+			for ( int i = 0; i < length; i ++ )
+			{
+				totalScore += ScoreByInning[ i ][ 0 ];	
+			}
+			HomeScore = totalScore;
+			HomeScoreUpdated();
 		}
 		else
 		{
-			VisitorScore += 1;	
+			//VisitorScore += 1;
+			ScoreByInning[ Inning - 1 ][ 1 ] += 1;
+			int length = ScoreByInning.Count;
+			int totalScore = 0;
+			for ( int i = 0; i < length; i ++ )
+			{
+				totalScore += ScoreByInning[ i ][ 1 ];	
+			}
+			VisitorScore = totalScore;
+			VisitorScoreUpdated();
 		}
 		
 		Runners.Remove( sender );
@@ -592,7 +625,12 @@ public class GameController : MonoBehaviour {
 				InningType = InningTypes.Top;
 				Inning += 1;
 				Outs = 0;
-				WaitBeforeDoing( 2f, new WaitBeforeDoingDelegate( ChangeTeams ) );
+				
+				ScoreByInning.Add( new int[] { 0, 0 } );
+				
+				AdvancedAnInning();
+				
+				WaitBeforeDoing( 1f, new WaitBeforeDoingDelegate( ChangeTeams ) );
 			}
 			else
 			{
@@ -628,7 +666,7 @@ public class GameController : MonoBehaviour {
 			CurrentPlayer = 1;	
 		}
 		
-		WaitBeforeDoing( 2f, new WaitBeforeDoingDelegate( ReturnToBatter ) );
+		WaitBeforeDoing( 1f, new WaitBeforeDoingDelegate( ReturnToBatter ) );
 	}
 	
 	private void EndGame()

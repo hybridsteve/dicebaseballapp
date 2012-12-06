@@ -1,9 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ScoreboardController.cs">
     <Files>
-      <File FileName="Assets\Scripts\GameController.cs" Line="292" Column="11" />
-      <File FileName="Assets\Scripts\ScoreboardController.cs" Line="73" Column="8" />
+      <File FileName="Assets\Scripts\ScoreboardController.cs" Line="416" Column="70" />
+      <File FileName="Assets\Scripts\GameController.cs" Line="276" Column="14" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -15,7 +15,7 @@
               </Node>
               <Node name="Scripts" expanded="True">
                 <Node name="Utilities" expanded="True" />
-                <Node name="GameController.cs" selected="True" />
+                <Node name="ScoreboardController.cs" selected="True" />
               </Node>
             </Node>
           </Node>

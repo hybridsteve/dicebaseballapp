@@ -16,6 +16,7 @@ ModelImporter:
     4300022: Mesh_X_stateGroundOut
     4300024: Mesh_X_stateStrike
     4300026: Mesh_X_stateWaiting
+    4300028: Mesh_X_outMarker
   serializedVersion: 10
   materials:
     importMaterials: 1
@@ -190,6 +191,19 @@ ModelImporter:
       data:
         first: 33
         second: b65a3200
+    Mesh_X_outMarker:
+      data:
+        first: 1
+        second: be860100
+      data:
+        first: 4
+        second: 9e1a0600
+      data:
+        first: 23
+        second: 7c182300
+      data:
+        first: 33
+        second: bc5a3200
     Mesh_X_stateFlyOut:
       data:
         first: 1
