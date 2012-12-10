@@ -47,12 +47,18 @@ public class GameController : MonoBehaviour {
 	public delegate void ScoreUpdatedDelegate();
 	public delegate void AdvancedAnInningDelegate();
 	public delegate void OutDelegate();
+	public delegate void StrikeDelegate();
+	public delegate void BallDelegate();
+	public delegate void HitDelegate();
 	
 	public event TouchEventDelegate TouchEvent;
 	public event ScoreUpdatedDelegate HomeScoreUpdated;
 	public event ScoreUpdatedDelegate VisitorScoreUpdated;
 	public event AdvancedAnInningDelegate AdvancedAnInning;
 	public event OutDelegate GotAnOut;
+	public event StrikeDelegate GotAStrike;
+	public event BallDelegate GotABall;
+	public event HitDelegate GotAHit;
 	
 	// todo put in class container
 	public enum InningTypes : int { Top=0, Bottom=1 };
@@ -60,6 +66,8 @@ public class GameController : MonoBehaviour {
 	public int NumInnings = 9;
 	public InningTypes InningType = InningTypes.Top;
 	public int Strikes = 0;
+	public int Balls = 0;
+	public bool BallFlag = false;
 	public int Outs = 0;
 	//public int Fouls = 0;
 	public int HomeScore = 0;
@@ -189,6 +197,12 @@ public class GameController : MonoBehaviour {
 				{
 					DiceTotal += controller.DieValue;
 					stoppedDice ++;
+					
+					// If we got a bad result
+					if ( controller.DieValue == 0 )
+					{
+						BallFlag = true;
+					}
 				}
 			}
 			
@@ -202,6 +216,8 @@ public class GameController : MonoBehaviour {
 				cameraController.FinishedMoving += new GameCamera.CameraEventHandler( HandleRollOutcome );
 				
 				State = States.Rolled;
+				
+				// todo set a 'ball' flag when the roll is invalid / returns 0
 			}
 		}
 		
@@ -283,7 +299,8 @@ public class GameController : MonoBehaviour {
 			}
 			else
 			{
-				CurrentPlayer = 1; // if single player, player goes before AI
+				//CurrentPlayer = 1; // if single player, player goes before AI
+				CurrentPlayer = 2; // visitor goes first
 			}
 		
 			StartBatter();
@@ -310,6 +327,7 @@ public class GameController : MonoBehaviour {
 	private void StartBatter()
 	{
 		State = States.Waiting;
+		BallFlag = false;
 		
 		// set up batter
 		ShowBatter();
@@ -425,6 +443,12 @@ public class GameController : MonoBehaviour {
 			Result = Results.Null;
 			break;
 		}
+		
+		if ( BallFlag == true )
+		{
+			ResultString = "Error!";
+			Result = Results.Null;
+		}
 	}
 	
 	private void HandleRollOutcome( object sender, EventArgs e)
@@ -465,6 +489,9 @@ public class GameController : MonoBehaviour {
 			CreateRunner();
 			Hit( 4 );
 			break;
+		case Results.Null:
+			Ball();
+			break;
 		default:
 			ReturnToBatter();
 			break;
@@ -479,6 +506,7 @@ public class GameController : MonoBehaviour {
 	private void Strike()
 	{
 		Strikes += 1;
+		GotAStrike();
 		//Fouls = 0;
 		
 		if ( Strikes >= 3 )
@@ -494,6 +522,7 @@ public class GameController : MonoBehaviour {
 	private void Out()
 	{
 		Strikes = 0;
+		Balls = 0;
 		//Fouls = 0;
 		Outs += 1;
 		GotAnOut();
@@ -528,6 +557,22 @@ public class GameController : MonoBehaviour {
 		}
 	}
 	
+	private void Ball()
+	{
+		Balls += 1;
+		GotABall();
+		
+		if ( Balls > 3 )
+		{
+			// walk the batter
+			Hit( 1 );
+		}
+		else 
+		{
+			ReturnToBatter();
+		}
+	}
+	
 	private void CreateRunner()
 	{
 		// clone the batter into a runner todo variable mesh
@@ -547,6 +592,8 @@ public class GameController : MonoBehaviour {
 	{
 		// remove strikes, fouls
 		Strikes = 0;
+		Balls = 0;
+		GotAHit();
 		//Fouls = 0;
 		
 		// for each runner, advance a base

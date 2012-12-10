@@ -8,7 +8,7 @@ public class ScoreboardController : MonoBehaviour {
 	private GameController game;
 	
 	// game objects that store the x and y positions of the physical scoreboard positions
-	private Vector3 column1, column2, column3, column4, row2, row3, row4, outMarker1, outMarker2;
+	private Vector3 column1, column2, column3, column4, row2, row3, row4, outMarker1, outMarker2, strikeMarker1, strikeMarker2, ballMarker1, ballMarker2, ballMarker3;
 	// instantiable gameobjects that represent glyphs
 	public GameObject inn0, inn1, inn2, inn3, inn4, inn5, inn6, inn7, inn8, inn9;
 	public GameObject[] InningMarkerGlyphs;
@@ -31,6 +31,8 @@ public class ScoreboardController : MonoBehaviour {
 	private List<GameObject> GuestScoreMarker1, GuestScoreMarker2, GuestScoreMarker3;
 	private List<GameObject> HomeScoreMarker1, HomeScoreMarker2, HomeScoreMarker3;
 	private List<GameObject> OutMarkers = new List<GameObject>();
+	private List<GameObject> StrikeMarkers = new List<GameObject>();
+	private List<GameObject> BallMarkers = new List<GameObject>();
 	private GameObject StatusMessage;
 	
 	// Use this for initialization
@@ -51,6 +53,11 @@ public class ScoreboardController : MonoBehaviour {
 		row4 = GameObject.Find( "row4" ).transform.position;
 		outMarker1 = GameObject.Find( "outMarker1" ).transform.position;
 		outMarker2 = GameObject.Find( "outMarker2" ).transform.position;
+		strikeMarker1 = GameObject.Find( "strikeMarker1" ).transform.position;
+		strikeMarker2 = GameObject.Find( "strikeMarker2" ).transform.position;
+		ballMarker1 = GameObject.Find( "ballMarker1" ).transform.position;
+		ballMarker2 = GameObject.Find( "ballMarker2" ).transform.position;
+		ballMarker3 = GameObject.Find( "ballMarker3" ).transform.position;
 		
 		// hack test: set the value of the inning tiles
 		GameObject innMarker1, innMarker2, innMarker3;
@@ -131,6 +138,9 @@ public class ScoreboardController : MonoBehaviour {
 		game.VisitorScoreUpdated += new GameController.ScoreUpdatedDelegate( OnVisitorScoreUpdate );
 		game.AdvancedAnInning += new GameController.AdvancedAnInningDelegate( OnNewInning );
 		game.GotAnOut += new GameController.OutDelegate( OnOut );
+		game.GotAStrike += new GameController.StrikeDelegate( OnStrike );
+		game.GotABall += new GameController.BallDelegate( OnBall );
+		game.GotAHit += new GameController.HitDelegate( OnHit );
 	}
 	
 	// Update is called once per frame
@@ -158,10 +168,31 @@ public class ScoreboardController : MonoBehaviour {
 		SetInning( game.Inning );
 	}
 	
+	private void OnStrike()
+	{
+		Debug.Log( "scoreboard noticed that batter got a strike" );
+		AddStrikeMarker();
+	}
+	
+	private void OnBall()
+	{
+		Debug.Log( "scoreboard noticed that batter got a ball" );
+		AddBallMarker();
+	}
+	
 	private void OnOut()
 	{
 		Debug.Log( "scoreboard sees out" );
 		AddOutMarker();
+		ClearStrikes();
+		ClearBalls();
+	}
+	
+	private void OnHit()
+	{
+		Debug.Log( "scoreboard sees hit" );
+		ClearStrikes();
+		ClearBalls();
 	}
 	
 	public void SetStatus( int status )
@@ -480,5 +511,78 @@ public class ScoreboardController : MonoBehaviour {
 		default:
 			break;
 		}
+	}
+	
+	private void AddStrikeMarker()
+	{
+		int numStrikes = game.Strikes;
+		GameObject marker;
+		switch (numStrikes)
+		{
+		case 1:
+			marker = (GameObject) GameObject.Instantiate( outMarker );
+			marker.transform.position = strikeMarker1;
+			StrikeMarkers.Add( marker );
+			break;
+		case 2:
+			marker = (GameObject) GameObject.Instantiate( outMarker );
+			marker.transform.position = strikeMarker2;
+			StrikeMarkers.Add( marker );
+			break;
+		case 3:
+			ClearStrikes();
+			
+			break;
+		default:
+			break;
+		}
+	}
+	
+	private void AddBallMarker()
+	{
+		int numBalls = game.Balls;
+		GameObject marker;
+		switch (numBalls)
+		{
+		case 1:
+			marker = (GameObject) GameObject.Instantiate( outMarker );
+			marker.transform.position = ballMarker1;
+			BallMarkers.Add( marker );
+			break;
+		case 2:
+			marker = (GameObject) GameObject.Instantiate( outMarker );
+			marker.transform.position = ballMarker2;
+			BallMarkers.Add( marker );
+			break;
+		case 3:
+			marker = (GameObject) GameObject.Instantiate( outMarker );
+			marker.transform.position = ballMarker3;
+			BallMarkers.Add( marker );
+			break;
+		case 4:
+			ClearBalls();
+			
+			break;
+		default:
+			break;
+		}
+	}
+	
+	private void ClearStrikes()
+	{
+		foreach (GameObject obj in StrikeMarkers)
+		{
+			GameObject.Destroy( obj );	
+		}
+		StrikeMarkers = new List<GameObject>();
+	}
+	
+	private void ClearBalls()
+	{
+		foreach (GameObject obj in BallMarkers)
+		{
+			GameObject.Destroy( obj );
+		}
+		BallMarkers = new List<GameObject>();
 	}
 }

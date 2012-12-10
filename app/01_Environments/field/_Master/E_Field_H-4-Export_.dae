@@ -4,15 +4,15 @@
 		<contributor>
 			<authoring_tool>Autodesk Softimage version 9.5.184.0 - Crosswalk 2011.5</authoring_tool>
 		</contributor>
-		<created>2012-12-10T16:08:19Z</created>
-		<modified>2012-12-10T16:08:19Z</modified>
+		<created>2012-12-10T16:07:31Z</created>
+		<modified>2012-12-10T16:07:31Z</modified>
 		<revision>1.4.1</revision>
 		<unit meter="0.1" name="decimetre"></unit>
 		<up_axis>Y_UP</up_axis>
 	</asset>
 	<library_images>
 		<image id="field_diffuse_v00_0001_psd_img" format="bitmap" height="256" width="256" depth="32" name="field_diffuse_v00_0001_psd_img">
-			<init_from>../../../../01_Environments/field/Maps/WIP/PSD/field_diffuse_v00_0001.psd</init_from>
+			<init_from>../Maps/WIP/PSD/field_diffuse_v00_0001.psd</init_from>
 			<extra>
 				<technique profile="XSI">
 					<XSI_Image>
