@@ -16,6 +16,8 @@ public class GameController : MonoBehaviour {
 	public GameObject Die;
 	public GameObject Batter;
 	
+	private ScoreboardController Scoreboard;
+	
 	private bool createdDice = false;
 	private List<GameObject> Dice = new List<GameObject>();
 	private List<GameObject> Runners = new List<GameObject>();
@@ -42,8 +44,21 @@ public class GameController : MonoBehaviour {
 	
 	public delegate void WaitBeforeDoingDelegate();
 	public delegate void TouchEventDelegate();
+	public delegate void ScoreUpdatedDelegate();
+	public delegate void AdvancedAnInningDelegate();
+	public delegate void OutDelegate();
+	public delegate void StrikeDelegate();
+	public delegate void BallDelegate();
+	public delegate void HitDelegate();
 	
 	public event TouchEventDelegate TouchEvent;
+	public event ScoreUpdatedDelegate HomeScoreUpdated;
+	public event ScoreUpdatedDelegate VisitorScoreUpdated;
+	public event AdvancedAnInningDelegate AdvancedAnInning;
+	public event OutDelegate GotAnOut;
+	public event StrikeDelegate GotAStrike;
+	public event BallDelegate GotABall;
+	public event HitDelegate GotAHit;
 	
 	// todo put in class container
 	public enum InningTypes : int { Top=0, Bottom=1 };
@@ -51,12 +66,16 @@ public class GameController : MonoBehaviour {
 	public int NumInnings = 9;
 	public InningTypes InningType = InningTypes.Top;
 	public int Strikes = 0;
+	public int Balls = 0;
+	public bool BallFlag = false;
 	public int Outs = 0;
 	//public int Fouls = 0;
 	public int HomeScore = 0;
 	public string HomeName = "Home Team";
 	public int VisitorScore = 0;
 	public string VisitorName = "Visiting Team";
+	//public int[,] ScoreByInning = new int[,] { { 0 , 0 } , { 0 , 0 } , { 0 , 0 } , { 0 , 0 } , { 0 , 0 } , { 0 , 0 } , { 0 , 0 } , { 0 , 0 } , { 0 , 0 } , { 0 , 0 } };
+	public List<int[]> ScoreByInning = new List<int[]>();
 	public int CurrentPlayer = 2; // 1 is home team, 2 is visitor
 	
 	// todo move this into a mesh controller singleton
@@ -68,10 +87,16 @@ public class GameController : MonoBehaviour {
 		//cameraController = (GameCamera) GameCamera.GetComponent(typeof(GameCamera));
 		cameraController = GameCamera.GetComponent<GameCamera>();
 		
-		// create some text
-		ScoreboardText = new UIText( "Trebuchet14", "Trebuchet14.png" );
-		ScoreboardTextInstance = ScoreboardText.addTextInstance( "Initial Setup", 0f, 0f, 1f, 0 );
-		ScoreboardTextInstance.positionFromTop( 0.05f );
+		// find the scoreboard controller
+		Scoreboard = GameObject.Find( "ScoreboardController" ).GetComponent<ScoreboardController>();
+		
+		// debug text setup
+		if ( debugMode )
+		{
+			ScoreboardText = new UIText( Treb18, "Trebuchet14", "Trebuchet14.png" );
+			ScoreboardTextInstance = ScoreboardText.addTextInstance( "Initial Setup", 0f, 0f, 1f, 0 );
+			ScoreboardTextInstance.positionFromTop( 0.05f );
+		}
 		
 		// todo set gametype based on menu choice
 		//GameType = GameTypes.Single;
@@ -172,6 +197,12 @@ public class GameController : MonoBehaviour {
 				{
 					DiceTotal += controller.DieValue;
 					stoppedDice ++;
+					
+					// If we got a bad result
+					if ( controller.DieValue == 0 )
+					{
+						BallFlag = true;
+					}
 				}
 			}
 			
@@ -181,10 +212,12 @@ public class GameController : MonoBehaviour {
 			 	Debug.Log( "total rolled is: " + DiceTotal );
 				SetResult( DiceTotal );
 				ScoreboardResultText = DiceTotal + "! " + ResultString;
-				WaitBeforeDoing( 2f, new WaitBeforeDoingDelegate( cameraController.ZoomToField ) );
+				WaitBeforeDoing( 1f, new WaitBeforeDoingDelegate( cameraController.ZoomToField ) );
 				cameraController.FinishedMoving += new GameCamera.CameraEventHandler( HandleRollOutcome );
 				
 				State = States.Rolled;
+				
+				// todo set a 'ball' flag when the roll is invalid / returns 0
 			}
 		}
 		
@@ -258,6 +291,7 @@ public class GameController : MonoBehaviour {
 			// todo instantiate game class
 			Inning = 1;
 			InningType = InningTypes.Top;
+			ScoreByInning.Add( new int[] { 0, 0 } );
 			
 			if ( gameType == GameTypes.Local )
 			{
@@ -265,7 +299,8 @@ public class GameController : MonoBehaviour {
 			}
 			else
 			{
-				CurrentPlayer = 1; // if single player, player goes before AI
+				//CurrentPlayer = 1; // if single player, player goes before AI
+				CurrentPlayer = 2; // visitor goes first
 			}
 		
 			StartBatter();
@@ -275,13 +310,15 @@ public class GameController : MonoBehaviour {
 			// todo loaded a game
 			LoadGame();
 		}
+		
+		Scoreboard.SetInning( Inning );
 	}
 	
 	private void LoadGame()
 	{
-		// get the game date from somewhere
+		// todo get the game date from somewhere
 		
-		// instantiate game class with data
+		// todo instantiate game class with data
 	}
 	
 	/// <summary>
@@ -290,10 +327,25 @@ public class GameController : MonoBehaviour {
 	private void StartBatter()
 	{
 		State = States.Waiting;
+		BallFlag = false;
 		
 		// set up batter
 		ShowBatter();
 		
+		Scoreboard.SetStatus( 0 );
+		
+		if ( debugMode )
+		{
+			ShowDebugStats();
+		}
+		
+		// add a touch event handler - player touch sends game into dice roll mode
+		// todo do we want the AI to do this automatically?
+		TouchEvent += new TouchEventDelegate( DiceView );
+	}
+	
+	private void ShowDebugStats()
+	{
 		// show / update scoreboard stuff
 		string scoreBoardString = "Batter Up!      " + InningType + " of the " + Inning + "th \n";
 		if (CurrentPlayer == 1)
@@ -308,10 +360,6 @@ public class GameController : MonoBehaviour {
 		scoreBoardString += HomeName + " Score: " + HomeScore + "  \n" + VisitorName + " Score: " + VisitorScore + " \n \n";
 		scoreBoardString += Runners.Count + " runners! Tap to roll!";
 		ScoreboardTextInstance.text = scoreBoardString;
-		
-		// add a touch event handler - player touch sends game into dice roll mode
-		// todo do we want the AI to do this automatically?
-		TouchEvent += new TouchEventDelegate( DiceView );
 	}
 	
 	/// <summary>
@@ -395,6 +443,12 @@ public class GameController : MonoBehaviour {
 			Result = Results.Null;
 			break;
 		}
+		
+		if ( BallFlag == true )
+		{
+			ResultString = "Error!";
+			Result = Results.Null;
+		}
 	}
 	
 	private void HandleRollOutcome( object sender, EventArgs e)
@@ -435,10 +489,16 @@ public class GameController : MonoBehaviour {
 			CreateRunner();
 			Hit( 4 );
 			break;
+		case Results.Null:
+			Ball();
+			break;
 		default:
 			ReturnToBatter();
 			break;
 		}
+		
+		// set the scoreboard display to the roll result
+		Scoreboard.SetStatus( (int) Result );
 		
 		cameraController.FinishedMoving -= new GameCamera.CameraEventHandler( HandleRollOutcome );
 	}
@@ -446,6 +506,7 @@ public class GameController : MonoBehaviour {
 	private void Strike()
 	{
 		Strikes += 1;
+		GotAStrike();
 		//Fouls = 0;
 		
 		if ( Strikes >= 3 )
@@ -461,8 +522,10 @@ public class GameController : MonoBehaviour {
 	private void Out()
 	{
 		Strikes = 0;
+		Balls = 0;
 		//Fouls = 0;
 		Outs += 1;
+		GotAnOut();
 		
 		if ( Outs >= 3 )
 		{
@@ -470,7 +533,7 @@ public class GameController : MonoBehaviour {
 		}
 		else
 		{
-			ReturnToBatter();	
+			ReturnToBatter();
 		}
 	}
 	
@@ -494,6 +557,22 @@ public class GameController : MonoBehaviour {
 		}
 	}
 	
+	private void Ball()
+	{
+		Balls += 1;
+		GotABall();
+		
+		if ( Balls > 3 )
+		{
+			// walk the batter
+			Hit( 1 );
+		}
+		else 
+		{
+			ReturnToBatter();
+		}
+	}
+	
 	private void CreateRunner()
 	{
 		// clone the batter into a runner todo variable mesh
@@ -513,6 +592,8 @@ public class GameController : MonoBehaviour {
 	{
 		// remove strikes, fouls
 		Strikes = 0;
+		Balls = 0;
+		GotAHit();
 		//Fouls = 0;
 		
 		// for each runner, advance a base
@@ -546,11 +627,29 @@ public class GameController : MonoBehaviour {
 	{
 		if ( CurrentPlayer == 1 )
 		{
-			HomeScore += 1;
+			//HomeScore += 1;
+			ScoreByInning[ Inning - 1 ][ 0 ] += 1;
+			int length = ScoreByInning.Count;
+			int totalScore = 0;
+			for ( int i = 0; i < length; i ++ )
+			{
+				totalScore += ScoreByInning[ i ][ 0 ];	
+			}
+			HomeScore = totalScore;
+			HomeScoreUpdated();
 		}
 		else
 		{
-			VisitorScore += 1;	
+			//VisitorScore += 1;
+			ScoreByInning[ Inning - 1 ][ 1 ] += 1;
+			int length = ScoreByInning.Count;
+			int totalScore = 0;
+			for ( int i = 0; i < length; i ++ )
+			{
+				totalScore += ScoreByInning[ i ][ 1 ];	
+			}
+			VisitorScore = totalScore;
+			VisitorScoreUpdated();
 		}
 		
 		Runners.Remove( sender );
@@ -573,7 +672,12 @@ public class GameController : MonoBehaviour {
 				InningType = InningTypes.Top;
 				Inning += 1;
 				Outs = 0;
-				WaitBeforeDoing( 2f, new WaitBeforeDoingDelegate( ChangeTeams ) );
+				
+				ScoreByInning.Add( new int[] { 0, 0 } );
+				
+				AdvancedAnInning();
+				
+				WaitBeforeDoing( 1f, new WaitBeforeDoingDelegate( ChangeTeams ) );
 			}
 			else
 			{
@@ -595,7 +699,11 @@ public class GameController : MonoBehaviour {
 			Destroy( runner );
 		}
 		
-		ScoreboardTextInstance.text = "( Changing Teams )";
+		if ( debugMode )
+		{
+			ScoreboardTextInstance.text = "( Changing Teams )";
+		}
+		
 		if ( CurrentPlayer == 1 )
 		{
 			CurrentPlayer = 2;	
@@ -605,7 +713,7 @@ public class GameController : MonoBehaviour {
 			CurrentPlayer = 1;	
 		}
 		
-		WaitBeforeDoing( 2f, new WaitBeforeDoingDelegate( ReturnToBatter ) );
+		WaitBeforeDoing( 1f, new WaitBeforeDoingDelegate( ReturnToBatter ) );
 	}
 	
 	private void EndGame()
@@ -621,7 +729,10 @@ public class GameController : MonoBehaviour {
 			victoryString = VisitorName + " Wins!";	
 		}
 		
-		ScoreboardTextInstance.text = "( Game Ended ) \n" + victoryString;
+		if ( debugMode )
+		{
+			ScoreboardTextInstance.text = "( Game Ended ) \n" + victoryString;
+		}
 	}
 	
 	// hack a generic loop back to the batter up phase that lasts 3 seconds
@@ -644,14 +755,20 @@ public class GameController : MonoBehaviour {
 	// hack sets the scoreboard to whatever ResultString is 
 	private void UpdateScoreboard( string newText )
 	{
-		ScoreboardTextInstance.text = newText;
+		if ( debugMode )
+		{
+			ScoreboardTextInstance.text = newText;
+		}
 	}
 	
 	// hack clears the scoreboard
 	private void ClearScoreboard( object sender, EventArgs args )
 	{
-		ScoreboardTextInstance.text = "";
-		cameraController.StartedMoving -= new GameCamera.CameraEventHandler( ClearScoreboard );
+		if ( debugMode )
+		{
+			ScoreboardTextInstance.text = "";
+			cameraController.StartedMoving -= new GameCamera.CameraEventHandler( ClearScoreboard );
+		}
 	}
 	
 	// TODO this is a debug shorthand method
