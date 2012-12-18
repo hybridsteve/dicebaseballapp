@@ -10,9 +10,10 @@ public class Test_json : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
-		string jsonRaw = jsonFile.text;
+		// Commented out because of change to parameters in GameInfo, this test is not needed anymore.
+		//string jsonRaw = jsonFile.text;
 		
-		GameInfo gameInfo = new GameInfo( jsonRaw );
+		//GameInfo gameInfo = new GameInfo( jsonRaw );
 	}
 	
 }

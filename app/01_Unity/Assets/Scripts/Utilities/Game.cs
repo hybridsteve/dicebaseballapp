@@ -9,7 +9,7 @@ public class Game : System.Object
 		get { return this.gameName; }
 	}
 	
-	string gameName;
+	private string gameName;
 	public int inning;
 	public bool playerTurn;
 	public string opponentName;
@@ -63,12 +63,28 @@ public class Game : System.Object
 					break;
 			}
 		}
+	}
+	
+	public string ConvertGameToJSON()
+	{
+		Hashtable gamesHash = ConvertGameToHash();
+		return MiniJSON.jsonEncode(gamesHash);
+	}
+	
+	public Hashtable ConvertGameToHash()
+	{
+		Hashtable gamesHash = new Hashtable();
+		Hashtable gameHash = new Hashtable();
 		
-		Debug.Log( "Game Name: " + gameName );
-		Debug.Log( "Current Inning: " + inning );
-		Debug.Log( "Player turn: " + playerTurn );
-		Debug.Log( "Opponent Name: " + opponentName );
-		Debug.Log( "Current Score: " + playerScore + "/" + opponentScore );
-		Debug.Log( "-----------------------------" );
+		gameHash["inning"] = inning;
+		gameHash["turn"] = playerTurn;
+		gameHash["opponentScore"] = opponentScore;
+		gameHash["playerScore"] = playerScore;
+		gameHash["opponent"] = opponentName;
+		gameHash["date"] = date.ToString();
+		
+		gamesHash[name] = gameHash;
+		
+		return gamesHash;
 	}
 }

@@ -2,7 +2,7 @@
 
 "arrowFieldSelectLeft.png":
 {
-	"frame": {"x":1836,"y":122,"w":114,"h":114},
+	"frame": {"x":930,"y":1378,"w":114,"h":114},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":114,"h":114},
@@ -10,7 +10,7 @@
 },
 "arrowFieldSelectRight.png":
 {
-	"frame": {"x":1836,"y":4,"w":114,"h":114},
+	"frame": {"x":930,"y":1260,"w":114,"h":114},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":114,"h":114},
@@ -18,7 +18,7 @@
 },
 "backButton.png":
 {
-	"frame": {"x":1954,"y":158,"w":68,"h":66},
+	"frame": {"x":706,"y":1776,"w":68,"h":66},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":68,"h":66},
@@ -26,7 +26,7 @@
 },
 "backButtonDown.png":
 {
-	"frame": {"x":1954,"y":88,"w":68,"h":66},
+	"frame": {"x":634,"y":1776,"w":68,"h":66},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":68,"h":66},
@@ -34,7 +34,7 @@
 },
 "black.png":
 {
-	"frame": {"x":2036,"y":102,"w":6,"h":6},
+	"frame": {"x":14,"y":2030,"w":6,"h":6},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":6,"h":6},
@@ -42,7 +42,7 @@
 },
 "currentGame.png":
 {
-	"frame": {"x":1608,"y":166,"w":210,"h":164},
+	"frame": {"x":4,"y":1848,"w":210,"h":164},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":210,"h":164},
@@ -50,7 +50,7 @@
 },
 "currentGamesBG.png":
 {
-	"frame": {"x":648,"y":4,"w":640,"h":288},
+	"frame": {"x":634,"y":968,"w":640,"h":288},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":640,"h":288},
@@ -58,7 +58,7 @@
 },
 "dieBulletPoint.png":
 {
-	"frame": {"x":1954,"y":4,"w":84,"h":80},
+	"frame": {"x":1048,"y":1260,"w":84,"h":80},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":84,"h":80},
@@ -66,7 +66,7 @@
 },
 "dieButtonLarge.png":
 {
-	"frame": {"x":896,"y":296,"w":244,"h":230},
+	"frame": {"x":778,"y":1776,"w":244,"h":230},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":244,"h":230},
@@ -74,7 +74,7 @@
 },
 "dieButtonLargeDown.png":
 {
-	"frame": {"x":648,"y":296,"w":244,"h":230},
+	"frame": {"x":634,"y":1542,"w":244,"h":230},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":244,"h":230},
@@ -82,7 +82,7 @@
 },
 "empty.png":
 {
-	"frame": {"x":2026,"y":88,"w":10,"h":10},
+	"frame": {"x":4,"y":2016,"w":10,"h":10},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":10},
@@ -90,7 +90,7 @@
 },
 "howToPlayButton.png":
 {
-	"frame": {"x":1292,"y":166,"w":312,"h":216},
+	"frame": {"x":882,"y":1542,"w":312,"h":216},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":312,"h":216},
@@ -106,15 +106,23 @@
 },
 "statsButton.png":
 {
-	"frame": {"x":1608,"y":334,"w":292,"h":278},
+	"frame": {"x":634,"y":1260,"w":292,"h":278},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":292,"h":278},
 	"sourceSize": {"w":292,"h":278}
 },
+"statsSheet.png":
+{
+	"frame": {"x":4,"y":968,"w":626,"h":876},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":626,"h":876},
+	"sourceSize": {"w":626,"h":876}
+},
 "title.png":
 {
-	"frame": {"x":1292,"y":4,"w":540,"h":158},
+	"frame": {"x":218,"y":1848,"w":540,"h":158},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":540,"h":158},
@@ -122,7 +130,7 @@
 },
 "white.png":
 {
-	"frame": {"x":2026,"y":102,"w":6,"h":6},
+	"frame": {"x":4,"y":2030,"w":6,"h":6},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":6,"h":6},
@@ -135,6 +143,6 @@
 	"format": "RGBA8888",
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:c698d95050a2d79d33a7c15eb7568443$"
+	"smartupdate": "$TexturePacker:SmartUpdate:8d2bddc8935ae5d3f0e3746b4debafc0$"
 }
 }

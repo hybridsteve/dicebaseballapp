@@ -64,7 +64,7 @@
      <None Include="Assets\Plugins\UIToolkit\Shaders\UIToolkit Alpha Enabled (3002).shader" />
      <None Include="Assets\Resources\Graphite18.txt" />
      <None Include="Assets\Resources\startMenuUI2x.txt" />
-     <None Include="Assets\Resources\test_JSON.txt" />
+     <None Include="Assets\Resources\test_gamesJSON.txt" />
      <None Include="Assets\Resources\Graphite36.txt" />
      <None Include="Assets\Resources\graph.txt" />
      <None Include="Assets\Resources\Graphite15.txt" />
@@ -83,6 +83,16 @@
      <None Include="Assets\Resources\Graphite182x.txt" />
      <None Include="Assets\Resources\treb24.txt" />
      <None Include="Assets\Resources\Graphite152x.txt" />
+     <None Include="Assets\Resources\test_statsJSON.txt" />
+ <Reference Include="Mono.Data">
+ <HintPath>Assets\Plugins\Mono.Data.dll</HintPath>
+ </Reference>
+ <Reference Include="Mono.Data.Sqlite">
+ <HintPath>Assets\Plugins\Mono.Data.Sqlite.dll</HintPath>
+ </Reference>
+ <Reference Include="Mono.Data.SqliteClient">
+ <HintPath>Assets\Plugins\Mono.Data.SqliteClient.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

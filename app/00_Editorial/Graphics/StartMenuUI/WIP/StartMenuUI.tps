@@ -173,6 +173,7 @@
             <filename>Useful/empty.png</filename>
             <filename>Useful/backButtonDown.png</filename>
             <filename>Useful/backButton.png</filename>
+            <filename>Useful/statsSheet.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

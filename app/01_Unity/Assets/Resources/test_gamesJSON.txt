@@ -3,10 +3,10 @@
 	[
 		{ "game1":
 			{
-				"inning": 5,
+				"inning": 25,
 				"turn": false,
 				"opponentScore": 5,
-				"playerScore": 8,
+				"playerScore": 13,
 				"opponent": "Gabo",
 				"date": "5/1/2008 8:30:52 AM"
 			}

@@ -16,19 +16,21 @@ public class UIStartMenu : MonoBehaviour {
 	UIButton backButton;
 	
 	// Parent objects
-	private UIObject landingParent, startScreenParent, playerNameParent, fieldSelectParent, instructionsParent;
+	private UIObject landingParent, startScreenParent, playerNameParent, fieldSelectParent, instructionsParent, statsParent;
 	
 	private UIObject currentScreen;
 	
 	// Start Screen Objects
 	UIScrollableHorizontalLayout currentGamesLayout;
+	//UIButton howToPlayButton;
 	
 	// TODO: TEMPORARY!!!!! Get the json object from somewhere else to mantain MVC. Proof of concpet for now.
-	public TextAsset jsonRaw;
+	public TextAsset jsonGames;
+	public TextAsset jsonStats;
 	
 	// Text Input
 	private bool playerNameInput = false;
-	private string name = "Player Name";
+	private string nameInputText = "Player Name";
 	GUIStyle textInputStyle;
 	float textInputWidth;
 	float textInputHeight;
@@ -63,7 +65,7 @@ public class UIStartMenu : MonoBehaviour {
 		textInputHeight = 55;
 		GUIUtils.hd( ref textInputHeight );
 		textInputPosX = Screen.width / 2 - textInputWidth / 2;
-		textInputPosY = Screen.height / 2 - textInputHeight / 2;
+		textInputPosY = Screen.height / 2 - textInputHeight / 2 + 15;
 		
 		// Call the creation methods
 		createLandingScreen();
@@ -71,6 +73,7 @@ public class UIStartMenu : MonoBehaviour {
 		createPlayerNameScreen();
 		createFieldSelectScreen();
 		createInstructionsScreen();
+		createStatsScreen();
 		
 		// Create the Back Button
 		backButton = UIButton.create( uiTools, "backButton.png", "backButtonDown.png", 0, 0 );
@@ -83,7 +86,7 @@ public class UIStartMenu : MonoBehaviour {
 		if( playerNameInput )
 		{
 			GUILayout.BeginArea( new Rect( textInputPosX, textInputPosY, textInputWidth, textInputHeight ) );
-			name = GUILayout.TextArea( name, textInputStyle );
+			nameInputText = GUILayout.TextArea( nameInputText, textInputStyle );
 			GUILayout.EndArea();
 		}
 	}
@@ -188,6 +191,7 @@ public class UIStartMenu : MonoBehaviour {
 		singlePlayerButton.onTouchUpInside += (sender) => showPlayerNameScreen();
 		multiPlayerButton.onTouchUpInside += (sender) => showPlayerNameScreen();
 		howToPlayButton.onTouchUpInside += (sender) => showInstructionsScreen();
+		statsButton.onTouchUpInside += (sender) => showStatsScreen();
 		
 		// Move the panel off screen
 		startScreenParent.positionFromTopLeft( 0, 1 );
@@ -309,6 +313,46 @@ public class UIStartMenu : MonoBehaviour {
 		instructionsParent.positionFromTopLeft( 0, 4 );
 	}
 	
+	private void createStatsScreen()
+	{
+		// Create the parent object
+		statsParent = new UIObject();
+		statsParent.client.name = "StatsScreen";
+		
+		UISprite statsSheet = uiTools.addSprite( "statsSheet.png", 0, 0, 10 );
+		statsSheet.positionFromBottomRight( 0, 0 );
+		
+		int baseOffset = 18;
+		int statOffset = 40;
+		UITextInstance[] statNames = new UITextInstance[5];
+		for( int i = 1; i <= 5; i++  )	
+		{
+			string stat = "Statistic " + i;
+			UITextInstance statName = graph20.addTextInstance( stat, 0, 0 );
+			statName.parentUIObject = statsSheet;
+			statName.pixelsFromTopLeft( baseOffset + (statOffset * i), 25 );
+			statName.parentUIObject = statsParent;
+			statNames[i-1] = statName;
+		}
+		
+		// Get the stats
+		string[] stats = getStats();
+		
+		for( int i = 0; i < statNames.Length; i++)
+		{
+			UITextInstance stat = graph20.addTextInstance( stats[i], 0, 0 );
+			stat.parentUIObject = statNames[i];
+			stat.pixelsFromLeft( 200 );
+			stat.parentUIObject = statsParent;
+		}
+		
+		// Parent the objects to the parent
+		statsSheet.parentUIObject = statsParent;
+		
+		// Move off screen
+		statsParent.positionFromTopLeft( 0, 5 );
+	}
+	
 	#endregion
 	
 	private void AddGamesToLayout(params List<Game>[] games)
@@ -351,7 +395,8 @@ public class UIStartMenu : MonoBehaviour {
 	private void findCurrentGames()
 	{
 		// TODO: The jsonRaw variable is temporary right now. Get it from the server and mantain MVC.
-		GameInfo games = new GameInfo( jsonRaw.text );
+		// TODO: Getting the stats here too. Probably not necessary to get them from here.
+		GameInfo games = new GameInfo( jsonGames.text, jsonStats.text );
 		
 		List<Game> playerTurnGames = new List<Game>();
 		List<Game> opponentTurnGames = new List<Game>();
@@ -376,6 +421,32 @@ public class UIStartMenu : MonoBehaviour {
 		opponentTurnGames.Sort( (a,b) => DateTime.Compare( a.date, b.date ) );
 		
 		AddGamesToLayout( playerTurnGames, opponentTurnGames );
+		
+		Debug.Log( "TEMP DELETE THIS BLOCK" );
+		games.updateLocalGames();
+	}
+	
+	// TODO: Placeholder code until implementation
+	private string[] getStats()
+	{
+		string[] stats = new string[5];
+		
+		for( int i = 0; i < 5; i++ )
+		{
+			string randStat = ( Math.Truncate( (double)(UnityEngine.Random.Range( 0f, 1f )) * 1000.0 ) / 1000.0 ).ToString();
+
+			if( randStat.Length < 5 )
+			{
+				int zeroAdd = 5 - randStat.Length;
+				for( int j = 0; j < zeroAdd; j++ )
+				{
+					randStat += "0";
+				}
+			}
+			stats[i] = randStat;
+		}
+		
+		return stats;
 	}
 	
 	#region showHide Screens
@@ -416,7 +487,7 @@ public class UIStartMenu : MonoBehaviour {
 	{
 		// Move the startScreen off the screen.
 		// TODO: This should have a method so we can apply it to all the screens maybe?
-		startScreenParent.positionFromTopLeft( 0, -1 );
+		startScreenParent.positionFromTopLeft( 0, -2 );
 		playerNameParent.positionFromTopLeft( 0, 0 );
 		
 		currentScreen = playerNameParent;
@@ -447,6 +518,21 @@ public class UIStartMenu : MonoBehaviour {
 		currentScreen = instructionsParent;
 	}
 	
+	private void showStatsScreen()
+	{
+		Debug.Log( "1" );
+		startScreenParent.positionFromTopLeft( 0, 1 );
+		Debug.Log( "2" );
+		Debug.Log( statsParent.client.name );
+		statsParent.positionFromTopLeft( 0, 0 );
+		Debug.Log( "3" );
+		hideStadium();
+		Debug.Log( "4" );
+		currentScreen = statsParent;
+		Debug.Log( "5" );
+	}
+	
+	// TODO: All of this should use the methods above and create the missing ones that will use the animations.
 	private void backPressed()
 	{
 		switch( currentScreen.client.name )
@@ -460,18 +546,26 @@ public class UIStartMenu : MonoBehaviour {
 			case "PlayerNameScreen":
 				playerNameParent.positionFromTopLeft( 0, 2 );
 				startScreenParent.positionFromTopLeft( 0, 0 );
-				currentScreen = playerNameParent;
+				currentScreen = startScreenParent;
 				playerNameInput = false;
 				break;
 			case "FieldSelectScreen":
 				fieldSelectParent.positionFromTopLeft( 0, 3 );
 				playerNameParent.positionFromTopLeft( 0, 0 );
-				currentScreen = fieldSelectParent;
+				currentScreen = playerNameParent;
+				playerNameInput = true;
 				break;
 			case "InstructionsScreen":
 				instructionsParent.positionFromTopLeft( 0, 4 );
 				startScreenParent.positionFromTopLeft( 0, 0 );
-				currentScreen = instructionsParent;
+				currentScreen = startScreenParent;
+				showStadium();
+				break;
+			case "StatsScreen":
+				statsParent.positionFromTopLeft( 0, 5 );
+				startScreenParent.positionFromTopLeft( 0, 0 );
+				currentScreen = startScreenParent;
+				showStadium();
 				break;
 			default:
 				Debug.Log( "Can't find the current screen for back button." );
