@@ -67,7 +67,7 @@ public class GameInfo : System.Object
 		Hashtable statsHash = stats.convertStatsToHashtable();
 		foreach( string key in statsHash.Keys )
 		{
-			
+			db.UpdateRecordWhere( "stats", "statValue", statsHash[key].ToString(), "statName", key );
 		}
 		db.CloseDB();
 	}

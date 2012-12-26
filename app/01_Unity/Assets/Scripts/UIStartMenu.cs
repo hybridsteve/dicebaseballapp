@@ -422,8 +422,10 @@ public class UIStartMenu : MonoBehaviour {
 		
 		AddGamesToLayout( playerTurnGames, opponentTurnGames );
 		
+		// TODO: This is temporary just for testing...
 		Debug.Log( "TEMP DELETE THIS BLOCK" );
 		games.updateLocalGames();
+		games.updateLocalStats();
 	}
 	
 	// TODO: Placeholder code until implementation

@@ -2,5 +2,7 @@
 	"balls": 10,
 	"strikes": 113,
 	"runs": 25,
-	"outs": 20
+	"outs": 20,
+	"wins": 2,
+	"loss": 10
 }

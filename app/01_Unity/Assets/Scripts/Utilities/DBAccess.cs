@@ -63,6 +63,7 @@ public class DBAccess : System.Object
 	
 	#endregion
 	
+	#region Insertion
 	public void InsertIntoSingle( string tableName, string columnName, string inValue )
 	{
 		string query = "INSERT INTO " + tableName + " (" + columnName + ") " + "VALUES (\'" + inValue + "\')";
@@ -109,6 +110,16 @@ public class DBAccess : System.Object
 		executeCommand(query);
 	}
 	
+	public void UpdateRecordWhere( string tableName, string columnName, string inValue, string refColumnName, string refRowName)
+	{
+		string query = "UPDATE " + tableName + " SET " + columnName + "=\'" + inValue + "\' WHERE " + refColumnName + "=" + "\'" + refRowName + "\'";
+		Debug.Log( query );
+		executeCommand( query );
+	}
+	
+	#endregion
+	
+	#region Select
 	public string SelectFirst( string tableName, string columnName )
 	{
 		string query = "SELECT (" + columnName + ") FROM " + tableName + " LIMIT 1";
@@ -121,6 +132,7 @@ public class DBAccess : System.Object
 	public string[] SelectSingle( string tableName, string itemToSelect, string withColumn, string withComparison, string withValue )
 	{
 		string query = "SELECT " + itemToSelect + " FROM " + tableName + " WHERE " + withColumn + withComparison + withValue;
+		
 		executeCommand( query );
 		
 		List<string> matchesList = new List<string>();
@@ -136,6 +148,8 @@ public class DBAccess : System.Object
 		
 		return matches;
 	}
+	
+	#endregion
 	
 	public SqliteDataReader basicQuery( string command, bool returnReader )
 	{
